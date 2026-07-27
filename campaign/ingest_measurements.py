@@ -81,7 +81,23 @@ def main() -> None:
             text = log_file.read_text(errors="replace") if log_file.exists() else ""
             verdict = classify_log(strip_timestamps(text), set())
             classes = set(verdict.error_classes)
-            green = meta.get("outcome") == "success"
+
+            # `verified_green` from the shared verifier is authoritative: it
+            # already required that something actually compiled. The step
+            # outcome alone would let a vacuous green through, which is exactly
+            # the failure this guard exists to prevent.
+            vpath = path.parent / "verdict.json"
+            if vpath.exists():
+                v = json.loads(vpath.read_text())
+                green = bool(v.get("verified_green"))
+                classes = set(v.get("error_classes") or classes)
+                targets = v.get("targets") or []
+                if green and not targets:
+                    green = False  # cannot be green having built no targets
+            else:
+                # No verdict emitted -- refuse to infer green from exit status.
+                green = False
+                print(f"  {pkg}: no verdict.json; not treated as green")
 
             if green:
                 # Measured healthy: it leaves M. This is a real correction to

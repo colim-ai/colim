@@ -20,7 +20,7 @@ import re
 import shutil
 import subprocess
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -103,11 +103,23 @@ class BuildResult:
     log_sha256: str
     timed_out: bool = False
     built_nothing: bool = False  # exit 0 but no target was compiled
+    targets: list[str] = field(default_factory=list)
 
     @property
     def conclusive(self) -> bool:
         """A green that compiled nothing proves nothing."""
         return not (self.ok and self.built_nothing)
+
+    @property
+    def verified_green(self) -> bool:
+        """The ONLY definition of green in this project.
+
+        Requires the build to have succeeded AND to have actually compiled
+        something. Used identically by local reproduction, the measure-reds
+        Actions workflow, and Day-6 fix verification -- one code path, so a
+        vacuous green cannot slip in through a route that skipped the check.
+        """
+        return self.ok and not self.built_nothing
 
 
 def _run(cmd: list[str], cwd: Path, env: dict, timeout: int, log: list[str]) -> tuple[int, bool]:
@@ -181,6 +193,41 @@ def clone_at(repo_url: str, revision: str | None, dest: Path, log: list[str], ti
     return 0
 
 
+def lake_build_verified(
+    dest: Path, env: dict, timeout: int, log: list[str]
+) -> tuple[int, bool, list[str]]:
+    """`lake build`, with the vacuous-green guard applied.
+
+    THE shared build path. Local reproduction, the measure-reds Actions
+    workflow and Day-6 fix verification all go through here, so no route into
+    "green" can skip the check.
+
+    A package with no default target makes `lake build` exit 0 having compiled
+    nothing -- it only warns. So when that happens the declared libraries and
+    executables are named explicitly and the build is retried. The target list
+    is written into the transcript for audit.
+
+    Returns (exit_code, timed_out, targets_used). An empty target list with a
+    no-target warning means nothing could be built at all, which the caller
+    must never treat as green.
+    """
+    code, timed_out = _run(["lake", "build"], dest, env, timeout, log)
+    if code != 0 or not NO_TARGET_RE.search("\n".join(log)):
+        return code, timed_out, []
+
+    targets = declared_targets(dest)
+    log.append(f"##[targets] declared: {targets or '(none found)'}")
+    if not targets:
+        log.append(
+            "##[note] no default target and no declared lean_lib/lean_exe -- "
+            "nothing can be built; this is NOT a green build"
+        )
+        return code, timed_out, []
+
+    code, timed_out = _run(["lake", "build", *targets], dest, env, timeout, log)
+    return code, timed_out, targets
+
+
 def build_package(
     pkg_key: str,
     repo_url: str,
@@ -209,6 +256,7 @@ def build_package(
     started = time.time()
     step = "clone"
     timed_out = False
+    targets: list[str] = []
 
     code = clone_at(repo_url, revision, dest, log, clone_timeout)
 
@@ -235,19 +283,7 @@ def build_package(
         # `lake_jobs` is kept in config for the day Lake gets the flag back and
         # is asserted here so the two cannot silently disagree.
         assert lake_jobs >= 1
-        code, timed_out = _run(["lake", "build"], dest, env, build_timeout, log)
-
-        # A package with no default target exits 0 having compiled nothing.
-        # Name its libraries explicitly rather than recording a hollow green:
-        # Paper-Proof/paperproof looks green this way, but building its declared
-        # libs runs 918 jobs and fails outright in its dependencies.
-        if code == 0 and NO_TARGET_RE.search("\n".join(log)):
-            targets = declared_targets(dest)
-            log.append(f"##[note] no default target; retrying with {targets or '(none found)'}")
-            if targets:
-                code, timed_out = _run(
-                    ["lake", "build", *targets], dest, env, build_timeout, log
-                )
+        code, timed_out, targets = lake_build_verified(dest, env, build_timeout, log)
 
     duration = time.time() - started
     text = "\n".join(log)
@@ -270,6 +306,7 @@ def build_package(
         log_sha256=digest,
         timed_out=timed_out,
         built_nothing=built_nothing,
+        targets=targets,
     )
 
 

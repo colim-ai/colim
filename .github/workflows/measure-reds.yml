@@ -49,6 +49,11 @@ jobs:
       matrix:
         pkg: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     steps:
+      - name: Check out colim (for the shared build verifier)
+        uses: actions/checkout@v4
+        with:
+          path: colim
+
       - name: Free disk space
         # The runner has ~14GB usable; a Mathlib cache fits, but tightly.
         run: |
@@ -74,20 +79,22 @@ jobs:
 
       - name: Build under the forced evaluation toolchain
         id: build
+        # A red build is the expected outcome here, not a failure of the run.
         continue-on-error: true
-        env:
-          # Reservoir forces the toolchain rather than honouring lean-toolchain;
-          # we reproduce that exactly, or the measurement is not comparable.
-          ELAN_TOOLCHAIN: ${{ matrix.pkg.toolchain }}
-        working-directory: repo
         run: |
-          set -o pipefail
-          elan toolchain install "$ELAN_TOOLCHAIN"
+          elan toolchain install "${{ matrix.pkg.toolchain }}"
+          # Same verifier as local reproduction and Day-6 fix verification, so
+          # the vacuous-green guard cannot be bypassed by this route: exit 0
+          # here means lake succeeded AND at least one Lean target compiled.
+          MATHLIB_FLAG=""
           if [ "${{ matrix.pkg.mathlib }}" = "true" ]; then
-            lake exe cache get 2>&1 | tail -40 || echo "##[note] cache get failed"
+            MATHLIB_FLAG="--mathlib"
           fi
-          lake build 2>&1 | tee ../build.log
-          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          python3 colim/harness/verify_build.py repo \
+            --toolchain "${{ matrix.pkg.toolchain }}" \
+            $MATHLIB_FLAG \
+            --json verdict.json \
+            --log build.log
 
       - name: Record outcome
         if: always()
@@ -99,6 +106,8 @@ jobs:
             echo "outcome=${{ steps.build.outcome }}"
           } > outcome.txt
           cat outcome.txt
+          echo "--- verdict ---"
+          cat verdict.json 2>/dev/null || echo '{"error": "no verdict emitted"}'
 
       - name: Upload log
         if: always()
@@ -108,5 +117,6 @@ jobs:
           path: |
             build.log
             outcome.txt
+            verdict.json
           if-no-files-found: warn
           retention-days: 30
