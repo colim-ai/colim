@@ -20,3 +20,10 @@ __pycache__/
 data/raw/logs/
 # Local build transcripts from the harness; hashes live in the ledger.
 data/build_logs/
+
+# Pinned upstream source trees for rename extraction. Re-clonable exactly:
+#   git clone --depth 1 --branch v4.32.1 \
+#     https://github.com/leanprover-community/mathlib4 data/raw/sources/mathlib-v4.32.1
+# The extracted map (fixers/tier1/renames.json) IS committed -- it is the
+# tier-1 input and must be versioned.
+data/raw/sources/
