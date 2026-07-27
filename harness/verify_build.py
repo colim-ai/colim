@@ -69,7 +69,23 @@ def main() -> None:
     Path(args.log_out).write_text(text)
 
     built_nothing = bool(NO_TARGET_RE.search(text)) or not BUILT_SOMETHING_RE.search(text)
-    verified_green = code == 0 and not built_nothing
+
+    # Universal invariant: a result measured on a toolchain we did not intend is
+    # INVALID, not red and not green. Lake rewrites lean-toolchain during
+    # dependency resolution unless stopped, so this is checked, never assumed.
+    toolchain_intact = True
+    tc_file = dest / "lean-toolchain"
+    if tc_file.exists():
+        actual = tc_file.read_text().strip()
+        toolchain_intact = actual == args.toolchain
+        if not toolchain_intact:
+            log.append(
+                f"##[error] toolchain drift: lean-toolchain is {actual!r}, "
+                f"expected {args.toolchain!r}"
+            )
+            Path(args.log_out).write_text("\n".join(log))
+
+    verified_green = code == 0 and not built_nothing and toolchain_intact
     verdict = classify_log(text.splitlines(), set())
 
     result = {
@@ -77,6 +93,9 @@ def main() -> None:
         "timed_out": timed_out,
         "verified_green": verified_green,
         "built_nothing": built_nothing,
+        "toolchain_intact": toolchain_intact,
+        "invalid": not toolchain_intact,
+        "expected_toolchain": args.toolchain,
         "targets": targets or declared_targets(dest),
         "error_classes": verdict.error_classes,
         "failure_origin": verdict.failure_origin,

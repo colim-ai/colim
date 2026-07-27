@@ -59,7 +59,11 @@ DEP_RESOLUTION_PATTERNS: list[tuple[str, re.Pattern]] = [
 # Lake / build-config breakage (the lakefile + toolchain churn class).
 # --------------------------------------------------------------------------
 LAKE_PATTERNS: list[tuple[str, re.Pattern]] = [
-    ("lake_config_api", re.compile(r"is not a field of structure `(Lake\.|Option\.Decl)", re.I)),
+    # Lake's own configuration API moved under the package's feet. This routes
+    # to tier-1b (lakefile migration templates), NEVER to the identifier
+    # rewriter -- rewriting a Lake config field as if it were a Mathlib rename
+    # would be nonsense. 0art0/kimina is the canonical case.
+    ("lake_api_churn", re.compile(r"is not a field of structure `(Lake\.|Option\.Decl)", re.I)),
     ("lake_duplicate_root", re.compile(r"has the same root module", re.I)),
     ("lake_unknown_option", re.compile(r"unknown (option|package|target|configuration)", re.I)),
     ("lake_toolchain_conflict", re.compile(r"toolchain not updated; multiple toolchain candidates", re.I)),
@@ -69,6 +73,11 @@ LAKE_PATTERNS: list[tuple[str, re.Pattern]] = [
     # Stale/absent build artifacts from a mismatched toolchain.
     ("lake_stale_artifact", re.compile(r"object file '.*' of module .* does not exist", re.I)),
     ("lake_external_command", re.compile(r"external command '.*' exited with code", re.I)),
+    # NOTE: `no such file or directory` is usually the SYMPTOM of a bad import
+    # (Lake looking for an olean that no longer exists), not a lakefile config
+    # problem. It is deliberately NOT in TIER1B_CLASSES -- routing it there
+    # misfiled ImperialCollegeLondon/formalising-mathematics-2024 as a config
+    # failure when its real blocker is renamed Mathlib modules.
     ("lake_missing_file", re.compile(r"no such file or directory \(error code", re.I)),
 ]
 
@@ -84,6 +93,10 @@ LEAN_PATTERNS: list[tuple[str, re.Pattern]] = [
         re.compile(r"(unknown (identifier|constant|declaration)|not found in the provided declarations)", re.I),
     ),
     ("unknown_namespace", re.compile(r"unknown namespace", re.I)),
+    # A MODULE was moved or renamed upstream, not a declaration. The rename map
+    # covers declarations only, so this is a separate -- and mechanically
+    # fixable -- tier-1 class that we do not yet handle.
+    ("bad_import", re.compile(r"bad import ['`\"]", re.I)),
     ("deprecated", re.compile(r"has been deprecated", re.I)),
     ("not_a_field", re.compile(r"is not a field of structure", re.I)),
     ("invalid_field", re.compile(r"invalid field `", re.I)),
@@ -117,6 +130,38 @@ LEAN_PATTERNS: list[tuple[str, re.Pattern]] = [
 ]
 
 ALL_PATTERNS = INFRA_PATTERNS + DEP_RESOLUTION_PATTERNS + LAKE_PATTERNS + LEAN_PATTERNS
+
+# Build-configuration breakage. Handled by tier-1b lakefile migration
+# templates; the identifier rewriter must never be pointed at these.
+# `lake_missing_file` and `lake_stale_artifact` are excluded: they are downstream
+# symptoms of a bad import or a dirty tree, not configuration that needs migrating.
+TIER1B_CLASSES = {name for name, _ in LAKE_PATTERNS} - {
+    "lake_missing_file",
+    "lake_stale_artifact",
+}
+
+# Breakage that no rename map can repair -- the proof or the type genuinely
+# has to change. These are tier-2's territory.
+SEMANTIC_CLASSES = {
+    "type_mismatch",
+    "unsolved_goals",
+    "failed_to_synth",
+    "instance_binder",
+    "invalid_instance",
+    "missing_cases",
+    "tactic_failed",
+    "recursion_depth",
+    "deterministic_timeout",
+    "compiler_ir",
+    "duplicate_declaration",
+    "syntax_error",
+}
+
+# Identifiers named in "unknown" errors -- used to tell a rename we simply do
+# not have (hard removal) from breakage of another kind.
+UNKNOWN_IDENT_RE = re.compile(
+    r"(?:Unknown|unknown) (?:identifier|constant|declaration) [`'‘]([^`'’]+)"
+)
 
 INFRA_CLASSES = {name for name, _ in INFRA_PATTERNS}
 # A pinned release artifact that no longer downloads is dependency acquisition

@@ -21,7 +21,15 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE.parent / "census"))
 
-from build import BuildResult, DiskFloorExceeded, build_package, free_gb, prune_trees  # noqa: E402
+from build import (  # noqa: E402
+    BuildResult,
+    DiskFloorExceeded,
+    assert_toolchain_intact,
+    build_package,
+    free_gb,
+    prune_trees,
+    tree_path,
+)
 from config import BUILD, EVAL_TOOLCHAIN  # noqa: E402
 from errors import classify_log  # noqa: E402
 from ledger.db import connect, now  # noqa: E402
@@ -179,6 +187,7 @@ def main() -> None:
 
     print(f"reproducing {len(rows)} packages on {EVAL_TOOLCHAIN}")
     print(f"disk free: {free_gb():.1f} GB (floor {BUILD['disk_floor_gb']} GB)\n")
+    invalid = 0
 
     for i, r in enumerate(rows, 1):
         key = r["pkg_key"]
@@ -201,6 +210,15 @@ def main() -> None:
             print(f"  STOPPING: {e}")
             break
 
+        # Universal invariant (ruling): a build measured on a toolchain we did
+        # not intend is INVALID -- neither agreement nor disagreement.
+        try:
+            assert_toolchain_intact(tree_path(key), EVAL_TOOLCHAIN, [])
+        except RuntimeError as e:
+            invalid += 1
+            print(f"  INVALID: {e}")
+            continue
+
         verdict = classify_log(res.log_path.read_text().splitlines(), set())
         record(conn, r, res, verdict)
 
@@ -219,6 +237,8 @@ def main() -> None:
         if removed:
             print(f"  pruned {len(removed)} old build tree(s)")
 
+    if invalid:
+        print(f"\nINVALID (toolchain drift, discarded): {invalid}")
     n = conn.execute("SELECT COUNT(*) FROM reproductions").fetchone()[0]
     agr = conn.execute("SELECT COUNT(*) FROM reproductions WHERE agrees=1").fetchone()[0]
     print(f"\nreproductions: {agr}/{n} agree with Reservoir")

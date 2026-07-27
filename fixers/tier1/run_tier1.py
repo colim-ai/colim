@@ -40,6 +40,96 @@ from rewrite import load_map, rewrite_tree  # noqa: E402
 
 TARGET = CONFIG["campaign_target"]
 
+# Per-class outcome reporting is a headline product metric, not a detail:
+# "tier 1 fixes X% of renames" is a very different claim from "tier 1 fixes X%
+# of red packages", and only the first is what tier 1 is actually for.
+OUTCOMES = [
+    "renames_fixed",
+    "hard_removal_blocked",
+    "import_blocked",
+    "config_blocked",
+    "semantic_blocked",
+    "other_blocked",
+    "invalid",
+]
+
+
+def blocker_class(log_text: str, qualified: dict[str, str], short: dict[str, str]) -> str:
+    """Why did tier 1 fail to fix this package?
+
+    Determined from the POST-tier-1 log, so it describes what is still broken
+    after the rename map has been applied, not what was broken before.
+    """
+    from errors import SEMANTIC_CLASSES, TIER1B_CLASSES, UNKNOWN_IDENT_RE, classify_log
+
+    classes = set(classify_log(log_text.splitlines(), set()).error_classes)
+
+    if classes & TIER1B_CLASSES:
+        return "config_blocked"
+
+    # A renamed MODULE, which the declaration rename map cannot express. This
+    # is mechanically fixable and is the clearest tier-1 gap we have found.
+    if "bad_import" in classes:
+        return "import_blocked"
+
+    # An identifier the compiler cannot find, which our maps also cannot map,
+    # is a rename or removal upstream did not leave behind any trace of.
+    unresolved = [
+        name
+        for name in UNKNOWN_IDENT_RE.findall(log_text)
+        if name not in qualified and name.split(".")[-1] not in short
+    ]
+    if unresolved:
+        return "hard_removal_blocked"
+
+    if classes & SEMANTIC_CLASSES:
+        return "semantic_blocked"
+    return "other_blocked"
+
+
+def reclassify(conn) -> None:
+    """Derive per-class outcomes from stored tier-1 transcripts.
+
+    The builds already ran; their logs are on disk and hashed into the ledger.
+    Re-deriving the breakdown costs seconds, where rebuilding costs an hour.
+    """
+    qualified, short = load_map()
+    rows = conn.execute(
+        "SELECT pkg_key, tier1_result FROM packages WHERE tier1_result IS NOT NULL"
+    ).fetchall()
+    if not rows:
+        raise SystemExit("no tier-1 results recorded yet")
+
+    log_dir = REPO_ROOT / "data" / "build_logs"
+    tally: dict[str, int] = {}
+    detail: list[tuple[str, str]] = []
+
+    for r in rows:
+        info = json.loads(r["tier1_result"])
+        if info.get("green"):
+            outcome = "renames_fixed"
+        else:
+            digest = (info.get("log_sha256") or "")[:12]
+            matches = list(log_dir.glob(f"*.{digest}.log")) if digest else []
+            if not matches:
+                outcome = "other_blocked"
+            else:
+                outcome = blocker_class(
+                    matches[0].read_text(errors="replace"), qualified, short
+                )
+        tally[outcome] = tally.get(outcome, 0) + 1
+        detail.append((r["pkg_key"], outcome))
+
+    total = len(rows)
+    print(f"tier-1 outcomes over {total} package(s):\n")
+    for name in OUTCOMES:
+        n = tally.get(name, 0)
+        if n:
+            print(f"  {name:<24}{n:>4}  {n / total:6.0%}")
+    print()
+    for key, outcome in sorted(detail, key=lambda x: x[1]):
+        print(f"  {outcome:<24}{key}")
+
 
 def targets(conn, args) -> list:
     if args.packages:
@@ -61,9 +151,15 @@ def main() -> None:
     ap.add_argument("--sample", action="store_true")
     ap.add_argument("--packages", nargs="*", default=[])
     ap.add_argument("--dry-run", action="store_true", help="rewrite only, no build")
+    ap.add_argument("--reclassify", action="store_true",
+                    help="re-derive per-class outcomes from stored logs")
     args = ap.parse_args()
 
     conn = connect()
+    if args.reclassify:
+        reclassify(conn)
+        return
+
     rows = targets(conn, args)
     if not rows:
         raise SystemExit("no target packages; run harness/reproduce.py first")
@@ -74,6 +170,7 @@ def main() -> None:
     print(f"disk free: {free_gb():.1f} GB\n")
 
     fixed = attempted = 0
+    tally: dict[str, int] = {}
     for i, r in enumerate(rows, 1):
         key = r["pkg_key"]
         dest = tree_path(key)
@@ -119,12 +216,18 @@ def main() -> None:
             assert_toolchain_intact(dest, TARGET["toolchain"], [])
         except RuntimeError as e:
             print(f"  INVALID: {e}")
+            tally["invalid"] = tally.get("invalid", 0) + 1
             continue
 
         ok = res.verified_green
         fixed += int(ok)
+        if ok:
+            outcome = "renames_fixed"
+        else:
+            outcome = blocker_class(res.log_path.read_text(errors="replace"), qualified, short)
+        tally[outcome] = tally.get(outcome, 0) + 1
         print(
-            f"  {'GREEN (tier-1 fixed)' if ok else 'still red'} "
+            f"  {'GREEN (tier-1 fixed)' if ok else 'still red -> ' + outcome} "
             f"exit={res.exit_code} {res.duration_s:.0f}s targets={res.targets or 'default'}"
         )
 
@@ -148,6 +251,11 @@ def main() -> None:
 
     if attempted:
         print(f"\ntier-1 fix rate: {fixed}/{attempted} = {fixed / attempted:.0%}")
+        print("\nper-class outcome (the metric that actually means something):")
+        for name in OUTCOMES:
+            n = tally.get(name, 0)
+            if n:
+                print(f"  {name:<24}{n:>4}  {n / attempted:6.0%}")
 
 
 if __name__ == "__main__":

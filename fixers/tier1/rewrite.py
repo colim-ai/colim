@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 RENAMES_PATH = Path(__file__).resolve().parent / "renames.json"
+SUPPLEMENT_PATH = Path(__file__).resolve().parent / "renames_supplement.toml"
 
 # Lean identifiers admit primes, bangs, question marks, subscripts and Greek.
 IDENT_CHARS = r"A-Za-z0-9_'!?₀-₉ₐ-ₜα-ωΑ-Ωℕℤℚℝℂ"
@@ -90,7 +91,37 @@ def code_spans(text: str) -> list[tuple[int, int]]:
     return [(a, b) for a, b in spans if a < b]
 
 
-def load_map(path: Path = RENAMES_PATH) -> tuple[dict[str, str], dict[str, str]]:
+def load_supplement(path: Path = SUPPLEMENT_PATH) -> list[dict]:
+    """Curated entries for renames extraction cannot see.
+
+    Every entry must carry an evidence link; an unevidenced entry is a
+    recollection, and this project does not act on those. `config` entries are
+    build-configuration changes and are deliberately NOT identifier rewrites --
+    they belong to tier-1b, so they are excluded from the rewrite map here.
+    """
+    if not path.exists():
+        return []
+    import tomllib
+
+    with path.open("rb") as f:
+        doc = tomllib.load(f)
+
+    entries = doc.get("entry") or []
+    for e in entries:
+        missing = [k for k in ("old", "new", "kind", "evidence", "source") if not e.get(k)]
+        if missing:
+            raise SystemExit(
+                f"supplement entry {e.get('old', '?')} is missing {missing}; "
+                "evidence and provenance are required for every entry"
+            )
+        if e["kind"] not in {"rename", "hard_removal", "config"}:
+            raise SystemExit(f"supplement entry {e['old']}: unknown kind {e['kind']!r}")
+    return entries
+
+
+def load_map(
+    path: Path = RENAMES_PATH, supplement: Path = SUPPLEMENT_PATH
+) -> tuple[dict[str, str], dict[str, str]]:
     """Return (qualified_map, unambiguous_short_map)."""
     doc = json.loads(path.read_text())
     ambiguous = set(doc.get("ambiguous_short_names") or [])
@@ -103,6 +134,17 @@ def load_map(path: Path = RENAMES_PATH) -> tuple[dict[str, str], dict[str, str]]
         # Short names are only safe when they resolve to exactly one target.
         if r["old_short"] not in ambiguous and r["old_short"] != r["new_short"]:
             short[r["old_short"]] = r["new_short"]
+
+    # Curated entries are applied last and win on conflict: they exist
+    # precisely because extraction got the wrong answer or no answer.
+    for e in load_supplement(supplement):
+        if e["kind"] == "config":
+            continue  # tier-1b handles these; never an identifier rewrite
+        qualified[e["old"]] = e["new"]
+        old_short, new_short = e["old"].split(".")[-1], e["new"].split(".")[-1]
+        if old_short not in ambiguous and old_short != new_short:
+            short[old_short] = new_short
+
     return qualified, short
 
 

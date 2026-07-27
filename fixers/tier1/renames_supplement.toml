@@ -1,0 +1,39 @@
+# Curated rename supplement — hard removals and unextractable renames.
+#
+# The extracted map (renames.json) can only see what upstream still declares at
+# the evaluation revision. Two things escape it:
+#
+#   * renames whose `@[deprecated] alias` was cleaned up before v4.32.1
+#   * outright removals, where the replacement exists but was never aliased
+#
+# Both are invisible to extraction and show up downstream as
+# `Unknown identifier` / `Unknown constant`, so they are curated here.
+#
+# RULES
+#   * `evidence` is REQUIRED and must link to a commit, PR or changelog that
+#     shows the change. No entry may rest on recollection.
+#   * `source` records who added it: `human` (a founder's hand-repair notes) or
+#     `agent`.
+#   * `kind`:
+#       rename        upstream renamed it; the alias is gone or was never added
+#       hard_removal  the declaration was removed; `new` is the replacement
+#                     idiom, which may not be a drop-in
+#       config        lakefile/build-configuration change, NOT an identifier
+#                     rewrite — routed to tier-1b, never to the rewriter
+#   * Applied AFTER the extracted map, so an entry here wins on conflict.
+#   * Every entry must be covered by a fixture test in test_supplement.py.
+
+schema_version = 1
+
+[[entry]]
+old = "Array.mkArray"
+new = "Array.replicate"
+kind = "rename"
+evidence = "https://github.com/leanprover/lean4/pull/7544"
+source = "agent"
+note = """\
+Found while checking why kmill/render was not tier-1 fixable. Upstream renamed \
+it in PR #7544 ("chore: rename Array.mkArray to replicate"); by v4.32.1 no \
+deprecated alias remains in the toolchain sources, so extraction cannot see it. \
+Array.mkArray0..4 still exist and are unrelated — do not rewrite those.\
+"""
