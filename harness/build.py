@@ -58,6 +58,37 @@ NO_TARGET_RE = re.compile(
 # Positive evidence that real work happened.
 BUILT_SOMETHING_RE = re.compile(r"^[✔✖]\s*\[\d+/\d+\]", re.M)
 
+# Recovering a no-default-target package: name its libraries and executables
+# explicitly. Covers both lakefile dialects.
+#   lakefile.lean:  lean_lib «Foo» {}      lean_lib Foo where
+#   lakefile.toml:  [[lean_lib]] \n name = "Foo"
+LEAN_TARGET_RE = re.compile(
+    r"^\s*(?:@\[default_target\]\s*)?lean_(?:lib|exe)\s+[«\"]?([A-Za-z_][\w'.]*)[»\"]?",
+    re.M,
+)
+TOML_TARGET_RE = re.compile(
+    r"\[\[lean_(?:lib|exe)\]\]\s*(?:\n\s*\w+\s*=.*)*?\n\s*name\s*=\s*\"([^\"]+)\"",
+)
+
+
+def declared_targets(root: Path) -> list[str]:
+    """Library/executable names declared by the package's lakefile.
+
+    Used only when `lake build` reports no default target. It is a heuristic
+    read of the config rather than a Lake query, so it is applied as a fallback
+    and its result is recorded in the transcript for audit.
+    """
+    for name, pattern in (
+        ("lakefile.lean", LEAN_TARGET_RE),
+        ("lakefile.toml", TOML_TARGET_RE),
+    ):
+        path = root / name
+        if path.exists():
+            found = pattern.findall(path.read_text(errors="replace"))
+            # Preserve order, drop duplicates.
+            return list(dict.fromkeys(found))
+    return []
+
 
 @dataclass
 class BuildResult:
@@ -205,6 +236,18 @@ def build_package(
         # is asserted here so the two cannot silently disagree.
         assert lake_jobs >= 1
         code, timed_out = _run(["lake", "build"], dest, env, build_timeout, log)
+
+        # A package with no default target exits 0 having compiled nothing.
+        # Name its libraries explicitly rather than recording a hollow green:
+        # Paper-Proof/paperproof looks green this way, but building its declared
+        # libs runs 918 jobs and fails outright in its dependencies.
+        if code == 0 and NO_TARGET_RE.search("\n".join(log)):
+            targets = declared_targets(dest)
+            log.append(f"##[note] no default target; retrying with {targets or '(none found)'}")
+            if targets:
+                code, timed_out = _run(
+                    ["lake", "build", *targets], dest, env, build_timeout, log
+                )
 
     duration = time.time() - started
     text = "\n".join(log)

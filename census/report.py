@@ -50,6 +50,11 @@ def render() -> str:
     w(f"| build coverage on that toolchain | {coverage:.1%} of indexed packages |")
     w("")
 
+    uninformative = one(
+        "SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status='RED_REGRESSION' "
+        "AND red_basis='infra_uninformative'"
+    )
+
     w("## Headline")
     w("")
     w(f"**K = {k}**  ·  **M = {m}**  ·  **M/K = {m / k:.1%}**")
@@ -60,6 +65,17 @@ def render() -> str:
         "onto the evaluation toolchain."
     )
     w("")
+    if uninformative:
+        # Headline discipline: this count travels with M wherever M is quoted.
+        w(
+            f"> **Quote this alongside M:** {uninformative} of those {m} "
+            f"({uninformative / m:.1%}) are `infra_uninformative` — Reservoir's build "
+            "failed on a cache fetch, so its log does not show whether the package's code "
+            "survives the toolchain. They remain in M because their recorded outcome is "
+            "red, and they are being resolved by measurement, not assumption. Until that "
+            f"completes, M is an upper bound by up to {uninformative} packages."
+        )
+        w("")
 
     w("## Scope")
     w("")
@@ -174,37 +190,45 @@ def render() -> str:
         w("The self/dependency split must not be claimed until then.")
     w("")
 
-    infra = one(
-        "SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status='RED_REGRESSION' "
-        "AND infra_only=1"
+    w("## Why we believe each red is red (`red_basis`)")
+    w("")
+    w(
+        "Not every red is evidenced the same way, and the differences govern how a row "
+        "may be quoted."
     )
-    if infra:
-        w("### Infrastructure-only reds")
-        w("")
+    w("")
+    w("| basis | n | meaning |")
+    w("|---|---:|---|")
+    meanings = {
+        "code_error": "log shows Lean/Lake errors in real code",
+        "infra_release": "a pinned release artifact no longer downloads — genuine, persistent dependency-acquisition failure",
+        "infra_uninformative": "only a cache fetch failed; Reservoir's log is silent on the code — awaiting measurement",
+        "measured_local": "we rebuilt it here and saw the outcome ourselves",
+        "measured_actions": "rebuilt via our own Actions matrix; run log public",
+    }
+    for r in q(
+        "SELECT red_basis b, COUNT(*) n FROM packages WHERE in_k=1 "
+        "AND final_status='RED_REGRESSION' GROUP BY b ORDER BY n DESC"
+    ):
+        w(f"| `{r['b']}` | {r['n']} | {meanings.get(r['b'], '')} |")
+    w("")
+    if uninformative:
         w(
-            f"**{infra} of {m} reds ({infra / m:.1%}) failed only on Reservoir's runner "
-            "infrastructure** — cache fetch, toolchain download, artifact extraction — with "
-            "no Lean or Lake error attributable to the package at all."
+            f"The {uninformative} `infra_uninformative` packages are **not** excluded by "
+            "rule. Excluding them would assume they are healthy; counting them silently "
+            "would assume they are broken. Both are guesses. They are instead being "
+            "rebuilt in our own repository via a GitHub Actions matrix — upstream cloned "
+            "at its pinned revision, evaluation toolchain forced, Mathlib cache fetched, "
+            "`lake build` — with the public run log linked per package. Results reclassify "
+            "the row: real code errors keep it in M with its error classes, a green build "
+            "moves it out of M with the delta logged, and a repeat infrastructure failure "
+            "leaves it flagged."
         )
         w("")
         w(
-            "These satisfy the RED_REGRESSION definition literally (red on the evaluation "
-            "toolchain, green earlier), so they remain in M. But the log does not show that "
-            "their code fails on v4.32.1, only that Reservoir could not complete a build. "
-            "Local reproduction is the only way to settle it, and the Day-2 sample "
-            "deliberately includes infrastructure-only packages as controls. Until then "
-            "this is an upper bound on M by up to "
-            f"{infra} packages ({infra / k:.1%} of K)."
+            "No forks are involved in measurement and nothing is sent upstream — the "
+            "workflow runs in our own repository."
         )
-        w("")
-        w("| class | n |")
-        w("|---|---:|")
-        for r in q(
-            "SELECT value AS cls, COUNT(*) n FROM packages, json_each(packages.error_classes) "
-            "WHERE in_k=1 AND final_status='RED_REGRESSION' AND infra_only=1 "
-            "GROUP BY cls ORDER BY n DESC"
-        ):
-            w(f"| `{r['cls']}` | {r['n']} |")
         w("")
 
     repro_n = one("SELECT COUNT(*) FROM reproductions")

@@ -1,0 +1,112 @@
+# Measure the `infra_uninformative` cohort.
+#
+# These packages are recorded red by Reservoir, but only because its runner
+# failed to fetch a build cache -- the log says nothing about whether the
+# package's code survives the evaluation toolchain. Excluding them would assume
+# they are healthy; counting them silently would assume they are broken. This
+# workflow measures instead of assuming.
+#
+# It runs ENTIRELY IN OUR OWN REPOSITORY. Upstream repos are cloned read-only at
+# the exact revision Reservoir built. No forks, no pushes, no pull requests, no
+# issues, no contact with any maintainer. Week 1 is silent.
+#
+# Generate the matrix with:  python3 campaign/gen_measurement_matrix.py
+# Ingest the results with:   python3 campaign/ingest_measurements.py <run-id>
+
+name: measure-reds
+
+on:
+  workflow_dispatch:
+    inputs:
+      matrix:
+        description: 'JSON array of {pkg_key, repo_url, revision, toolchain, mathlib}'
+        required: true
+      max_parallel:
+        description: 'Concurrent jobs (keep modest; shared Actions quota)'
+        required: false
+        default: '10'
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - id: set
+        run: echo "matrix=${{ toJSON(inputs.matrix) }}" >> "$GITHUB_OUTPUT"
+
+  measure:
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      # A red build is the expected outcome here, not a failure of the run.
+      max-parallel: 10
+      matrix:
+        pkg: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+    steps:
+      - name: Free disk space
+        # The runner has ~14GB usable; a Mathlib cache fits, but tightly.
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc
+          df -h /
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Clone upstream at the pinned revision (read-only)
+        run: |
+          mkdir -p repo && cd repo
+          git init -q
+          git remote add origin "${{ matrix.pkg.repo_url }}"
+          git fetch --depth 1 origin "${{ matrix.pkg.revision }}" \
+            || git fetch --tags origin
+          git checkout -q --force "${{ matrix.pkg.revision }}"
+          git clean -ffdxq
+
+      - name: Build under the forced evaluation toolchain
+        id: build
+        continue-on-error: true
+        env:
+          # Reservoir forces the toolchain rather than honouring lean-toolchain;
+          # we reproduce that exactly, or the measurement is not comparable.
+          ELAN_TOOLCHAIN: ${{ matrix.pkg.toolchain }}
+        working-directory: repo
+        run: |
+          set -o pipefail
+          elan toolchain install "$ELAN_TOOLCHAIN"
+          if [ "${{ matrix.pkg.mathlib }}" = "true" ]; then
+            lake exe cache get 2>&1 | tail -40 || echo "##[note] cache get failed"
+          fi
+          lake build 2>&1 | tee ../build.log
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Record outcome
+        if: always()
+        run: |
+          {
+            echo "pkg_key=${{ matrix.pkg.pkg_key }}"
+            echo "revision=${{ matrix.pkg.revision }}"
+            echo "toolchain=${{ matrix.pkg.toolchain }}"
+            echo "outcome=${{ steps.build.outcome }}"
+          } > outcome.txt
+          cat outcome.txt
+
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: measure-${{ strategy.job-index }}
+          path: |
+            build.log
+            outcome.txt
+          if-no-files-found: warn
+          retention-days: 30

@@ -48,6 +48,15 @@ CREATE TABLE IF NOT EXISTS packages (
     error_file_count    INTEGER,            -- distinct .lean files with errors
     error_files         TEXT,               -- json array, capped
     infra_only          INTEGER,            -- 1 = failed only on runner infrastructure
+    -- WHY we believe this package is red. Governs how the row may be quoted.
+    --   code_error            log shows Lean/Lake errors in real code
+    --   infra_release         pinned release artifact no longer downloads;
+    --                         genuine persistent dependency-acquisition failure
+    --   infra_uninformative   only a cache-fetch failure; Reservoir could not
+    --                         tell us anything -- awaiting measurement
+    --   measured_local        we rebuilt it here and saw the outcome ourselves
+    --   measured_actions      rebuilt via our own Actions matrix, log public
+    red_basis           TEXT,
 
     -- Repair pipeline.
     tier1_result        TEXT,

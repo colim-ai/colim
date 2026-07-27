@@ -24,6 +24,8 @@ _ADDED_COLUMNS = {
         "error_file_count": "INTEGER",
         "error_files": "TEXT",
         "infra_only": "INTEGER",
+        "red_basis": "TEXT",
+        "measurement_run_url": "TEXT",
     },
     "reproductions": {
         # exit 0 but nothing compiled -- a green that proves nothing

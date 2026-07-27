@@ -88,6 +88,53 @@ These get their own explicit status and are **not in M**. Counting Mathlib, the 
 package in the ecosystem, as a "red regression" would be indefensible. We mention it because
 a naive implementation of the regression rule does exactly that, and ours briefly did.
 
+### `red_basis` — why we believe each red is red
+
+Not every red is evidenced the same way, and the differences govern how a row may be quoted.
+Every red carries a `red_basis`:
+
+| basis | meaning |
+|---|---|
+| `code_error` | the log shows Lean or Lake errors in real code |
+| `infra_release` | a pinned release artifact no longer downloads — a genuine, persistent dependency-acquisition failure, which is dependency rot in its most literal form. Origin is `dependency`. |
+| `infra_uninformative` | the only failure was a build-cache fetch. Reservoir's log is silent on whether the code survives. |
+| `measured_local` | we rebuilt it on our own machine and saw the outcome ourselves |
+| `measured_actions` | we rebuilt it in our own GitHub Actions run; the log is public |
+
+**The `infra_uninformative` cohort must be disclosed wherever M is quoted.** These packages
+are red in Reservoir's recorded data, so they satisfy the RED_REGRESSION definition and remain
+in M — but its runner failed before compiling anything, so the log does not show their code
+failing on the evaluation toolchain.
+
+We do not resolve this by rule, because both available rules are guesses: excluding them
+assumes they are healthy, and counting them silently assumes they are broken. **We resolve it
+by measurement.** Each is rebuilt in *our own repository* via a GitHub Actions matrix —
+upstream cloned read-only at the exact revision Reservoir built, evaluation toolchain forced,
+Mathlib cache fetched, `lake build` — with the public run log linked per package in the
+ledger. Results reclassify the row mechanically:
+
+- real code errors → stays in M, with its error classes and `measured_actions`
+- builds green → **leaves M**, and the delta is logged in `census/NOTES.md`
+- infrastructure fails again → stays flagged, still unmeasured
+
+No forks are created for measurement and nothing is sent upstream; the workflow runs entirely
+in our own repository (`.github/workflows/measure-reds.yml`).
+
+Until that completes, **M is an upper bound**, and any externally quoted M states the
+`infra_uninformative` count alongside it.
+
+### A green build must actually compile something
+
+`lake build` exits 0 having compiled **nothing** when a package configures no default target —
+it only warns. `Paper-Proof/paperproof` looks green that way in 63 seconds; building its
+declared libraries runs 918 jobs and fails outright inside its dependencies.
+
+The harness therefore treats "exit 0 with no compiled target" as **inconclusive**, never as
+green, and retries with the libraries and executables named in the lakefile. This matters far
+beyond one row: the entire correctness argument of this project is that the Lean kernel checks
+the proofs, and a build that ran no kernel checks proves nothing. No package may enter N on a
+build that compiled nothing.
+
 ### Scope: what is in K
 K is all Reservoir-indexed packages, minus two exclusion classes reported beside each other:
 

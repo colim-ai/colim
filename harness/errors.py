@@ -47,6 +47,10 @@ INFRA_PATTERNS: list[tuple[str, re.Pattern]] = [
 # --------------------------------------------------------------------------
 DEP_RESOLUTION_PATTERNS: list[tuple[str, re.Pattern]] = [
     ("dep_revision_not_found", re.compile(r"revision not found")),
+    # NOTE: `infra_release_fetch` is ALSO treated as dependency-origin, via
+    # DEP_RESOLUTION_CLASSES below. It reproduced red locally in every carrier
+    # we built, so a pinned release artifact that no longer downloads is a real
+    # persistent dependency-acquisition failure, not a runner flake.
     ("dep_clone_failed", re.compile(r"(failed to clone|repository not found|fatal: could not read)", re.I)),
     ("dep_manifest_mismatch", re.compile(r"(manifest.*out of date|no such package|missing manifest)", re.I)),
 ]
@@ -115,7 +119,11 @@ LEAN_PATTERNS: list[tuple[str, re.Pattern]] = [
 ALL_PATTERNS = INFRA_PATTERNS + DEP_RESOLUTION_PATTERNS + LAKE_PATTERNS + LEAN_PATTERNS
 
 INFRA_CLASSES = {name for name, _ in INFRA_PATTERNS}
-DEP_RESOLUTION_CLASSES = {name for name, _ in DEP_RESOLUTION_PATTERNS}
+# A pinned release artifact that no longer downloads is dependency acquisition
+# failing, which is dependency rot of the most literal kind.
+DEP_RESOLUTION_CLASSES = {name for name, _ in DEP_RESOLUTION_PATTERNS} | {
+    "infra_release_fetch"
+}
 
 # `error: Path/To/File.lean:12:3: message` -- the only lines that tell us WHOSE
 # code failed. Lake also emits bare `error: build failed`, which tells us nothing.
