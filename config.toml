@@ -1,0 +1,92 @@
+# Colim week-1 campaign config.
+# CLAUDE.md forbids hardcoding any of these in code. Read via config.py.
+
+[github]
+# Dedicated org for forks. NEVER a personal account -- branch URLs go in the
+# YC application. Verified 2026-07-27: org exists, both founders to be added.
+org = "colim-ai"
+# Forks keep upstream names; on collision use this convention.
+fork_collision_template = "{owner}--{repo}"
+branch_template = "colim/bump-{toolchain}"
+
+[census]
+# Pinned Reservoir index snapshot. Never move this silently -- every census
+# number is derived from exactly this commit.
+index_commit = "2acc551043c37488cf1238059b9c657304e4e16e"
+index_committed_at = "2026-07-26T15:41:49Z"
+# Chosen Day 1 by census/coverage.py: newest stable release clearing the 80%
+# coverage bar. Recorded in ledger.meta. Never changed silently.
+eval_toolchain = "leanprover/lean4:v4.32.1"
+eval_toolchain_coverage = 0.989
+coverage_threshold = 0.80
+
+[campaign_target]
+# What Day-6 bumps packages TO.
+#
+# Reservoir reports mathlib as red on v4.32.1, but only because it builds mathlib
+# MASTER, which pins v4.33.0-rc1 and cannot be forced backwards. Mathlib ships a
+# release tag per toolchain, and tag v4.32.1 pins leanprover/lean4:v4.32.1
+# exactly (verified 2026-07-27 by reading lean-toolchain at that tag).
+# That tag, not master, is the dependency pin the bump script must write.
+toolchain = "leanprover/lean4:v4.32.1"
+mathlib_tag = "v4.32.1"
+mathlib_repo = "leanprover-community/mathlib4"
+
+[census.scope]
+# Ruling 2026-07-27 (Q3). Two exclusion classes, reported side by side.
+# Neither is in K, so neither can appear in M.
+#   ARCHIVED  -- upstream marked the repo archived.
+#   VANISHED  -- source no longer resolves on GitHub (deleted/private/transferred).
+# Rationale for VANISHED: a package we cannot fetch can never enter N, and
+# leaving it in the K denominator understates M/K against a repo nobody can audit.
+exclude_archived = true
+exclude_vanished = true
+
+[build]
+# VPS: 2 Intel cores, 8 GB RAM, 160 GB NVMe, Ubuntu 24.04.
+# lake's internal job count = cores.
+lake_jobs = 2
+# Deliberately 1. With only 2 cores, a single build at -j2 already saturates
+# CPU, so concurrency >1 buys no throughput and only multiplies peak RAM --
+# and Mathlib-class builds can peak several GB each against 8 GB total.
+# Revisit only if the box grows cores.
+concurrency = 1
+# Disk watchdog: refuse to start a new build below this much free space.
+disk_floor_gb = 20
+# Ruling 2026-07-27 (Q2). Build trees are kept only while a package is under
+# active tier-2 repair, capped LRU at 10 trees -- 367 trees would blow the
+# 160 GB disk many times over. On Actions-verified green, logs and guard dumps
+# are archived to the ledger and the tree is deleted.
+keep_build_trees_during_tier2 = true
+build_tree_lru_cap = 10
+delete_tree_on_verified_green = true
+prune_unused_toolchains = true  # after baseline signature dumps
+
+[tier2]
+model = "claude-sonnet-4-6"
+max_iterations_per_file = 4
+per_package_usd_cap = 3.0
+global_usd_cap = 150.0
+
+[campaign]
+# Week 1 is SILENT. Fork + branch + push to OUR org only.
+# No PRs, no issues, no comments, no maintainer contact. Outreach is week 2,
+# performed by the humans, never by automation.
+allow_upstream_prs = false
+day2_sample_size = 10
+
+# Ruling 2026-07-27 (Q1). Hybrid.
+# Tier 1 runs over the FULL red mathlib-downstream set; rewriting is local and
+# cheap, and verification builds run on GitHub Actions on our own forks.
+# N is reported over the full set, split N_tier1 / N_tier2, with the tier-2
+# subset disclosed.
+tier1_scope = "all_red_mathlib_downstream"
+verify_on = "github_actions"
+# Actions are disabled by default on new forks; enable per-fork via the API and
+# fail loudly rather than silently producing no green check.
+enable_actions_per_fork = true
+fail_loudly_if_actions_blocked = true
+
+# Tier 2 is local-only and therefore rationed. Ranking, applied in order:
+tier2_scope = "ranked_subset"
+tier2_ranking = ["stars_desc", "mathlib_only_deps_first", "size_asc"]

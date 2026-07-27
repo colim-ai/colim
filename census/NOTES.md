@@ -137,7 +137,44 @@ because Reservoir interleaves rc and stable runs and a version sort would misord
   `physicslib/Physicslib`, `jonwashburn/Riemann`.
   A stale id makes the *entire* GraphQL batch error rather than returning partial data, so
   `fetch_batch` bisects on that specific error to isolate offenders.
-  **Open ruling needed** (see report): CLAUDE.md excludes *archived* from K but says nothing
-  about *vanished*. Current default keeps them in K — the rule excludes archived, and we have
-  no evidence these are archived — flagged as `source_unavailable` and disclosed. They can
-  never enter N, since there is no repo to fork.
+
+## Scope exclusions — ARCHIVED and VANISHED (ruling 2026-07-27)
+
+Two exclusion classes, both `in_k = 0`, both therefore outside M, each reported beside the
+other so neither hides behind the other:
+
+| class | n | meaning |
+|---|---|---|
+| `ARCHIVED` | 24 | upstream marked the repo archived |
+| `VANISHED` | 8 | source no longer resolves on GitHub (deleted / private / transferred) |
+
+**Delta from excluding VANISHED**, recorded so the change is auditable:
+
+- K: 766 → **758**
+- M: 501 → **501** (unchanged)
+- M/K: 65.4% → **66.1%**
+
+M did not move because all 8 vanished packages classified as UNKNOWN anyway — Reservoir
+stopped recording outcomes for them once the source disappeared, so none was ever in M. The
+exclusion only tightens the denominator.
+
+For contrast, the 24 ARCHIVED packages *would* have contributed 17 RED_REGRESSION, 4
+NEVER_GREEN and 3 GREEN_CURRENT had they stayed in K. That exclusion is load-bearing and
+is what CLAUDE.md's census scope already required.
+
+## FORCED_DOWNGRADE — an explicit class, not a footnote
+
+Because Reservoir forces the toolchain, a package whose own pin is *newer* than the
+evaluation toolchain fails for the opposite reason to a regression: its source is too new for
+the compiler it was forced onto. 7 packages land here, all pinning `v4.33.0-rc1` — including
+**mathlib and batteries**.
+
+These are `final_status = 'FORCED_DOWNGRADE'`, never RED_REGRESSION. They were briefly folded
+into UNKNOWN, which was wrong: it concealed the reason. Counting mathlib as a "red regression"
+would not survive a hostile audit for a moment.
+
+This is also why Reservoir's mathlib red is not a campaign blocker. Reservoir builds mathlib
+*master* (pinned `v4.33.0-rc1`); mathlib additionally ships a release tag per toolchain, and
+tag `v4.32.1` pins `leanprover/lean4:v4.32.1` exactly — verified 2026-07-27 by reading
+`lean-toolchain` at that tag. That tag, not master, is the dependency pin the Day-6 bump
+script writes (`config.toml [campaign_target]`).

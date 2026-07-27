@@ -16,6 +16,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from config import EVAL_TOOLCHAIN, INDEX_COMMIT, CENSUS  # noqa: E402
+
+SCOPE = CENSUS["scope"]
 from ledger.db import connect, replace_observations, set_meta, upsert_package  # noqa: E402
 from reservoir import REPO_ROOT, load_all, snapshot_commit, version_key  # noqa: E402
 
@@ -23,10 +25,13 @@ GH_META = REPO_ROOT / "data" / "raw" / "github_repo_meta.json"
 
 EVAL_KEY = version_key(EVAL_TOOLCHAIN)
 
-AHEAD_REASON = (
+FORCED_DOWNGRADE_REASON = (
     "pins a toolchain newer than the evaluation toolchain; Reservoir forces the "
-    "toolchain, so this red is a forced-BACKWARDS failure, which is not a regression"
+    "toolchain, so this red is a forced-BACKWARDS failure, not a regression"
 )
+
+VANISHED_REASON = "source repo no longer resolves on GitHub (deleted/private/transferred)"
+ARCHIVED_REASON = "upstream repo is archived"
 
 
 def classify(pkg, gh: dict | None) -> tuple[str, str]:
@@ -47,11 +52,11 @@ def classify(pkg, gh: dict | None) -> tuple[str, str]:
     # PAST the evaluation toolchain therefore fails for the opposite reason to a
     # regression: its source is too new for the compiler it was forced onto.
     # mathlib and batteries both land here on v4.33.0-rc1. Counting them in M
-    # would not survive a hostile audit, so they go to UNKNOWN -- the honest
-    # answer, since we cannot tell from this data whether they are also broken.
+    # would not survive a hostile audit, so they get their own explicit class
+    # rather than being folded into UNKNOWN, which would hide the reason.
     pinned = pkg.pinned_toolchain
     if pinned and version_key(pinned) > EVAL_KEY:
-        return "UNKNOWN", AHEAD_REASON
+        return "FORCED_DOWNGRADE", FORCED_DOWNGRADE_REASON
 
     build = pkg.build_on(EVAL_TOOLCHAIN)
     if pkg.ever_green_before(build.run_at):
@@ -97,19 +102,16 @@ def main() -> None:
         archived = gh["archived"] if gh else None
         source_available = gh is not None
 
-        status, reason = classify(pkg, gh)
-
-        # K = all indexed, NON-ARCHIVED packages. Archived are counted and
-        # reported separately. Vanished sources stay in K: the rule excludes
-        # archived, and a deleted repo is not evidence of archival. Flagged via
-        # source_available so the report can show the sensitivity either way.
-        in_k = not bool(archived)
-        if archived:
-            reason = "archived: excluded from K, reported separately"
-        elif not source_available:
-            reason = (reason + "; " if reason else "") + (
-                "source repo no longer resolves on GitHub (deleted/private/transferred)"
-            )
+        # Two scope-exclusion classes, both out of K and therefore out of M,
+        # each reported beside the other rather than folded into a status that
+        # would hide why the package is absent.
+        if archived and SCOPE["exclude_archived"]:
+            status, reason, in_k = "ARCHIVED", ARCHIVED_REASON, False
+        elif not source_available and SCOPE["exclude_vanished"]:
+            status, reason, in_k = "VANISHED", VANISHED_REASON, False
+        else:
+            status, reason = classify(pkg, gh)
+            in_k = True
 
         build = pkg.build_on(EVAL_TOOLCHAIN)
         lg_tc, lg_at = last_green(pkg)

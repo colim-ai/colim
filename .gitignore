@@ -1,0 +1,16 @@
+# Reservoir snapshot: 71 MB, and re-clonable exactly from the commit pinned in
+# config.toml (census.index_commit). Provenance lives in the pin, not in git.
+data/raw/reservoir-index/
+
+# Build trees for the campaign set are kept on disk for debuggability, never committed.
+work/
+build/
+
+# Ledger is regenerable from the pinned snapshot + cached GitHub fetch.
+# Publishable numbers ship as exported reports, not as a binary blob in git.
+ledger/*.sqlite
+ledger/*.sqlite-wal
+ledger/*.sqlite-shm
+
+__pycache__/
+*.pyc
