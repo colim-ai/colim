@@ -27,9 +27,13 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 sys.path.insert(0, str(HERE.parent / "harness"))
 
+sys.path.insert(0, str(HERE.parent / "census"))
+
+from classify_reds import dep_names_for  # noqa: E402
 from config import gh_org  # noqa: E402
 from errors import INFRA_CLASSES, classify_log  # noqa: E402
 from ledger.db import connect, now  # noqa: E402
+from reservoir import load_all  # noqa: E402
 from reservoir_logs import log_hash, strip_timestamps  # noqa: E402
 
 
@@ -65,6 +69,8 @@ def main() -> None:
     run_url = f"https://github.com/{repo}/actions/runs/{args.run_id}"
     conn = connect()
 
+    pkgs = {p.key: p for p in load_all()}
+
     tmp = Path(tempfile.mkdtemp(prefix="colim-measure-"))
     try:
         outcomes = download_artifacts(args.run_id, repo, tmp)
@@ -79,7 +85,11 @@ def main() -> None:
                 continue
             log_file = path.parent / "build.log"
             text = log_file.read_text(errors="replace") if log_file.exists() else ""
-            verdict = classify_log(strip_timestamps(text), set())
+            # Re-classify HERE rather than trusting the runner's failure_origin:
+            # the Actions job has no dependency list, so it attributes an error
+            # in `Mathlib/...` to `self`. Attribution needs the package's
+            # declared dependencies, which only the index gives us.
+            verdict = classify_log(strip_timestamps(text), dep_names_for(pkgs.get(pkg)))
             classes = set(verdict.error_classes)
 
             # `verified_green` from the shared verifier is authoritative: it
