@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import os
+import re
 import shutil
 import subprocess
 import time
@@ -46,6 +47,18 @@ def check_disk(floor_gb: float, path: Path = REPO_ROOT) -> None:
         )
 
 
+# `lake build` exits 0 having compiled NOTHING when a package configures no
+# default target -- it only warns. Treating that as green would let a package
+# enter N without a single line of Lean being checked, which is the exact
+# failure mode the kernel-is-the-check argument depends on not happening.
+# Seen on Paper-Proof/paperproof, whose lakefile has no @[default_target].
+NO_TARGET_RE = re.compile(
+    r"no targets specified and no default targets configured", re.I
+)
+# Positive evidence that real work happened.
+BUILT_SOMETHING_RE = re.compile(r"^[✔✖]\s*\[\d+/\d+\]", re.M)
+
+
 @dataclass
 class BuildResult:
     pkg_key: str
@@ -58,6 +71,12 @@ class BuildResult:
     log_path: Path
     log_sha256: str
     timed_out: bool = False
+    built_nothing: bool = False  # exit 0 but no target was compiled
+
+    @property
+    def conclusive(self) -> bool:
+        """A green that compiled nothing proves nothing."""
+        return not (self.ok and self.built_nothing)
 
 
 def _run(cmd: list[str], cwd: Path, env: dict, timeout: int, log: list[str]) -> tuple[int, bool]:
@@ -190,6 +209,7 @@ def build_package(
     duration = time.time() - started
     text = "\n".join(log)
     digest = hashlib.sha256(text.encode("utf-8", errors="replace")).hexdigest()
+    built_nothing = bool(NO_TARGET_RE.search(text)) or not BUILT_SOMETHING_RE.search(text)
 
     BUILD_LOG_DIR.mkdir(parents=True, exist_ok=True)
     log_path = BUILD_LOG_DIR / f"{pkg_key.replace('/', '--')}.{digest[:12]}.log"
@@ -206,6 +226,7 @@ def build_package(
         log_path=log_path,
         log_sha256=digest,
         timed_out=timed_out,
+        built_nothing=built_nothing,
     )
 
 

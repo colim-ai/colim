@@ -84,14 +84,16 @@ def record(conn, r, res: BuildResult, verdict) -> None:
     conn.execute(
         "INSERT INTO reproductions (pkg_key, revision, toolchain, reservoir_built, "
         "local_built, agrees, failed_step, exit_code, timed_out, duration_s, "
-        "log_path, log_sha256, error_classes, failure_origin, created_at) "
-        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "
+        "log_path, log_sha256, error_classes, failure_origin, built_nothing, "
+        "conclusive, created_at) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "
         "ON CONFLICT(pkg_key, toolchain) DO UPDATE SET "
         "local_built=excluded.local_built, agrees=excluded.agrees, "
         "failed_step=excluded.failed_step, exit_code=excluded.exit_code, "
         "timed_out=excluded.timed_out, duration_s=excluded.duration_s, "
         "log_path=excluded.log_path, log_sha256=excluded.log_sha256, "
-        "error_classes=excluded.error_classes, failure_origin=excluded.failure_origin",
+        "error_classes=excluded.error_classes, failure_origin=excluded.failure_origin, "
+        "built_nothing=excluded.built_nothing, conclusive=excluded.conclusive",
         (
             r["pkg_key"],
             res.revision,
@@ -107,20 +109,59 @@ def record(conn, r, res: BuildResult, verdict) -> None:
             res.log_sha256,
             json.dumps(verdict.error_classes if verdict else []),
             verdict.failure_origin if verdict else None,
+            int(res.built_nothing),
+            int(res.conclusive),
             now(),
         ),
     )
     conn.commit()
 
 
+def backfill(conn) -> None:
+    """Re-derive built_nothing/conclusive from stored logs, without rebuilding.
+
+    Used when the detection logic changes: the transcripts are on disk, so a
+    multi-hour rebuild is not needed to correct the verdicts.
+    """
+    from build import BUILT_SOMETHING_RE, NO_TARGET_RE
+
+    rows = conn.execute(
+        "SELECT pkg_key, toolchain, log_path, local_built FROM reproductions"
+    ).fetchall()
+    changed = 0
+    for r in rows:
+        path = Path(r["log_path"])
+        if not path.exists():
+            print(f"  missing log for {r['pkg_key']}, skipping")
+            continue
+        text = path.read_text(errors="replace")
+        nothing = bool(NO_TARGET_RE.search(text)) or not BUILT_SOMETHING_RE.search(text)
+        conclusive = not (r["local_built"] and nothing)
+        conn.execute(
+            "UPDATE reproductions SET built_nothing=?, conclusive=? "
+            "WHERE pkg_key=? AND toolchain=?",
+            (int(nothing), int(conclusive), r["pkg_key"], r["toolchain"]),
+        )
+        if nothing:
+            changed += 1
+            print(f"  {r['pkg_key']}: compiled nothing -> conclusive={conclusive}")
+    conn.commit()
+    print(f"backfilled {len(rows)} reproductions; {changed} compiled nothing")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--backfill", action="store_true", help="recompute verdicts from stored logs")
     ap.add_argument("--sample", type=int, default=0)
     ap.add_argument("--packages", nargs="*", default=[])
     ap.add_argument("--force", action="store_true", help="rebuild already-reproduced packages")
     args = ap.parse_args()
 
     conn = connect()
+    if args.backfill:
+        backfill(conn)
+        return
+
     if args.packages:
         qmarks = ",".join("?" * len(args.packages))
         rows = conn.execute(
@@ -163,7 +204,12 @@ def main() -> None:
         verdict = classify_log(res.log_path.read_text().splitlines(), set())
         record(conn, r, res, verdict)
 
-        agree = "AGREES (red)" if not res.ok else "DISAGREES -- built GREEN locally"
+        if not res.conclusive:
+            agree = "INCONCLUSIVE -- exit 0 but nothing was compiled"
+        elif res.ok:
+            agree = "DISAGREES -- built GREEN locally"
+        else:
+            agree = "AGREES (red)"
         print(
             f"  {agree}  step={res.step} exit={res.exit_code} "
             f"{res.duration_s:.0f}s  classes={verdict.error_classes[:4]}"

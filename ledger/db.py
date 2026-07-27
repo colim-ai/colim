@@ -25,6 +25,11 @@ _ADDED_COLUMNS = {
         "error_files": "TEXT",
         "infra_only": "INTEGER",
     },
+    "reproductions": {
+        # exit 0 but nothing compiled -- a green that proves nothing
+        "built_nothing": "INTEGER",
+        "conclusive": "INTEGER",
+    },
 }
 
 
