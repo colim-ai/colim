@@ -11,6 +11,7 @@ nothing is transcribed by hand.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -210,22 +211,40 @@ def render() -> str:
     if repro_n:
         w("## Local reproduction (control on Reservoir)")
         w("")
-        agree = one("SELECT COUNT(*) FROM reproductions WHERE agrees=1")
+        conclusive = one(
+            "SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1"
+        )
+        agree = one(
+            "SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1 AND agrees=1"
+        )
         w(
-            f"{agree} of {repro_n} sampled reds reproduced as red locally under the same "
-            "forced toolchain."
+            f"{agree} of {conclusive} conclusive reproductions came out red locally under "
+            f"the same forced toolchain ({repro_n} attempted)."
         )
         w("")
-        w("| package | reproduced | step | duration |")
-        w("|---|---|---|---:|")
+        w(
+            "A `lake build` that exits 0 without compiling anything — a package with no "
+            "default target — is recorded as **inconclusive**, never as green. A green that "
+            "ran no kernel checks proves nothing."
+        )
+        w("")
+        w("| package | verdict | step | local error classes | duration |")
+        w("|---|---|---|---|---:|")
         for r in q(
-            "SELECT pkg_key, agrees, failed_step, duration_s FROM reproductions "
-            "ORDER BY agrees, pkg_key"
+            "SELECT pkg_key, agrees, failed_step, duration_s, error_classes, "
+            "COALESCE(conclusive,1) AS conc FROM reproductions "
+            "ORDER BY conc, agrees, pkg_key"
         ):
-            verdict = "red (agrees)" if r["agrees"] else "**GREEN — disagrees**"
+            if not r["conc"]:
+                verdict = "inconclusive (compiled nothing)"
+            elif r["agrees"]:
+                verdict = "red — agrees"
+            else:
+                verdict = "**green — disagrees**"
+            classes = ", ".join(json.loads(r["error_classes"] or "[]")[:4]) or "—"
             w(
                 f"| `{r['pkg_key']}` | {verdict} | {r['failed_step'] or '—'} | "
-                f"{r['duration_s']:.0f}s |"
+                f"{classes} | {r['duration_s']:.0f}s |"
             )
         w("")
 

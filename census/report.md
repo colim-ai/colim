@@ -101,11 +101,16 @@ These satisfy the RED_REGRESSION definition literally (red on the evaluation too
 
 ## Local reproduction (control on Reservoir)
 
-1 of 1 sampled reds reproduced as red locally under the same forced toolchain.
+3 of 3 conclusive reproductions came out red locally under the same forced toolchain (4 attempted).
 
-| package | reproduced | step | duration |
-|---|---|---|---:|
-| `0art0/kimina` | red (agrees) | build | 4s |
+A `lake build` that exits 0 without compiling anything — a package with no default target — is recorded as **inconclusive**, never as green. A green that ran no kernel checks proves nothing.
+
+| package | verdict | step | local error classes | duration |
+|---|---|---|---|---:|
+| `Paper-Proof/paperproof` | inconclusive (compiled nothing) | — | — | 63s |
+| `0art0/kimina` | red — agrees | build | lake_config_api, not_a_field | 4s |
+| `chasenorman/Canonical` | red — agrees | build | infra_release_fetch | 18s |
+| `teorth/equational_theories` | red — agrees | build | deprecated, invalid_field, type_mismatch, duplicate_declaration | 269s |
 
 ## Day-2 spot-check candidates
 
