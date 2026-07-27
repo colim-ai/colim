@@ -74,8 +74,38 @@ Staleness never excludes a package — abandoned-but-once-green is the market. T
 
 ## Failure origin
 
-Not yet resolved — `unknown` for all 501 reds pending Day-2 log analysis.
-The self/dependency split must not be claimed until then.
+Classified from Reservoir's public build logs. Dependency rot is the product
+thesis, so the split is counted and disclosed rather than hidden.
+
+| origin | n | % of resolved |
+|---|---:|---:|
+| `self` | 210 | 58.2% |
+| `unknown` | 140 | — |
+| `dependency` | 116 | 32.1% |
+| `both` | 35 | 9.7% |
+
+Resolved for 361 of 501 reds. The split is reported against the
+resolved subset only and is never extrapolated to the remainder.
+
+### Infrastructure-only reds
+
+**90 of 501 reds (18.0%) failed only on Reservoir's runner infrastructure** — cache fetch, toolchain download, artifact extraction — with no Lean or Lake error attributable to the package at all.
+
+These satisfy the RED_REGRESSION definition literally (red on the evaluation toolchain, green earlier), so they remain in M. But the log does not show that their code fails on v4.32.1, only that Reservoir could not complete a build. Local reproduction is the only way to settle it, and the Day-2 sample deliberately includes infrastructure-only packages as controls. Until then this is an upper bound on M by up to 90 packages (11.9% of K).
+
+| class | n |
+|---|---:|
+| `infra_cache_fetch` | 89 |
+| `infra_toolchain_missing` | 1 |
+| `infra_release_fetch` | 1 |
+
+## Local reproduction (control on Reservoir)
+
+1 of 1 sampled reds reproduced as red locally under the same forced toolchain.
+
+| package | reproduced | step | duration |
+|---|---|---|---:|
+| `0art0/kimina` | red (agrees) | build | 4s |
 
 ## Day-2 spot-check candidates
 

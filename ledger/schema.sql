@@ -44,6 +44,10 @@ CREATE TABLE IF NOT EXISTS packages (
     red_state_log_hash  TEXT,
     error_classes       TEXT,               -- json array
     failure_origin      TEXT,               -- self | dependency | both | unknown
+    first_error         TEXT,               -- first attributable error line, verbatim
+    error_file_count    INTEGER,            -- distinct .lean files with errors
+    error_files         TEXT,               -- json array, capped
+    infra_only          INTEGER,            -- 1 = failed only on runner infrastructure
 
     -- Repair pipeline.
     tier1_result        TEXT,
@@ -81,6 +85,27 @@ CREATE TABLE IF NOT EXISTS build_observations (
 );
 
 CREATE INDEX IF NOT EXISTS idx_obs_toolchain ON build_observations(toolchain);
+
+-- Local reproductions of Reservoir's recorded state. The census trusts
+-- Reservoir; this table is how we check Reservoir against reality.
+CREATE TABLE IF NOT EXISTS reproductions (
+    pkg_key         TEXT NOT NULL REFERENCES packages(pkg_key),
+    revision        TEXT,
+    toolchain       TEXT NOT NULL,
+    reservoir_built INTEGER NOT NULL,   -- what Reservoir recorded
+    local_built     INTEGER NOT NULL,   -- what we got
+    agrees          INTEGER NOT NULL,   -- reservoir_built == local_built
+    failed_step     TEXT,               -- clone | cache | build
+    exit_code       INTEGER,
+    timed_out       INTEGER NOT NULL DEFAULT 0,
+    duration_s      REAL,
+    log_path        TEXT,
+    log_sha256      TEXT,
+    error_classes   TEXT,               -- json array, from the local log
+    failure_origin  TEXT,
+    created_at      TEXT NOT NULL,
+    PRIMARY KEY (pkg_key, toolchain)
+);
 
 -- Tier-2 attempt log: a first-class deliverable (training-data flywheel).
 -- Every attempt is logged, success or failure.

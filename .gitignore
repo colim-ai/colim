@@ -14,3 +14,9 @@ ledger/*.sqlite-shm
 
 __pycache__/
 *.pyc
+
+# Reservoir build logs: 501 files, refetchable via harness/fetch_all_logs.py
+# from the job URLs already recorded in the ledger.
+data/raw/logs/
+# Local build transcripts from the harness; hashes live in the ledger.
+data/build_logs/

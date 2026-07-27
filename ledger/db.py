@@ -15,11 +15,36 @@ def now() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
 
+# Columns added to `packages` after the first ledgers were built. CREATE TABLE
+# IF NOT EXISTS will not add them to an existing table, so they are applied
+# additively -- the alternative is dropping a ledger that took API calls to fill.
+_ADDED_COLUMNS = {
+    "packages": {
+        "first_error": "TEXT",
+        "error_file_count": "INTEGER",
+        "error_files": "TEXT",
+        "infra_only": "INTEGER",
+    },
+}
+
+
 def connect(path: Path = DB_PATH) -> sqlite3.Connection:
     """Open the ledger, creating/migrating schema. Safe to call repeatedly."""
-    conn = sqlite3.connect(path)
+    # Builds run for hours while other stages query the ledger, so a writer must
+    # wait for a lock rather than dying on it -- losing an hour-long build to a
+    # 50ms lock contention is not acceptable. WAL (set in schema.sql) plus a
+    # generous busy timeout makes reader/writer overlap safe.
+    conn = sqlite3.connect(path, timeout=60.0)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA busy_timeout = 60000")
     conn.executescript(SCHEMA_PATH.read_text())
+
+    for table, cols in _ADDED_COLUMNS.items():
+        existing = {r["name"] for r in conn.execute(f"PRAGMA table_info({table})")}
+        for name, decl in cols.items():
+            if name not in existing:
+                conn.execute(f"ALTER TABLE {table} ADD COLUMN {name} {decl}")
+    conn.commit()
     return conn
 
 

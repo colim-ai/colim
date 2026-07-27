@@ -173,6 +173,62 @@ def render() -> str:
         w("The self/dependency split must not be claimed until then.")
     w("")
 
+    infra = one(
+        "SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status='RED_REGRESSION' "
+        "AND infra_only=1"
+    )
+    if infra:
+        w("### Infrastructure-only reds")
+        w("")
+        w(
+            f"**{infra} of {m} reds ({infra / m:.1%}) failed only on Reservoir's runner "
+            "infrastructure** — cache fetch, toolchain download, artifact extraction — with "
+            "no Lean or Lake error attributable to the package at all."
+        )
+        w("")
+        w(
+            "These satisfy the RED_REGRESSION definition literally (red on the evaluation "
+            "toolchain, green earlier), so they remain in M. But the log does not show that "
+            "their code fails on v4.32.1, only that Reservoir could not complete a build. "
+            "Local reproduction is the only way to settle it, and the Day-2 sample "
+            "deliberately includes infrastructure-only packages as controls. Until then "
+            "this is an upper bound on M by up to "
+            f"{infra} packages ({infra / k:.1%} of K)."
+        )
+        w("")
+        w("| class | n |")
+        w("|---|---:|")
+        for r in q(
+            "SELECT value AS cls, COUNT(*) n FROM packages, json_each(packages.error_classes) "
+            "WHERE in_k=1 AND final_status='RED_REGRESSION' AND infra_only=1 "
+            "GROUP BY cls ORDER BY n DESC"
+        ):
+            w(f"| `{r['cls']}` | {r['n']} |")
+        w("")
+
+    repro_n = one("SELECT COUNT(*) FROM reproductions")
+    if repro_n:
+        w("## Local reproduction (control on Reservoir)")
+        w("")
+        agree = one("SELECT COUNT(*) FROM reproductions WHERE agrees=1")
+        w(
+            f"{agree} of {repro_n} sampled reds reproduced as red locally under the same "
+            "forced toolchain."
+        )
+        w("")
+        w("| package | reproduced | step | duration |")
+        w("|---|---|---|---:|")
+        for r in q(
+            "SELECT pkg_key, agrees, failed_step, duration_s FROM reproductions "
+            "ORDER BY agrees, pkg_key"
+        ):
+            verdict = "red (agrees)" if r["agrees"] else "**GREEN — disagrees**"
+            w(
+                f"| `{r['pkg_key']}` | {verdict} | {r['failed_step'] or '—'} | "
+                f"{r['duration_s']:.0f}s |"
+            )
+        w("")
+
     w("## Day-2 spot-check candidates")
     w("")
     w("Top red regressions by stars. `M` marks mathlib-downstream.")

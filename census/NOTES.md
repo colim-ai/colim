@@ -94,7 +94,11 @@ list on their latest version but a non-empty one earlier; for 4 of them (`pandam
 `Paper-Proof/paperproof`, `T-Brick/numbers`, `Vilin97/Clawristotle`) mathlib appears only in the
 older entry. Latest-version semantics treats these as no-longer-downstream, which is the
 intended reading — but an empty list can also mean Reservoir failed to resolve the manifest, so
-these 4 are a known ±4 sensitivity on K_m = 495, not a certainty.
+these 4 are a known ±4 sensitivity on K_m, not a certainty.
+
+(K_m is **489** in the current ledger — mathlib-dependent packages *within K*, i.e. after the
+ARCHIVED and VANISHED exclusions. The ~503 figure above counts all indexed packages, before
+scope exclusions; do not mix the two.)
 
 **3 packages have no versions.json**: `katzenpost/crypt_walker`, `seasawher/lean book`,
 `lean-ja/lean by example`. They get an empty version list, so `pinned_toolchain` and
