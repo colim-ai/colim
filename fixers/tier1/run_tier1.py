@@ -34,6 +34,7 @@ from build import (  # noqa: E402
     tree_path,
 )
 from bump import bump  # noqa: E402
+from module_renames import cached_map, mathlib_rev_for  # noqa: E402
 from config import BUILD, CONFIG, EVAL_TOOLCHAIN  # noqa: E402
 from ledger.db import connect, now  # noqa: E402
 from rewrite import load_map, rewrite_tree  # noqa: E402
@@ -183,7 +184,24 @@ def main() -> None:
             continue
 
         b = bump(dest, mathlib_downstream=bool(r["mathlib_downstream"]))
-        changes = rewrite_tree(dest, qualified, short, dry_run=args.dry_run)
+
+        # tier-1c: module renames/splits, derived from THIS package's old
+        # Mathlib revision against the campaign target. Per-package, because
+        # every package sits at a different distance from the target.
+        module_map: dict[str, list[str]] = {}
+        if r["mathlib_downstream"]:
+            old_rev = mathlib_rev_for(key)
+            if old_rev:
+                try:
+                    module_map = cached_map(old_rev)["map"]
+                except RuntimeError as e:
+                    print(f"  module map unavailable: {e}")
+            if module_map:
+                print(f"  module map: {len(module_map)} moved module(s)")
+
+        changes = rewrite_tree(
+            dest, qualified, short, module_map=module_map, dry_run=args.dry_run
+        )
         n_subs = sum(len(v) for v in changes.values())
         print(
             f"  bump: toolchain {b.toolchain_before} -> {b.toolchain_after}"

@@ -1,0 +1,3748 @@
+{
+ "map": {
+  "Mathlib.Algebra.AddTorsor": [
+   "Mathlib.Algebra.AddTorsor.Basic",
+   "Mathlib.Algebra.AddTorsor.Defs"
+  ],
+  "Mathlib.Algebra.Algebra.Spectrum": [
+   "Mathlib.Algebra.Algebra.Spectrum.Basic"
+  ],
+  "Mathlib.Algebra.BigOperators.Finsupp": [
+   "Mathlib.Algebra.BigOperators.Finsupp.Basic"
+  ],
+  "Mathlib.Algebra.BigOperators.Ring": [
+   "Mathlib.Algebra.BigOperators.Ring.Finset",
+   "Mathlib.Algebra.BigOperators.Ring.List",
+   "Mathlib.Algebra.BigOperators.Ring.Multiset",
+   "Mathlib.Algebra.BigOperators.Ring.Nat"
+  ],
+  "Mathlib.Algebra.Category.GroupCat.Kernels": [
+   "Mathlib.Algebra.Category.Grp.Kernels"
+  ],
+  "Mathlib.Algebra.CovariantAndContravariant": [
+   "Mathlib.Algebra.Order.Monoid.Unbundled.Defs"
+  ],
+  "Mathlib.Algebra.Function.Finite": [
+   "Mathlib.Algebra.Notation.FiniteSupport"
+  ],
+  "Mathlib.Algebra.Group.Pi": [
+   "Mathlib.Algebra.Group.Pi.Basic",
+   "Mathlib.Algebra.Group.Pi.Lemmas",
+   "Mathlib.Algebra.Group.Pi.Units"
+  ],
+  "Mathlib.Algebra.Group.TypeTags": [
+   "Mathlib.Algebra.Group.TypeTags.Basic"
+  ],
+  "Mathlib.Algebra.Group.UniqueProds": [
+   "Mathlib.Algebra.Group.UniqueProds.Basic"
+  ],
+  "Mathlib.Algebra.Group.Units": [
+   "Mathlib.Algebra.Group.Units.Basic",
+   "Mathlib.Algebra.Group.Units.Defs",
+   "Mathlib.Algebra.Group.Units.Opposite"
+  ],
+  "Mathlib.Algebra.GroupPower.Identities": [
+   "Mathlib.Algebra.Ring.Identities"
+  ],
+  "Mathlib.Algebra.GroupPower.NegOnePow": [
+   "Mathlib.Algebra.Ring.NegOnePow"
+  ],
+  "Mathlib.Algebra.GroupRingAction.Invariant": [
+   "Mathlib.Algebra.Ring.Action.Invariant"
+  ],
+  "Mathlib.Algebra.GroupRingAction.Subobjects": [
+   "Mathlib.Algebra.Ring.Action.Subobjects"
+  ],
+  "Mathlib.Algebra.Invertible.Defs": [
+   "Mathlib.Algebra.Group.Invertible.Defs"
+  ],
+  "Mathlib.Algebra.Lie.Semisimple": [
+   "Mathlib.Algebra.Lie.Semisimple.Basic",
+   "Mathlib.Algebra.Lie.Semisimple.Defs",
+   "Mathlib.Algebra.Lie.Semisimple.Lemmas"
+  ],
+  "Mathlib.Algebra.Module.DirectLimitAndTensorProduct": [
+   "Mathlib.LinearAlgebra.TensorProduct.DirectLimit"
+  ],
+  "Mathlib.Algebra.Module.Equiv": [
+   "Mathlib.Algebra.Module.Equiv.Basic",
+   "Mathlib.Algebra.Module.Equiv.Defs"
+  ],
+  "Mathlib.Algebra.Module.LinearMap": [
+   "Mathlib.Algebra.Module.LinearMap.Basic",
+   "Mathlib.Algebra.Module.LinearMap.Defs",
+   "Mathlib.Algebra.Module.LinearMap.DivisionRing",
+   "Mathlib.Algebra.Module.LinearMap.End",
+   "Mathlib.Algebra.Module.LinearMap.FiniteRange",
+   "Mathlib.Algebra.Module.LinearMap.Index",
+   "Mathlib.Algebra.Module.LinearMap.Polynomial",
+   "Mathlib.Algebra.Module.LinearMap.Prod",
+   "Mathlib.Algebra.Module.LinearMap.Rat",
+   "Mathlib.Algebra.Module.LinearMap.Star"
+  ],
+  "Mathlib.Algebra.Module.LocalizedModule": [
+   "Mathlib.Algebra.Module.LocalizedModule.Basic",
+   "Mathlib.Algebra.Module.LocalizedModule.AtPrime",
+   "Mathlib.Algebra.Module.LocalizedModule.Away",
+   "Mathlib.Algebra.Module.LocalizedModule.Exact",
+   "Mathlib.Algebra.Module.LocalizedModule.Int",
+   "Mathlib.Algebra.Module.LocalizedModule.IsLocalization",
+   "Mathlib.Algebra.Module.LocalizedModule.Submodule"
+  ],
+  "Mathlib.Algebra.Module.Opposites": [
+   "Mathlib.Algebra.Module.Equiv.Opposite"
+  ],
+  "Mathlib.Algebra.Module.Torsion": [
+   "Mathlib.Algebra.Module.Torsion.Basic"
+  ],
+  "Mathlib.Algebra.Order.AbsoluteValue": [
+   "Mathlib.Algebra.Order.AbsoluteValue.Basic"
+  ],
+  "Mathlib.Algebra.Order.Archimedean": [
+   "Mathlib.Algebra.Order.Archimedean.Basic",
+   "Mathlib.Algebra.Order.Archimedean.Real.Basic",
+   "Mathlib.Algebra.Order.Archimedean.Class",
+   "Mathlib.Algebra.Order.Archimedean.Defs",
+   "Mathlib.Algebra.Order.Archimedean.Hom",
+   "Mathlib.Algebra.Order.Archimedean.IndicatorCard",
+   "Mathlib.Algebra.Order.Archimedean.Real.Hom",
+   "Mathlib.Algebra.Order.Archimedean.Submonoid"
+  ],
+  "Mathlib.Algebra.Order.EuclideanAbsoluteValue": [
+   "Mathlib.Algebra.Order.AbsoluteValue.Euclidean"
+  ],
+  "Mathlib.Algebra.Order.Floor": [
+   "Mathlib.Algebra.Order.Floor.Defs",
+   "Mathlib.Algebra.Order.Floor.Div",
+   "Mathlib.Algebra.Order.Floor.Extended",
+   "Mathlib.Algebra.Order.Floor.Ring",
+   "Mathlib.Algebra.Order.Floor.Semifield",
+   "Mathlib.Algebra.Order.Floor.Semiring"
+  ],
+  "Mathlib.Algebra.Order.Interval": [
+   "Mathlib.Algebra.Order.Interval.Basic",
+   "Mathlib.Algebra.Order.Interval.Finset.Basic",
+   "Mathlib.Algebra.Order.Interval.Finset.SuccPred",
+   "Mathlib.Algebra.Order.Interval.Multiset",
+   "Mathlib.Algebra.Order.Interval.Set.Instances",
+   "Mathlib.Algebra.Order.Interval.Set.SuccPred"
+  ],
+  "Mathlib.Algebra.Order.Support": [
+   "Mathlib.Algebra.Order.Group.Indicator"
+  ],
+  "Mathlib.Algebra.Squarefree": [
+   "Mathlib.Algebra.Squarefree.Basic"
+  ],
+  "Mathlib.AlgebraicGeometry.EllipticCurve.Affine": [
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Basic",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.AddSubMap",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Formula",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point"
+  ],
+  "Mathlib.AlgebraicGeometry.PrimeSpectrum.IsOpenComapC": [
+   "Mathlib.RingTheory.Spectrum.Prime.IsOpenComapC"
+  ],
+  "Mathlib.AlgebraicTopology.Quasicategory": [
+   "Mathlib.AlgebraicTopology.Quasicategory.Basic",
+   "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+   "Mathlib.AlgebraicTopology.Quasicategory.Nerve",
+   "Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory",
+   "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal",
+   "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated"
+  ],
+  "Mathlib.AlgebraicTopology.SimplexCategory": [
+   "Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Monoidal",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+   "Mathlib.AlgebraicTopology.SimplexCategory.DeltaZeroIter",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.EpiMono",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.NormalForms",
+   "Mathlib.AlgebraicTopology.SimplexCategory.MorphismProperty",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Rev",
+   "Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory",
+   "Mathlib.AlgebraicTopology.SimplexCategory.ToMkOne",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Truncated"
+  ],
+  "Mathlib.AlgebraicTopology.SimplicialObject": [
+   "Mathlib.AlgebraicTopology.SimplicialObject.Basic"
+  ],
+  "Mathlib.AlgebraicTopology.SimplicialSet": [
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.IsUniquelyCodimOneFace",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Op",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Pairing",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PairingCore",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Rank",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.RankNat",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.RelativeCellComplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.UnionProd",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CoherentIso",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Finite",
+   "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HoFunctorMonoidal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomologyZero",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomotopyInvariance",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveCodiscrete",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveNondegenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplices",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nonempty",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Op",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Path",
+   "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Presentable",
+   "Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplexOne",
+   "Mathlib.AlgebraicTopology.SimplicialSet.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.RegularEpi",
+   "Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Simplices",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Splitting",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplexOne",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexEvaluation",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexOp",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+   "Mathlib.AlgebraicTopology.SimplicialSet.TopAdj"
+  ],
+  "Mathlib.AlgebraicTopology.SplitSimplicialObject": [
+   "Mathlib.AlgebraicTopology.SimplicialObject.Split"
+  ],
+  "Mathlib.Analysis.Calculus.ContDiff.IsROrC": [
+   "Mathlib.Analysis.Calculus.ContDiff.RCLike"
+  ],
+  "Mathlib.Analysis.Calculus.Dslope": [
+   "Mathlib.Analysis.Calculus.DSlope"
+  ],
+  "Mathlib.Analysis.Calculus.IteratedDeriv": [
+   "Mathlib.Analysis.Calculus.IteratedDeriv.Defs"
+  ],
+  "Mathlib.Analysis.Calculus.Series": [
+   "Mathlib.Analysis.Calculus.SmoothSeries"
+  ],
+  "Mathlib.Analysis.Calculus.TangentCone": [
+   "Mathlib.Analysis.Calculus.TangentCone.Basic",
+   "Mathlib.Analysis.Calculus.TangentCone.Defs",
+   "Mathlib.Analysis.Calculus.TangentCone.DimOne",
+   "Mathlib.Analysis.Calculus.TangentCone.Pi",
+   "Mathlib.Analysis.Calculus.TangentCone.Prod",
+   "Mathlib.Analysis.Calculus.TangentCone.ProperSpace",
+   "Mathlib.Analysis.Calculus.TangentCone.Real",
+   "Mathlib.Analysis.Calculus.TangentCone.Seq"
+  ],
+  "Mathlib.Analysis.Complex.Polynomial": [
+   "Mathlib.Analysis.Complex.Polynomial.Basic",
+   "Mathlib.Analysis.Complex.Polynomial.GaussLucas",
+   "Mathlib.Analysis.Complex.Polynomial.UnitTrinomial"
+  ],
+  "Mathlib.Analysis.InnerProductSpace.Projection": [
+   "Mathlib.Analysis.InnerProductSpace.Projection.Basic",
+   "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Minimal",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Reflection",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Submodule"
+  ],
+  "Mathlib.Analysis.Matrix": [
+   "Mathlib.Analysis.Matrix.Normed"
+  ],
+  "Mathlib.Analysis.Normed.Ring.Seminorm": [
+   "Mathlib.Analysis.Normed.Unbundled.RingSeminorm"
+  ],
+  "Mathlib.Analysis.NormedSpace.AddTorsor": [
+   "Mathlib.Analysis.Normed.Affine.AddTorsor"
+  ],
+  "Mathlib.Analysis.NormedSpace.AddTorsorBases": [
+   "Mathlib.Analysis.Normed.Affine.AddTorsorBases"
+  ],
+  "Mathlib.Analysis.NormedSpace.AffineIsometry": [
+   "Mathlib.Analysis.Normed.Affine.Isometry"
+  ],
+  "Mathlib.Analysis.NormedSpace.Algebra": [
+   "Mathlib.Analysis.Normed.Algebra.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.BallAction": [
+   "Mathlib.Analysis.Normed.Module.Ball.Action"
+  ],
+  "Mathlib.Analysis.NormedSpace.BanachSteinhaus": [
+   "Mathlib.Analysis.Normed.Operator.BanachSteinhaus"
+  ],
+  "Mathlib.Analysis.NormedSpace.BoundedLinearMaps": [
+   "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps"
+  ],
+  "Mathlib.Analysis.NormedSpace.CompactOperator": [
+   "Mathlib.Analysis.Normed.Operator.Compact.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.ConformalLinearMap": [
+   "Mathlib.Analysis.Normed.Operator.Conformal"
+  ],
+  "Mathlib.Analysis.NormedSpace.Connected": [
+   "Mathlib.Analysis.Normed.Module.Connected"
+  ],
+  "Mathlib.Analysis.NormedSpace.ContinuousLinearMap": [
+   "Mathlib.Analysis.Normed.Operator.ContinuousLinearMap"
+  ],
+  "Mathlib.Analysis.NormedSpace.Extr": [
+   "Mathlib.Analysis.Normed.Module.Extr"
+  ],
+  "Mathlib.Analysis.NormedSpace.FiniteDimension": [
+   "Mathlib.Analysis.Normed.Module.FiniteDimension"
+  ],
+  "Mathlib.Analysis.NormedSpace.HomeomorphBall": [
+   "Mathlib.Analysis.Normed.Module.Ball.Homeomorph"
+  ],
+  "Mathlib.Analysis.NormedSpace.Int": [
+   "Mathlib.Analysis.Normed.Ring.Int"
+  ],
+  "Mathlib.Analysis.NormedSpace.IsROrC": [
+   "Mathlib.Analysis.Normed.Module.RCLike.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.LinearIsometry": [
+   "Mathlib.Analysis.Normed.Operator.LinearIsometry"
+  ],
+  "Mathlib.Analysis.NormedSpace.MStructure": [
+   "Mathlib.Analysis.Normed.Module.MStructure"
+  ],
+  "Mathlib.Analysis.NormedSpace.MazurUlam": [
+   "Mathlib.Analysis.Normed.Affine.MazurUlam"
+  ],
+  "Mathlib.Analysis.NormedSpace.Multilinear.Curry": [
+   "Mathlib.Analysis.Normed.Module.Multilinear.Curry"
+  ],
+  "Mathlib.Analysis.NormedSpace.OperatorNorm": [
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.Completeness",
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.NNNorm",
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.Prod"
+  ],
+  "Mathlib.Analysis.NormedSpace.Pointwise": [
+   "Mathlib.Analysis.Normed.Module.Ball.Pointwise"
+  ],
+  "Mathlib.Analysis.NormedSpace.Ray": [
+   "Mathlib.Analysis.Normed.Module.Ray"
+  ],
+  "Mathlib.Analysis.NormedSpace.RieszLemma": [
+   "Mathlib.Analysis.Normed.Module.RieszLemma"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Exponential": [
+   "Mathlib.Analysis.CStarAlgebra.Exponential"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Multiplier": [
+   "Mathlib.Analysis.CStarAlgebra.Multiplier"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Unitization": [
+   "Mathlib.Analysis.CStarAlgebra.Unitization"
+  ],
+  "Mathlib.Analysis.NormedSpace.Unitization": [
+   "Mathlib.Analysis.Normed.Algebra.Unitization"
+  ],
+  "Mathlib.Analysis.NormedSpace.Units": [
+   "Mathlib.Analysis.Normed.Ring.Units"
+  ],
+  "Mathlib.Analysis.NormedSpace.lpSpace": [
+   "Mathlib.Analysis.Normed.Lp.lpSpace"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Gaussian": [
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform",
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Integrals": [
+   "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+   "Mathlib.Analysis.SpecialFunctions.Integrals.LogTrigonometric",
+   "Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Basic",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ChebyshevGauss",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Extremal",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Orthogonality",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.RootsExtrema"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Generator": [
+   "Mathlib.CategoryTheory.Generator.Abelian"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Injective": [
+   "Mathlib.CategoryTheory.Abelian.Injective.Basic",
+   "Mathlib.CategoryTheory.Abelian.Injective.Dimension",
+   "Mathlib.CategoryTheory.Abelian.Injective.Ext",
+   "Mathlib.CategoryTheory.Abelian.Injective.Extend"
+  ],
+  "Mathlib.CategoryTheory.Abelian.InjectiveResolution": [
+   "Mathlib.CategoryTheory.Abelian.Injective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Projective": [
+   "Mathlib.CategoryTheory.Abelian.Projective.Basic",
+   "Mathlib.CategoryTheory.Abelian.Projective.Dimension",
+   "Mathlib.CategoryTheory.Abelian.Projective.Ext",
+   "Mathlib.CategoryTheory.Abelian.Projective.Extend"
+  ],
+  "Mathlib.CategoryTheory.Abelian.ProjectiveResolution": [
+   "Mathlib.CategoryTheory.Abelian.Projective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Adjunction.Lifting": [
+   "Mathlib.CategoryTheory.Adjunction.Lifting.Left"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Adjunction": [
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Basic",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Adj",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Cat",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Functor": [
+   "Mathlib.CategoryTheory.Bicategory.Functor.Cat",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Cat.ObjectProperty",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Lax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.LocallyDiscrete",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Prelax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Pseudofunctor",
+   "Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor",
+   "Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.FunctorBicategory": [
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Lax",
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Pseudo"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.NaturalTransformation": [
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Lax",
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Pseudo"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Strict": [
+   "Mathlib.CategoryTheory.Bicategory.Strict.Basic"
+  ],
+  "Mathlib.CategoryTheory.Closed.FunctorCategory": [
+   "Mathlib.CategoryTheory.Monoidal.Closed.FunctorCategory.Groupoid"
+  ],
+  "Mathlib.CategoryTheory.Comma": [
+   "Mathlib.CategoryTheory.Comma.Basic",
+   "Mathlib.CategoryTheory.Comma.Over.Basic",
+   "Mathlib.CategoryTheory.Comma.Presheaf.Basic",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Basic",
+   "Mathlib.CategoryTheory.Comma.Arrow",
+   "Mathlib.CategoryTheory.Comma.CardinalArrow",
+   "Mathlib.CategoryTheory.Comma.CatCommSq",
+   "Mathlib.CategoryTheory.Comma.Final",
+   "Mathlib.CategoryTheory.Comma.LocallySmall",
+   "Mathlib.CategoryTheory.Comma.Over.OverClass",
+   "Mathlib.CategoryTheory.Comma.Over.Pullback",
+   "Mathlib.CategoryTheory.Comma.Over.StrictInitial",
+   "Mathlib.CategoryTheory.Comma.Presheaf.Colimit",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.CommaMap",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Final",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Functor",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Small"
+  ],
+  "Mathlib.CategoryTheory.ComposableArrows": [
+   "Mathlib.CategoryTheory.ComposableArrows.Basic"
+  ],
+  "Mathlib.CategoryTheory.DiscreteCategory": [
+   "Mathlib.CategoryTheory.Discrete.Basic"
+  ],
+  "Mathlib.CategoryTheory.FinCategory": [
+   "Mathlib.CategoryTheory.FinCategory.Basic",
+   "Mathlib.CategoryTheory.FinCategory.AsType"
+  ],
+  "Mathlib.CategoryTheory.Functor.ReflectsIso": [
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Basic",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Balanced",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Exact",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Jointly",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Limits"
+  ],
+  "Mathlib.CategoryTheory.Generator": [
+   "Mathlib.CategoryTheory.Generator.Basic",
+   "Mathlib.CategoryTheory.Generator.HomologicalComplex",
+   "Mathlib.CategoryTheory.Generator.Indization",
+   "Mathlib.CategoryTheory.Generator.Presheaf",
+   "Mathlib.CategoryTheory.Generator.Sheaf",
+   "Mathlib.CategoryTheory.Generator.StrongGenerator",
+   "Mathlib.CategoryTheory.Generator.Type"
+  ],
+  "Mathlib.CategoryTheory.Limits.ConcreteCategory": [
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.Basic",
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.Filtered",
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.WithAlgebraicStructures"
+  ],
+  "Mathlib.CategoryTheory.Limits.FunctorCategory": [
+   "Mathlib.CategoryTheory.Limits.FunctorCategory.Basic"
+  ],
+  "Mathlib.CategoryTheory.Limits.Types": [
+   "Mathlib.CategoryTheory.Limits.Types.Coequalizers",
+   "Mathlib.CategoryTheory.Limits.Types.ColimitType",
+   "Mathlib.CategoryTheory.Limits.Types.ColimitTypeFiltered",
+   "Mathlib.CategoryTheory.Limits.Types.Colimits",
+   "Mathlib.CategoryTheory.Limits.Types.Coproducts",
+   "Mathlib.CategoryTheory.Limits.Types.End",
+   "Mathlib.CategoryTheory.Limits.Types.Equalizers",
+   "Mathlib.CategoryTheory.Limits.Types.Filtered",
+   "Mathlib.CategoryTheory.Limits.Types.Images",
+   "Mathlib.CategoryTheory.Limits.Types.Limits",
+   "Mathlib.CategoryTheory.Limits.Types.Multicoequalizer",
+   "Mathlib.CategoryTheory.Limits.Types.Multiequalizer",
+   "Mathlib.CategoryTheory.Limits.Types.PreservesLimit",
+   "Mathlib.CategoryTheory.Limits.Types.Products",
+   "Mathlib.CategoryTheory.Limits.Types.Pullbacks",
+   "Mathlib.CategoryTheory.Limits.Types.Pushouts",
+   "Mathlib.CategoryTheory.Limits.Types.Yoneda"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Braided": [
+   "Mathlib.CategoryTheory.Monoidal.Braided.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Multifunctor",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Opposite",
+   "Mathlib.CategoryTheory.Monoidal.Braided.PushoutObjObj",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Reflection",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Transport"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Internal.Types": [
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.CommGrp_",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Grp",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Grp_"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Limits": [
+   "Mathlib.CategoryTheory.Monoidal.Limits.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Cokernels",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Colimits",
+   "Mathlib.CategoryTheory.Monoidal.Limits.HasLimits",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Preserves",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Shapes.Pullback"
+  ],
+  "Mathlib.CategoryTheory.MorphismProperty": [
+   "Mathlib.CategoryTheory.MorphismProperty.Basic",
+   "Mathlib.CategoryTheory.MorphismProperty.Comma",
+   "Mathlib.CategoryTheory.MorphismProperty.CommaSites",
+   "Mathlib.CategoryTheory.MorphismProperty.Composition",
+   "Mathlib.CategoryTheory.MorphismProperty.Concrete",
+   "Mathlib.CategoryTheory.MorphismProperty.Descent",
+   "Mathlib.CategoryTheory.MorphismProperty.Factorization",
+   "Mathlib.CategoryTheory.MorphismProperty.FunctorCategory",
+   "Mathlib.CategoryTheory.MorphismProperty.HasCardinalLT",
+   "Mathlib.CategoryTheory.MorphismProperty.Ind",
+   "Mathlib.CategoryTheory.MorphismProperty.IsInvertedBy",
+   "Mathlib.CategoryTheory.MorphismProperty.IsSmall",
+   "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+   "Mathlib.CategoryTheory.MorphismProperty.Limits",
+   "Mathlib.CategoryTheory.MorphismProperty.Local",
+   "Mathlib.CategoryTheory.MorphismProperty.LocalClosure",
+   "Mathlib.CategoryTheory.MorphismProperty.LocalEpi",
+   "Mathlib.CategoryTheory.MorphismProperty.OfObjectProperty",
+   "Mathlib.CategoryTheory.MorphismProperty.OverAdjunction",
+   "Mathlib.CategoryTheory.MorphismProperty.Quotient",
+   "Mathlib.CategoryTheory.MorphismProperty.Representable",
+   "Mathlib.CategoryTheory.MorphismProperty.Retract",
+   "Mathlib.CategoryTheory.MorphismProperty.RetractArgument",
+   "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+   "Mathlib.CategoryTheory.MorphismProperty.WeakFactorizationSystem"
+  ],
+  "Mathlib.CategoryTheory.PathCategory": [
+   "Mathlib.CategoryTheory.PathCategory.Basic",
+   "Mathlib.CategoryTheory.PathCategory.MorphismProperty"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Generator": [
+   "Mathlib.CategoryTheory.Generator.Preadditive"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Injective": [
+   "Mathlib.CategoryTheory.Preadditive.Injective.Basic"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.InjectiveResolution": [
+   "Mathlib.CategoryTheory.Preadditive.Injective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Projective": [
+   "Mathlib.CategoryTheory.Preadditive.Projective.Basic"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.ProjectiveResolution": [
+   "Mathlib.CategoryTheory.Preadditive.Projective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Sites.Coherent": [
+   "Mathlib.CategoryTheory.Sites.Coherent.Basic",
+   "Mathlib.CategoryTheory.Sites.Coherent.CoherentSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.CoherentTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.Comparison",
+   "Mathlib.CategoryTheory.Sites.Coherent.Equivalence",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveColimits",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.LocallySurjective",
+   "Mathlib.CategoryTheory.Sites.Coherent.ReflectsPrecoherent",
+   "Mathlib.CategoryTheory.Sites.Coherent.ReflectsPreregular",
+   "Mathlib.CategoryTheory.Sites.Coherent.RegularSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.RegularTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.SequentialLimit",
+   "Mathlib.CategoryTheory.Sites.Coherent.SheafComparison"
+  ],
+  "Mathlib.CategoryTheory.Sites.DenseSubsite": [
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.Basic",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.InducedTopology",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.OneHypercoverDense",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.SheafEquiv"
+  ],
+  "Mathlib.CategoryTheory.Triangulated.Opposite": [
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Basic",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Functor",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.OpOp",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Pretriangulated",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Subcategory",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Triangle",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Triangulated"
+  ],
+  "Mathlib.CategoryTheory.Types": [
+   "Mathlib.CategoryTheory.Types.Basic",
+   "Mathlib.CategoryTheory.Types.Epimorphisms",
+   "Mathlib.CategoryTheory.Types.Monomorphisms",
+   "Mathlib.CategoryTheory.Types.Set"
+  ],
+  "Mathlib.CategoryTheory.WithTerminal": [
+   "Mathlib.CategoryTheory.WithTerminal.Basic",
+   "Mathlib.CategoryTheory.WithTerminal.Cone",
+   "Mathlib.CategoryTheory.WithTerminal.FinCategory",
+   "Mathlib.CategoryTheory.WithTerminal.Lemmas"
+  ],
+  "Mathlib.Combinatorics.Additive.Behrend": [
+   "Mathlib.Combinatorics.Additive.AP.Three.Behrend"
+  ],
+  "Mathlib.Combinatorics.Composition": [
+   "Mathlib.Combinatorics.Enumerative.Composition"
+  ],
+  "Mathlib.Combinatorics.SetFamily.CauchyDavenport": [
+   "Mathlib.Combinatorics.Additive.CauchyDavenport"
+  ],
+  "Mathlib.Combinatorics.SimpleGraph.Connectivity": [
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.EdgeConnectivity",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Represents",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.WalkCounting",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.WalkDecomp"
+  ],
+  "Mathlib.Condensed.Discrete": [
+   "Mathlib.Condensed.Discrete.Basic",
+   "Mathlib.Condensed.Discrete.Characterization",
+   "Mathlib.Condensed.Discrete.Colimit",
+   "Mathlib.Condensed.Discrete.LocallyConstant",
+   "Mathlib.Condensed.Discrete.Module"
+  ],
+  "Mathlib.Data.Complex.Cardinality": [
+   "Mathlib.Analysis.Complex.Cardinality"
+  ],
+  "Mathlib.Data.Complex.Determinant": [
+   "Mathlib.LinearAlgebra.Complex.Determinant"
+  ],
+  "Mathlib.Data.Complex.Module": [
+   "Mathlib.LinearAlgebra.Complex.Module"
+  ],
+  "Mathlib.Data.Complex.Orientation": [
+   "Mathlib.LinearAlgebra.Complex.Orientation"
+  ],
+  "Mathlib.Data.Finset.Lattice": [
+   "Mathlib.Data.Finset.Lattice.Basic",
+   "Mathlib.Data.Finset.Lattice.Fold",
+   "Mathlib.Data.Finset.Lattice.Lemmas",
+   "Mathlib.Data.Finset.Lattice.Pi",
+   "Mathlib.Data.Finset.Lattice.Prod",
+   "Mathlib.Data.Finset.Lattice.Union"
+  ],
+  "Mathlib.Data.Finset.LocallyFinite": [
+   "Mathlib.Order.Interval.Finset.Basic"
+  ],
+  "Mathlib.Data.Finset.Pointwise.Interval": [
+   "Mathlib.Algebra.Group.Pointwise.Finset.Interval"
+  ],
+  "Mathlib.Data.List.Perm": [
+   "Mathlib.Data.List.Perm.Basic",
+   "Mathlib.Data.List.Perm.Lattice",
+   "Mathlib.Data.List.Perm.Subperm"
+  ],
+  "Mathlib.Data.Matrix.Kronecker": [
+   "Mathlib.LinearAlgebra.Matrix.Kronecker"
+  ],
+  "Mathlib.Data.Matrix.Notation": [
+   "Mathlib.LinearAlgebra.Matrix.Notation"
+  ],
+  "Mathlib.Data.Matroid.Init": [
+   "Mathlib.Combinatorics.Matroid.Init"
+  ],
+  "Mathlib.Data.MvPolynomial.Comap": [
+   "Mathlib.Algebra.MvPolynomial.Comap"
+  ],
+  "Mathlib.Data.MvPolynomial.CommRing": [
+   "Mathlib.Algebra.MvPolynomial.CommRing"
+  ],
+  "Mathlib.Data.MvPolynomial.Counit": [
+   "Mathlib.Algebra.MvPolynomial.Counit"
+  ],
+  "Mathlib.Data.MvPolynomial.Derivation": [
+   "Mathlib.Algebra.MvPolynomial.Derivation"
+  ],
+  "Mathlib.Data.MvPolynomial.Invertible": [
+   "Mathlib.Algebra.MvPolynomial.Invertible"
+  ],
+  "Mathlib.Data.MvPolynomial.Monad": [
+   "Mathlib.Algebra.MvPolynomial.Monad"
+  ],
+  "Mathlib.Data.MvPolynomial.Polynomial": [
+   "Mathlib.Algebra.MvPolynomial.Polynomial"
+  ],
+  "Mathlib.Data.MvPolynomial.Rename": [
+   "Mathlib.Algebra.MvPolynomial.Rename"
+  ],
+  "Mathlib.Data.MvPolynomial.Supported": [
+   "Mathlib.Algebra.MvPolynomial.Supported"
+  ],
+  "Mathlib.Data.Nat.Cast.Order": [
+   "Mathlib.Data.Nat.Cast.Order.Basic",
+   "Mathlib.Data.Nat.Cast.Order.Field",
+   "Mathlib.Data.Nat.Cast.Order.Ring"
+  ],
+  "Mathlib.Data.Nat.Digits": [
+   "Mathlib.Data.Nat.Digits.Defs",
+   "Mathlib.Data.Nat.Digits.Div",
+   "Mathlib.Data.Nat.Digits.Lemmas"
+  ],
+  "Mathlib.Data.Nat.Prime": [
+   "Mathlib.Data.Nat.Prime.Basic",
+   "Mathlib.Data.Nat.Prime.Defs",
+   "Mathlib.Data.Nat.Prime.Factorial",
+   "Mathlib.Data.Nat.Prime.Infinite",
+   "Mathlib.Data.Nat.Prime.Int",
+   "Mathlib.Data.Nat.Prime.Nth",
+   "Mathlib.Data.Nat.Prime.Pow"
+  ],
+  "Mathlib.Data.Polynomial.CancelLeads": [
+   "Mathlib.Algebra.Polynomial.CancelLeads"
+  ],
+  "Mathlib.Data.Polynomial.Coeff": [
+   "Mathlib.Algebra.Polynomial.Coeff"
+  ],
+  "Mathlib.Data.Polynomial.Degree.CardPowDegree": [
+   "Mathlib.Algebra.Polynomial.Degree.CardPowDegree"
+  ],
+  "Mathlib.Data.Polynomial.Degree.TrailingDegree": [
+   "Mathlib.Algebra.Polynomial.Degree.TrailingDegree"
+  ],
+  "Mathlib.Data.Polynomial.DenomsClearable": [
+   "Mathlib.Algebra.Polynomial.DenomsClearable"
+  ],
+  "Mathlib.Data.Polynomial.Derivation": [
+   "Mathlib.Algebra.Polynomial.Derivation"
+  ],
+  "Mathlib.Data.Polynomial.Expand": [
+   "Mathlib.Algebra.Polynomial.Expand"
+  ],
+  "Mathlib.Data.Polynomial.FieldDivision": [
+   "Mathlib.Algebra.Polynomial.FieldDivision"
+  ],
+  "Mathlib.Data.Polynomial.HasseDeriv": [
+   "Mathlib.Algebra.Polynomial.HasseDeriv"
+  ],
+  "Mathlib.Data.Polynomial.Identities": [
+   "Mathlib.Algebra.Polynomial.Identities"
+  ],
+  "Mathlib.Data.Polynomial.Inductions": [
+   "Mathlib.Algebra.Polynomial.Inductions"
+  ],
+  "Mathlib.Data.Polynomial.Laurent": [
+   "Mathlib.Algebra.Polynomial.Laurent"
+  ],
+  "Mathlib.Data.Polynomial.Mirror": [
+   "Mathlib.Algebra.Polynomial.Mirror"
+  ],
+  "Mathlib.Data.Polynomial.Monic": [
+   "Mathlib.Algebra.Polynomial.Monic"
+  ],
+  "Mathlib.Data.Polynomial.Monomial": [
+   "Mathlib.Algebra.Polynomial.Monomial"
+  ],
+  "Mathlib.Data.Polynomial.Reverse": [
+   "Mathlib.Algebra.Polynomial.Reverse"
+  ],
+  "Mathlib.Data.Polynomial.UnitTrinomial": [
+   "Mathlib.Algebra.Polynomial.UnitTrinomial"
+  ],
+  "Mathlib.Data.Real.Cardinality": [
+   "Mathlib.Analysis.Real.Cardinality"
+  ],
+  "Mathlib.Data.Real.CauSeq": [
+   "Mathlib.Algebra.Order.CauSeq.Basic"
+  ],
+  "Mathlib.Data.Real.CauSeqCompletion": [
+   "Mathlib.Algebra.Order.CauSeq.Completion"
+  ],
+  "Mathlib.Data.Real.Hyperreal": [
+   "Mathlib.Analysis.Real.Hyperreal"
+  ],
+  "Mathlib.Data.Real.Pi.Wallis": [
+   "Mathlib.Analysis.Real.Pi.Wallis"
+  ],
+  "Mathlib.Data.Set.Finite": [
+   "Mathlib.Data.Set.Finite.Basic",
+   "Mathlib.Data.Set.Finite.Lattice",
+   "Mathlib.Data.Set.Finite.Lemmas",
+   "Mathlib.Data.Set.Finite.List",
+   "Mathlib.Data.Set.Finite.Monad",
+   "Mathlib.Data.Set.Finite.Powerset",
+   "Mathlib.Data.Set.Finite.Range"
+  ],
+  "Mathlib.Data.Set.Intervals.Disjoint": [
+   "Mathlib.Order.Interval.Set.Disjoint"
+  ],
+  "Mathlib.Data.Set.Intervals.Group": [
+   "Mathlib.Algebra.Order.Interval.Set.Group"
+  ],
+  "Mathlib.Data.Set.Intervals.Image": [
+   "Mathlib.Order.Interval.Set.Image"
+  ],
+  "Mathlib.Data.Set.Intervals.Infinite": [
+   "Mathlib.Order.Interval.Set.Infinite"
+  ],
+  "Mathlib.Data.Set.Intervals.IsoIoo": [
+   "Mathlib.Order.Interval.Set.IsoIoo"
+  ],
+  "Mathlib.Data.Set.Intervals.Monoid": [
+   "Mathlib.Algebra.Order.Interval.Set.Monoid"
+  ],
+  "Mathlib.Data.Set.Intervals.Monotone": [
+   "Mathlib.Order.Interval.Set.Monotone"
+  ],
+  "Mathlib.Data.Set.Intervals.OrdConnected": [
+   "Mathlib.Order.Interval.Set.OrdConnected"
+  ],
+  "Mathlib.Data.Set.Intervals.OrdConnectedComponent": [
+   "Mathlib.Order.Interval.Set.OrdConnectedComponent"
+  ],
+  "Mathlib.Data.Set.Intervals.Pi": [
+   "Mathlib.Order.Interval.Set.Pi"
+  ],
+  "Mathlib.Data.Set.Intervals.ProjIcc": [
+   "Mathlib.Order.Interval.Set.ProjIcc"
+  ],
+  "Mathlib.Data.Set.Intervals.SurjOn": [
+   "Mathlib.Order.Interval.Set.SurjOn"
+  ],
+  "Mathlib.Data.Set.Intervals.UnorderedInterval": [
+   "Mathlib.Order.Interval.Set.UnorderedInterval"
+  ],
+  "Mathlib.Data.Set.Pointwise.Iterate": [
+   "Mathlib.Dynamics.FixedPoints.Prufer"
+  ],
+  "Mathlib.Data.Set.Pointwise.ListOfFn": [
+   "Mathlib.Algebra.Group.Pointwise.Set.ListOfFn"
+  ],
+  "Mathlib.Data.Sign": [
+   "Mathlib.Data.Sign.Basic",
+   "Mathlib.Data.Sign.Defs"
+  ],
+  "Mathlib.Data.Tree": [
+   "Mathlib.Data.Tree.Basic",
+   "Mathlib.Data.Tree.Get",
+   "Mathlib.Data.Tree.RBMap",
+   "Mathlib.Data.Tree.Traversable"
+  ],
+  "Mathlib.Data.Vector": [
+   "Mathlib.Data.Vector.Defs"
+  ],
+  "Mathlib.Data.ZMod.Module": [
+   "Mathlib.Algebra.Module.ZMod"
+  ],
+  "Mathlib.Dynamics.PeriodicPts": [
+   "Mathlib.Dynamics.PeriodicPts.Defs"
+  ],
+  "Mathlib.FieldTheory.Galois": [
+   "Mathlib.FieldTheory.Galois.Basic",
+   "Mathlib.FieldTheory.Galois.Abelian",
+   "Mathlib.FieldTheory.Galois.GaloisClosure",
+   "Mathlib.FieldTheory.Galois.Infinite",
+   "Mathlib.FieldTheory.Galois.IsGaloisGroup",
+   "Mathlib.FieldTheory.Galois.NormalBasis",
+   "Mathlib.FieldTheory.Galois.Notation",
+   "Mathlib.FieldTheory.Galois.Profinite"
+  ],
+  "Mathlib.FieldTheory.IntermediateField": [
+   "Mathlib.FieldTheory.IntermediateField.Basic"
+  ],
+  "Mathlib.FieldTheory.Normal": [
+   "Mathlib.FieldTheory.Normal.Basic",
+   "Mathlib.FieldTheory.Normal.Defs"
+  ],
+  "Mathlib.FieldTheory.NormalClosure": [
+   "Mathlib.FieldTheory.Normal.Closure"
+  ],
+  "Mathlib.FieldTheory.RatFunc": [
+   "Mathlib.FieldTheory.RatFunc.Basic",
+   "Mathlib.FieldTheory.RatFunc.AsPolynomial",
+   "Mathlib.FieldTheory.RatFunc.Defs",
+   "Mathlib.FieldTheory.RatFunc.Degree",
+   "Mathlib.FieldTheory.RatFunc.IntermediateField",
+   "Mathlib.FieldTheory.RatFunc.Luroth",
+   "Mathlib.FieldTheory.RatFunc.Valuation"
+  ],
+  "Mathlib.Geometry.Manifold.MFDeriv": [
+   "Mathlib.Geometry.Manifold.MFDeriv.Basic",
+   "Mathlib.Geometry.Manifold.MFDeriv.Atlas",
+   "Mathlib.Geometry.Manifold.MFDeriv.Defs",
+   "Mathlib.Geometry.Manifold.MFDeriv.FDeriv",
+   "Mathlib.Geometry.Manifold.MFDeriv.NormedSpace",
+   "Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions",
+   "Mathlib.Geometry.Manifold.MFDeriv.Tangent",
+   "Mathlib.Geometry.Manifold.MFDeriv.UniqueDifferential"
+  ],
+  "Mathlib.GroupTheory.Abelianization": [
+   "Mathlib.GroupTheory.Abelianization.Defs",
+   "Mathlib.GroupTheory.Abelianization.Finite"
+  ],
+  "Mathlib.GroupTheory.Commutator": [
+   "Mathlib.GroupTheory.Commutator.Basic",
+   "Mathlib.GroupTheory.Commutator.Finite"
+  ],
+  "Mathlib.GroupTheory.Congruence": [
+   "Mathlib.GroupTheory.Congruence.Basic",
+   "Mathlib.GroupTheory.Congruence.BigOperators",
+   "Mathlib.GroupTheory.Congruence.Defs",
+   "Mathlib.GroupTheory.Congruence.Hom",
+   "Mathlib.GroupTheory.Congruence.Opposite",
+   "Mathlib.GroupTheory.Congruence.Star"
+  ],
+  "Mathlib.GroupTheory.Coset": [
+   "Mathlib.GroupTheory.Coset.Basic",
+   "Mathlib.GroupTheory.Coset.Card",
+   "Mathlib.GroupTheory.Coset.Defs"
+  ],
+  "Mathlib.GroupTheory.FiniteAbelian": [
+   "Mathlib.GroupTheory.FiniteAbelian.Basic",
+   "Mathlib.GroupTheory.FiniteAbelian.Duality"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Option": [
+   "Mathlib.Algebra.Group.Action.Option"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Sigma": [
+   "Mathlib.Algebra.Group.Action.Sigma"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Sum": [
+   "Mathlib.Algebra.Group.Action.Sum"
+  ],
+  "Mathlib.GroupTheory.MonoidLocalization": [
+   "Mathlib.GroupTheory.MonoidLocalization.Basic",
+   "Mathlib.GroupTheory.MonoidLocalization.Away",
+   "Mathlib.GroupTheory.MonoidLocalization.Cardinality",
+   "Mathlib.GroupTheory.MonoidLocalization.DivPairs",
+   "Mathlib.GroupTheory.MonoidLocalization.Divisibility",
+   "Mathlib.GroupTheory.MonoidLocalization.Finite",
+   "Mathlib.GroupTheory.MonoidLocalization.GrothendieckGroup",
+   "Mathlib.GroupTheory.MonoidLocalization.Lemmas",
+   "Mathlib.GroupTheory.MonoidLocalization.Maps",
+   "Mathlib.GroupTheory.MonoidLocalization.MonoidWithZero",
+   "Mathlib.GroupTheory.MonoidLocalization.Order",
+   "Mathlib.GroupTheory.MonoidLocalization.UniqueFactorization"
+  ],
+  "Mathlib.GroupTheory.QuotientGroup": [
+   "Mathlib.GroupTheory.QuotientGroup.Basic",
+   "Mathlib.GroupTheory.QuotientGroup.Defs",
+   "Mathlib.GroupTheory.QuotientGroup.Finite",
+   "Mathlib.GroupTheory.QuotientGroup.ModEq"
+  ],
+  "Mathlib.GroupTheory.Subgroup.Actions": [
+   "Mathlib.Algebra.Group.Subgroup.Actions"
+  ],
+  "Mathlib.GroupTheory.Subsemigroup.Membership": [
+   "Mathlib.Algebra.Group.Subsemigroup.Membership"
+  ],
+  "Mathlib.GroupTheory.Subsemigroup.Operations": [
+   "Mathlib.Algebra.Group.Subsemigroup.Operations"
+  ],
+  "Mathlib.Init.Data.Nat.Notation": [
+   "Mathlib.Data.Nat.Notation"
+  ],
+  "Mathlib.Init.Data.Ordering.Lemmas": [
+   "Mathlib.Data.Ordering.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace": [
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Basic",
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Defs",
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Shift"
+  ],
+  "Mathlib.LinearAlgebra.AffineSpace.Basic": [
+   "Mathlib.LinearAlgebra.AffineSpace.Defs"
+  ],
+  "Mathlib.LinearAlgebra.Basis": [
+   "Mathlib.LinearAlgebra.Basis.Basic",
+   "Mathlib.LinearAlgebra.Basis.Cardinality",
+   "Mathlib.LinearAlgebra.Basis.Defs",
+   "Mathlib.LinearAlgebra.Basis.Exact",
+   "Mathlib.LinearAlgebra.Basis.Fin",
+   "Mathlib.LinearAlgebra.Basis.MulOpposite",
+   "Mathlib.LinearAlgebra.Basis.Prod",
+   "Mathlib.LinearAlgebra.Basis.SMul",
+   "Mathlib.LinearAlgebra.Basis.Submodule"
+  ],
+  "Mathlib.LinearAlgebra.Dual": [
+   "Mathlib.LinearAlgebra.Dual.BaseChange",
+   "Mathlib.LinearAlgebra.Dual.Basis",
+   "Mathlib.LinearAlgebra.Dual.Defs",
+   "Mathlib.LinearAlgebra.Dual.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.FiniteDimensional": [
+   "Mathlib.LinearAlgebra.FiniteDimensional.Basic",
+   "Mathlib.LinearAlgebra.FiniteDimensional.Defs",
+   "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.Finsupp": [
+   "Mathlib.LinearAlgebra.Finsupp.Defs",
+   "Mathlib.LinearAlgebra.Finsupp.LSum",
+   "Mathlib.LinearAlgebra.Finsupp.LinearCombination",
+   "Mathlib.LinearAlgebra.Finsupp.Pi",
+   "Mathlib.LinearAlgebra.Finsupp.Span",
+   "Mathlib.LinearAlgebra.Finsupp.SumProd",
+   "Mathlib.LinearAlgebra.Finsupp.Supported",
+   "Mathlib.LinearAlgebra.Finsupp.VectorSpace"
+  ],
+  "Mathlib.LinearAlgebra.GeneralLinearGroup": [
+   "Mathlib.LinearAlgebra.GeneralLinearGroup.Basic",
+   "Mathlib.LinearAlgebra.GeneralLinearGroup.AlgEquiv"
+  ],
+  "Mathlib.LinearAlgebra.LinearIndependent": [
+   "Mathlib.LinearAlgebra.LinearIndependent.Basic",
+   "Mathlib.LinearAlgebra.LinearIndependent.BaseChange",
+   "Mathlib.LinearAlgebra.LinearIndependent.Defs",
+   "Mathlib.LinearAlgebra.LinearIndependent.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.Determinant": [
+   "Mathlib.LinearAlgebra.Matrix.Determinant.Basic"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup": [
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Basic",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Card",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.FinTwo",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.MvPolynomial",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Projective"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.LDL": [
+   "Mathlib.Analysis.Matrix.LDL"
+  ],
+  "Mathlib.LinearAlgebra.PerfectPairing": [
+   "Mathlib.LinearAlgebra.PerfectPairing.Basic",
+   "Mathlib.LinearAlgebra.PerfectPairing.Restrict"
+  ],
+  "Mathlib.LinearAlgebra.Quotient": [
+   "Mathlib.LinearAlgebra.Quotient.Basic",
+   "Mathlib.LinearAlgebra.Quotient.Bilinear",
+   "Mathlib.LinearAlgebra.Quotient.Card",
+   "Mathlib.LinearAlgebra.Quotient.Defs"
+  ],
+  "Mathlib.LinearAlgebra.QuotientPi": [
+   "Mathlib.LinearAlgebra.Quotient.Pi"
+  ],
+  "Mathlib.LinearAlgebra.SModEq": [
+   "Mathlib.LinearAlgebra.SModEq.Basic",
+   "Mathlib.LinearAlgebra.SModEq.Pointwise",
+   "Mathlib.LinearAlgebra.SModEq.Pow"
+  ],
+  "Mathlib.LinearAlgebra.SesquilinearForm": [
+   "Mathlib.LinearAlgebra.SesquilinearForm.Basic",
+   "Mathlib.LinearAlgebra.SesquilinearForm.Orthogonal",
+   "Mathlib.LinearAlgebra.SesquilinearForm.Star"
+  ],
+  "Mathlib.LinearAlgebra.Span": [
+   "Mathlib.LinearAlgebra.Span.Basic",
+   "Mathlib.LinearAlgebra.Span.Defs",
+   "Mathlib.LinearAlgebra.Span.TensorProduct"
+  ],
+  "Mathlib.LinearAlgebra.TensorPower": [
+   "Mathlib.LinearAlgebra.TensorPower.Basic"
+  ],
+  "Mathlib.LinearAlgebra.TensorProduct": [
+   "Mathlib.LinearAlgebra.TensorProduct.Basic",
+   "Mathlib.LinearAlgebra.TensorProduct.Associator",
+   "Mathlib.LinearAlgebra.TensorProduct.Basis",
+   "Mathlib.LinearAlgebra.TensorProduct.Decomposition",
+   "Mathlib.LinearAlgebra.TensorProduct.Defs",
+   "Mathlib.LinearAlgebra.TensorProduct.Finiteness",
+   "Mathlib.LinearAlgebra.TensorProduct.Free",
+   "Mathlib.LinearAlgebra.TensorProduct.Map",
+   "Mathlib.LinearAlgebra.TensorProduct.Pi",
+   "Mathlib.LinearAlgebra.TensorProduct.Quotient",
+   "Mathlib.LinearAlgebra.TensorProduct.Subalgebra",
+   "Mathlib.LinearAlgebra.TensorProduct.Submodule",
+   "Mathlib.LinearAlgebra.TensorProduct.Vanishing"
+  ],
+  "Mathlib.Logic.Equiv.Fin": [
+   "Mathlib.Logic.Equiv.Fin.Basic",
+   "Mathlib.Logic.Equiv.Fin.Rotate"
+  ],
+  "Mathlib.Mathport.Notation": [
+   "Mathlib.Util.Notation3"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Polish": [
+   "Mathlib.MeasureTheory.Constructions.Polish.Basic"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Prod.Basic": [
+   "Mathlib.MeasureTheory.Measure.Prod"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Prod.Integral": [
+   "Mathlib.MeasureTheory.Integral.Prod"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.Jordan": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.Lebesgue": [
+   "Mathlib.MeasureTheory.Measure.Decomposition.Lebesgue"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.SignedHahn": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Hahn"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.SignedLebesgue": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Lebesgue"
+  ],
+  "Mathlib.MeasureTheory.Function.L1Space": [
+   "Mathlib.MeasureTheory.Function.L1Space.AEEqFun",
+   "Mathlib.MeasureTheory.Function.L1Space.HasFiniteIntegral",
+   "Mathlib.MeasureTheory.Function.L1Space.Integrable"
+  ],
+  "Mathlib.MeasureTheory.Function.LpSeminorm": [
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Basic",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.ChebyshevMarkov",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Count",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Defs",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Indicator",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.LpNorm",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Monotonicity",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Prod",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.SMul",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Trim"
+  ],
+  "Mathlib.MeasureTheory.Function.LpSpace": [
+   "Mathlib.MeasureTheory.Function.LpSpace.Basic",
+   "Mathlib.MeasureTheory.Function.LpSpace.Complete",
+   "Mathlib.MeasureTheory.Function.LpSpace.CompleteOfCompleteLp",
+   "Mathlib.MeasureTheory.Function.LpSpace.ContinuousCompMeasurePreserving",
+   "Mathlib.MeasureTheory.Function.LpSpace.ContinuousFunctions",
+   "Mathlib.MeasureTheory.Function.LpSpace.DomAct.Continuous",
+   "Mathlib.MeasureTheory.Function.LpSpace.Indicator",
+   "Mathlib.MeasureTheory.Function.LpSpace.InfiniteSum"
+  ],
+  "Mathlib.MeasureTheory.Integral.Bochner": [
+   "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+   "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+   "Mathlib.MeasureTheory.Integral.Bochner.FundThmCalculus",
+   "Mathlib.MeasureTheory.Integral.Bochner.L1",
+   "Mathlib.MeasureTheory.Integral.Bochner.Set",
+   "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure"
+  ],
+  "Mathlib.MeasureTheory.Integral.FundThmCalculus": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus"
+  ],
+  "Mathlib.MeasureTheory.Integral.IntervalIntegral": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.ContDiff",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.DerivIntegrable",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.DistLEIntegral",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.MeanValue",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Slope",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.TrapezoidalRule"
+  ],
+  "Mathlib.MeasureTheory.Integral.Lebesgue": [
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Basic",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Add",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Countable",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.DominatedConvergence",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Map",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Markov",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Norm",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Sub"
+  ],
+  "Mathlib.MeasureTheory.Integral.Periodic": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic"
+  ],
+  "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani": [
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Basic",
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.NNReal",
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real"
+  ],
+  "Mathlib.MeasureTheory.Integral.VitaliCaratheodory": [
+   "Mathlib.MeasureTheory.Integral.Bochner.VitaliCaratheodory"
+  ],
+  "Mathlib.MeasureTheory.Lattice": [
+   "Mathlib.MeasureTheory.Order.Lattice"
+  ],
+  "Mathlib.MeasureTheory.Measure.Typeclasses": [
+   "Mathlib.MeasureTheory.Measure.Typeclasses.Finite",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.NullSingletonClass",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.Probability",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.SFinite",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.ZeroOne"
+  ],
+  "Mathlib.MeasureTheory.Measure.VectorMeasure": [
+   "Mathlib.MeasureTheory.VectorMeasure.Basic"
+  ],
+  "Mathlib.MeasureTheory.Measure.WithDensityVectorMeasure": [
+   "Mathlib.MeasureTheory.VectorMeasure.WithDensity"
+  ],
+  "Mathlib.NumberTheory.ArithmeticFunction": [
+   "Mathlib.NumberTheory.ArithmeticFunction.Carmichael",
+   "Mathlib.NumberTheory.ArithmeticFunction.Defs",
+   "Mathlib.NumberTheory.ArithmeticFunction.LFunction",
+   "Mathlib.NumberTheory.ArithmeticFunction.Liouville",
+   "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+   "Mathlib.NumberTheory.ArithmeticFunction.Moebius",
+   "Mathlib.NumberTheory.ArithmeticFunction.Zeta"
+  ],
+  "Mathlib.NumberTheory.DiophantineApproximation": [
+   "Mathlib.NumberTheory.DiophantineApproximation.Basic"
+  ],
+  "Mathlib.NumberTheory.LSeries": [
+   "Mathlib.NumberTheory.LSeries.Basic",
+   "Mathlib.NumberTheory.LSeries.AbstractFuncEq",
+   "Mathlib.NumberTheory.LSeries.Convergence",
+   "Mathlib.NumberTheory.LSeries.Convolution",
+   "Mathlib.NumberTheory.LSeries.Deriv",
+   "Mathlib.NumberTheory.LSeries.Dirichlet",
+   "Mathlib.NumberTheory.LSeries.DirichletContinuation",
+   "Mathlib.NumberTheory.LSeries.HurwitzZeta",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaEven",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaOdd",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaValues",
+   "Mathlib.NumberTheory.LSeries.Injectivity",
+   "Mathlib.NumberTheory.LSeries.Linearity",
+   "Mathlib.NumberTheory.LSeries.MellinEqDirichlet",
+   "Mathlib.NumberTheory.LSeries.Nonvanishing",
+   "Mathlib.NumberTheory.LSeries.Positivity",
+   "Mathlib.NumberTheory.LSeries.PrimesInAP",
+   "Mathlib.NumberTheory.LSeries.RiemannZeta",
+   "Mathlib.NumberTheory.LSeries.SumCoeff",
+   "Mathlib.NumberTheory.LSeries.ZMod",
+   "Mathlib.NumberTheory.LSeries.ZetaZeros"
+  ],
+  "Mathlib.NumberTheory.LegendreSymbol.GaussSum": [
+   "Mathlib.NumberTheory.GaussSum"
+  ],
+  "Mathlib.NumberTheory.LegendreSymbol.MulCharacter": [
+   "Mathlib.NumberTheory.MulChar.Basic"
+  ],
+  "Mathlib.NumberTheory.Liouville.Basic": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Basic"
+  ],
+  "Mathlib.NumberTheory.Liouville.LiouvilleNumber": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.LiouvilleNumber"
+  ],
+  "Mathlib.NumberTheory.Liouville.LiouvilleWith": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.LiouvilleWith"
+  ],
+  "Mathlib.NumberTheory.Liouville.Measure": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Measure"
+  ],
+  "Mathlib.NumberTheory.Liouville.Residual": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Residual"
+  ],
+  "Mathlib.NumberTheory.NumberField.CanonicalEmbedding": [
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.Basic",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.ConvexBody",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.FundamentalCone",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.NormLeOne",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.PolarCoord"
+  ],
+  "Mathlib.NumberTheory.NumberField.Discriminant": [
+   "Mathlib.NumberTheory.NumberField.Discriminant.Basic",
+   "Mathlib.NumberTheory.NumberField.Discriminant.Defs",
+   "Mathlib.NumberTheory.NumberField.Discriminant.Different"
+  ],
+  "Mathlib.NumberTheory.NumberField.Units": [
+   "Mathlib.NumberTheory.NumberField.Units.Basic",
+   "Mathlib.NumberTheory.NumberField.Units.DirichletTheorem",
+   "Mathlib.NumberTheory.NumberField.Units.Regulator"
+  ],
+  "Mathlib.NumberTheory.Padics.Harmonic": [
+   "Mathlib.NumberTheory.Harmonic.Int"
+  ],
+  "Mathlib.NumberTheory.Padics.PadicVal": [
+   "Mathlib.NumberTheory.Padics.PadicVal.Basic"
+  ],
+  "Mathlib.NumberTheory.RamificationInertia": [
+   "Mathlib.NumberTheory.RamificationInertia.Basic",
+   "Mathlib.NumberTheory.RamificationInertia.Galois",
+   "Mathlib.NumberTheory.RamificationInertia.HilbertTheory",
+   "Mathlib.NumberTheory.RamificationInertia.Inertia",
+   "Mathlib.NumberTheory.RamificationInertia.Ramification",
+   "Mathlib.NumberTheory.RamificationInertia.Unramified",
+   "Mathlib.NumberTheory.RamificationInertia.Valuation"
+  ],
+  "Mathlib.NumberTheory.VonMangoldt": [
+   "Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt"
+  ],
+  "Mathlib.Order.BooleanAlgebra": [
+   "Mathlib.Order.BooleanAlgebra.Basic",
+   "Mathlib.Order.BooleanAlgebra.Defs",
+   "Mathlib.Order.BooleanAlgebra.Set"
+  ],
+  "Mathlib.Order.BoundedOrder": [
+   "Mathlib.Order.BoundedOrder.Basic",
+   "Mathlib.Order.BoundedOrder.Lattice",
+   "Mathlib.Order.BoundedOrder.Monotone"
+  ],
+  "Mathlib.Order.CompactlyGenerated": [
+   "Mathlib.Order.CompactlyGenerated.Basic"
+  ],
+  "Mathlib.Order.CompleteLattice": [
+   "Mathlib.Order.CompleteLattice.Basic",
+   "Mathlib.Order.CompleteLattice.Chain",
+   "Mathlib.Order.CompleteLattice.Defs",
+   "Mathlib.Order.CompleteLattice.Finset",
+   "Mathlib.Order.CompleteLattice.Group",
+   "Mathlib.Order.CompleteLattice.Lemmas",
+   "Mathlib.Order.CompleteLattice.MulticoequalizerDiagram",
+   "Mathlib.Order.CompleteLattice.PiLex",
+   "Mathlib.Order.CompleteLattice.SetLike"
+  ],
+  "Mathlib.Order.Filter.Archimedean": [
+   "Mathlib.Order.Filter.AtTopBot.Archimedean"
+  ],
+  "Mathlib.Order.Filter.AtTopBot": [
+   "Mathlib.Order.Filter.AtTopBot.Basic",
+   "Mathlib.Order.Filter.AtTopBot.BigOperators",
+   "Mathlib.Order.Filter.AtTopBot.CompleteLattice",
+   "Mathlib.Order.Filter.AtTopBot.CountablyGenerated",
+   "Mathlib.Order.Filter.AtTopBot.Defs",
+   "Mathlib.Order.Filter.AtTopBot.Disjoint",
+   "Mathlib.Order.Filter.AtTopBot.Field",
+   "Mathlib.Order.Filter.AtTopBot.Finite",
+   "Mathlib.Order.Filter.AtTopBot.Finset",
+   "Mathlib.Order.Filter.AtTopBot.Floor",
+   "Mathlib.Order.Filter.AtTopBot.Group",
+   "Mathlib.Order.Filter.AtTopBot.Interval",
+   "Mathlib.Order.Filter.AtTopBot.Map",
+   "Mathlib.Order.Filter.AtTopBot.Monoid",
+   "Mathlib.Order.Filter.AtTopBot.Prod",
+   "Mathlib.Order.Filter.AtTopBot.Ring",
+   "Mathlib.Order.Filter.AtTopBot.Tendsto"
+  ],
+  "Mathlib.Order.Filter.Bases": [
+   "Mathlib.Order.Filter.Bases.Basic"
+  ],
+  "Mathlib.Order.Filter.Germ": [
+   "Mathlib.Order.Filter.Germ.Basic"
+  ],
+  "Mathlib.Order.Filter.ModEq": [
+   "Mathlib.Order.Filter.AtTopBot.ModEq"
+  ],
+  "Mathlib.Order.Filter.Ultrafilter": [
+   "Mathlib.Order.Filter.Ultrafilter.Defs"
+  ],
+  "Mathlib.Order.GaloisConnection": [
+   "Mathlib.Order.GaloisConnection.Basic",
+   "Mathlib.Order.GaloisConnection.Defs"
+  ],
+  "Mathlib.Order.Interval": [
+   "Mathlib.Order.Interval.Basic"
+  ],
+  "Mathlib.Probability.Cdf": [
+   "Mathlib.Probability.CDF"
+  ],
+  "Mathlib.Probability.Distributions.Gaussian": [
+   "Mathlib.Probability.Distributions.Gaussian.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.CharFun",
+   "Mathlib.Probability.Distributions.Gaussian.Fernique",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Def",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Def",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Independence",
+   "Mathlib.Probability.Distributions.Gaussian.Multivariate",
+   "Mathlib.Probability.Distributions.Gaussian.Real"
+  ],
+  "Mathlib.Probability.Independence.Kernel": [
+   "Mathlib.Probability.Independence.Kernel.Indep",
+   "Mathlib.Probability.Independence.Kernel.IndepFun"
+  ],
+  "Mathlib.Probability.Kernel.Composition": [
+   "Mathlib.Probability.Kernel.Composition.AbsolutelyContinuous",
+   "Mathlib.Probability.Kernel.Composition.Comp",
+   "Mathlib.Probability.Kernel.Composition.CompMap",
+   "Mathlib.Probability.Kernel.Composition.CompNotation",
+   "Mathlib.Probability.Kernel.Composition.CompProd",
+   "Mathlib.Probability.Kernel.Composition.IntegralCompProd",
+   "Mathlib.Probability.Kernel.Composition.KernelLemmas",
+   "Mathlib.Probability.Kernel.Composition.Lemmas",
+   "Mathlib.Probability.Kernel.Composition.MapComap",
+   "Mathlib.Probability.Kernel.Composition.MeasureComp",
+   "Mathlib.Probability.Kernel.Composition.MeasureCompProd",
+   "Mathlib.Probability.Kernel.Composition.ParallelComp",
+   "Mathlib.Probability.Kernel.Composition.Prod",
+   "Mathlib.Probability.Kernel.Composition.RadonNikodym"
+  ],
+  "Mathlib.Probability.Kernel.Disintegration": [
+   "Mathlib.Probability.Kernel.Disintegration.Basic",
+   "Mathlib.Probability.Kernel.Disintegration.CDFToKernel",
+   "Mathlib.Probability.Kernel.Disintegration.CondCDF",
+   "Mathlib.Probability.Kernel.Disintegration.Density",
+   "Mathlib.Probability.Kernel.Disintegration.Integral",
+   "Mathlib.Probability.Kernel.Disintegration.MeasurableStieltjes",
+   "Mathlib.Probability.Kernel.Disintegration.StandardBorel",
+   "Mathlib.Probability.Kernel.Disintegration.Unique"
+  ],
+  "Mathlib.Probability.Moments": [
+   "Mathlib.Probability.Moments.Basic",
+   "Mathlib.Probability.Moments.ComplexMGF",
+   "Mathlib.Probability.Moments.Covariance",
+   "Mathlib.Probability.Moments.CovarianceBilin",
+   "Mathlib.Probability.Moments.CovarianceBilinDual",
+   "Mathlib.Probability.Moments.IntegrableExpMul",
+   "Mathlib.Probability.Moments.MGFAnalytic",
+   "Mathlib.Probability.Moments.SubGaussian",
+   "Mathlib.Probability.Moments.Tilted",
+   "Mathlib.Probability.Moments.Variance"
+  ],
+  "Mathlib.RepresentationTheory.Rep": [
+   "Mathlib.RepresentationTheory.Rep.Basic",
+   "Mathlib.RepresentationTheory.Rep.Iso",
+   "Mathlib.RepresentationTheory.Rep.Res"
+  ],
+  "Mathlib.RingTheory.Algebraic": [
+   "Mathlib.RingTheory.Algebraic.Basic",
+   "Mathlib.RingTheory.Algebraic.Cardinality",
+   "Mathlib.RingTheory.Algebraic.Defs",
+   "Mathlib.RingTheory.Algebraic.Integral",
+   "Mathlib.RingTheory.Algebraic.LinearIndependent",
+   "Mathlib.RingTheory.Algebraic.MvPolynomial",
+   "Mathlib.RingTheory.Algebraic.Pi",
+   "Mathlib.RingTheory.Algebraic.StronglyTranscendental"
+  ],
+  "Mathlib.RingTheory.AlgebraicIndependent": [
+   "Mathlib.RingTheory.AlgebraicIndependent.Basic",
+   "Mathlib.RingTheory.AlgebraicIndependent.Adjoin",
+   "Mathlib.RingTheory.AlgebraicIndependent.AlgebraicClosure",
+   "Mathlib.RingTheory.AlgebraicIndependent.Defs",
+   "Mathlib.RingTheory.AlgebraicIndependent.RankAndCardinality",
+   "Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis",
+   "Mathlib.RingTheory.AlgebraicIndependent.Transcendental"
+  ],
+  "Mathlib.RingTheory.Artinian": [
+   "Mathlib.RingTheory.Artinian.Algebra",
+   "Mathlib.RingTheory.Artinian.Defs",
+   "Mathlib.RingTheory.Artinian.Instances",
+   "Mathlib.RingTheory.Artinian.Module",
+   "Mathlib.RingTheory.Artinian.Ring"
+  ],
+  "Mathlib.RingTheory.Coalgebra": [
+   "Mathlib.RingTheory.Coalgebra.Basic",
+   "Mathlib.RingTheory.Coalgebra.CoassocSimps",
+   "Mathlib.RingTheory.Coalgebra.Convolution",
+   "Mathlib.RingTheory.Coalgebra.Equiv",
+   "Mathlib.RingTheory.Coalgebra.GroupLike",
+   "Mathlib.RingTheory.Coalgebra.Hom",
+   "Mathlib.RingTheory.Coalgebra.MonoidAlgebra",
+   "Mathlib.RingTheory.Coalgebra.MulOpposite",
+   "Mathlib.RingTheory.Coalgebra.Quotient",
+   "Mathlib.RingTheory.Coalgebra.TensorProduct"
+  ],
+  "Mathlib.RingTheory.Congruence": [
+   "Mathlib.RingTheory.Congruence.Basic",
+   "Mathlib.RingTheory.Congruence.BigOperators",
+   "Mathlib.RingTheory.Congruence.Defs",
+   "Mathlib.RingTheory.Congruence.Hom",
+   "Mathlib.RingTheory.Congruence.Opposite",
+   "Mathlib.RingTheory.Congruence.Star"
+  ],
+  "Mathlib.RingTheory.DedekindDomain.Ideal": [
+   "Mathlib.RingTheory.DedekindDomain.Ideal.Basic",
+   "Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas"
+  ],
+  "Mathlib.RingTheory.Etale": [
+   "Mathlib.RingTheory.Etale.Basic",
+   "Mathlib.RingTheory.Etale.Descent",
+   "Mathlib.RingTheory.Etale.Field",
+   "Mathlib.RingTheory.Etale.Finite",
+   "Mathlib.RingTheory.Etale.Kaehler",
+   "Mathlib.RingTheory.Etale.Locus",
+   "Mathlib.RingTheory.Etale.Pi",
+   "Mathlib.RingTheory.Etale.QuasiFinite",
+   "Mathlib.RingTheory.Etale.StandardEtale",
+   "Mathlib.RingTheory.Etale.Weakly"
+  ],
+  "Mathlib.RingTheory.Finiteness": [
+   "Mathlib.RingTheory.Finiteness.Basic",
+   "Mathlib.RingTheory.Finiteness.Bilinear",
+   "Mathlib.RingTheory.Finiteness.Cardinality",
+   "Mathlib.RingTheory.Finiteness.Cofinite",
+   "Mathlib.RingTheory.Finiteness.Defs",
+   "Mathlib.RingTheory.Finiteness.Descent",
+   "Mathlib.RingTheory.Finiteness.FinitePresentationLocal",
+   "Mathlib.RingTheory.Finiteness.FiniteTypeLocal",
+   "Mathlib.RingTheory.Finiteness.Finsupp",
+   "Mathlib.RingTheory.Finiteness.Ideal",
+   "Mathlib.RingTheory.Finiteness.Lattice",
+   "Mathlib.RingTheory.Finiteness.ModuleFinitePresentation",
+   "Mathlib.RingTheory.Finiteness.Nakayama",
+   "Mathlib.RingTheory.Finiteness.Nilpotent",
+   "Mathlib.RingTheory.Finiteness.NilpotentKer",
+   "Mathlib.RingTheory.Finiteness.Prod",
+   "Mathlib.RingTheory.Finiteness.Projective",
+   "Mathlib.RingTheory.Finiteness.Quotient",
+   "Mathlib.RingTheory.Finiteness.Small",
+   "Mathlib.RingTheory.Finiteness.Subalgebra"
+  ],
+  "Mathlib.RingTheory.Flat": [
+   "Mathlib.RingTheory.Flat.Basic",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Basic",
+   "Mathlib.RingTheory.Flat.CategoryTheory",
+   "Mathlib.RingTheory.Flat.Domain",
+   "Mathlib.RingTheory.Flat.Equalizer",
+   "Mathlib.RingTheory.Flat.EquationalCriterion",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Descent",
+   "Mathlib.RingTheory.Flat.IsBaseChange",
+   "Mathlib.RingTheory.Flat.Localization",
+   "Mathlib.RingTheory.Flat.LocallyFree",
+   "Mathlib.RingTheory.Flat.Rank",
+   "Mathlib.RingTheory.Flat.Stability",
+   "Mathlib.RingTheory.Flat.Tensor",
+   "Mathlib.RingTheory.Flat.TorsionFree"
+  ],
+  "Mathlib.RingTheory.FractionalIdeal": [
+   "Mathlib.RingTheory.FractionalIdeal.Basic",
+   "Mathlib.RingTheory.FractionalIdeal.Extended",
+   "Mathlib.RingTheory.FractionalIdeal.Inverse",
+   "Mathlib.RingTheory.FractionalIdeal.Norm",
+   "Mathlib.RingTheory.FractionalIdeal.Operations"
+  ],
+  "Mathlib.RingTheory.GradedAlgebra.HomogeneousIdeal": [
+   "Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal"
+  ],
+  "Mathlib.RingTheory.HahnSeries": [
+   "Mathlib.RingTheory.HahnSeries.Basic",
+   "Mathlib.RingTheory.HahnSeries.Addition",
+   "Mathlib.RingTheory.HahnSeries.Binomial",
+   "Mathlib.RingTheory.HahnSeries.Cardinal",
+   "Mathlib.RingTheory.HahnSeries.HEval",
+   "Mathlib.RingTheory.HahnSeries.HahnEmbedding",
+   "Mathlib.RingTheory.HahnSeries.Lex",
+   "Mathlib.RingTheory.HahnSeries.Multiplication",
+   "Mathlib.RingTheory.HahnSeries.PowerSeries",
+   "Mathlib.RingTheory.HahnSeries.Summable",
+   "Mathlib.RingTheory.HahnSeries.Valuation"
+  ],
+  "Mathlib.RingTheory.Ideal.AssociatedPrime": [
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Basic",
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness",
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Localization"
+  ],
+  "Mathlib.RingTheory.Ideal.MinimalPrime": [
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Basic",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Colon",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Localization",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian"
+  ],
+  "Mathlib.RingTheory.Ideal.Norm": [
+   "Mathlib.RingTheory.Ideal.Norm.AbsNorm",
+   "Mathlib.RingTheory.Ideal.Norm.RelNorm"
+  ],
+  "Mathlib.RingTheory.Ideal.Quotient": [
+   "Mathlib.RingTheory.Ideal.Quotient.Basic",
+   "Mathlib.RingTheory.Ideal.Quotient.ChineseRemainder",
+   "Mathlib.RingTheory.Ideal.Quotient.Defs",
+   "Mathlib.RingTheory.Ideal.Quotient.HasFiniteQuotients",
+   "Mathlib.RingTheory.Ideal.Quotient.Index",
+   "Mathlib.RingTheory.Ideal.Quotient.Noetherian",
+   "Mathlib.RingTheory.Ideal.Quotient.Operations",
+   "Mathlib.RingTheory.Ideal.Quotient.Over",
+   "Mathlib.RingTheory.Ideal.Quotient.PowTransition"
+  ],
+  "Mathlib.RingTheory.IntegralClosure": [
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Basic",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Basic",
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Defs",
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Ideal",
+   "Mathlib.RingTheory.IntegralClosure.GoingDown",
+   "Mathlib.RingTheory.IntegralClosure.IntegralRestrict",
+   "Mathlib.RingTheory.IntegralClosure.IntegrallyClosed",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.AlmostIntegral",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.Defs",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Defs"
+  ],
+  "Mathlib.RingTheory.Jacobson": [
+   "Mathlib.RingTheory.Jacobson.Artinian",
+   "Mathlib.RingTheory.Jacobson.Polynomial",
+   "Mathlib.RingTheory.Jacobson.Radical",
+   "Mathlib.RingTheory.Jacobson.Ring",
+   "Mathlib.RingTheory.Jacobson.Semiprimary"
+  ],
+  "Mathlib.RingTheory.JacobsonIdeal": [
+   "Mathlib.RingTheory.Jacobson.Ideal"
+  ],
+  "Mathlib.RingTheory.Kaehler": [
+   "Mathlib.RingTheory.Kaehler.Basic"
+  ],
+  "Mathlib.RingTheory.LocalProperties": [
+   "Mathlib.RingTheory.LocalProperties.Basic",
+   "Mathlib.RingTheory.LocalProperties.Exactness",
+   "Mathlib.RingTheory.LocalProperties.FinitePresentation",
+   "Mathlib.RingTheory.LocalProperties.Injective",
+   "Mathlib.RingTheory.LocalProperties.InjectiveDimension",
+   "Mathlib.RingTheory.LocalProperties.IntegrallyClosed",
+   "Mathlib.RingTheory.LocalProperties.Projective",
+   "Mathlib.RingTheory.LocalProperties.ProjectiveDimension",
+   "Mathlib.RingTheory.LocalProperties.Reduced",
+   "Mathlib.RingTheory.LocalProperties.Semilocal",
+   "Mathlib.RingTheory.LocalProperties.Submodule"
+  ],
+  "Mathlib.RingTheory.Localization.AtPrime": [
+   "Mathlib.RingTheory.Localization.AtPrime.Basic",
+   "Mathlib.RingTheory.Localization.AtPrime.Extension"
+  ],
+  "Mathlib.RingTheory.MvPolynomial.NewtonIdentities": [
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.NewtonIdentities"
+  ],
+  "Mathlib.RingTheory.MvPolynomial.Symmetric": [
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.Defs",
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.FundamentalTheorem"
+  ],
+  "Mathlib.RingTheory.Nilpotent": [
+   "Mathlib.RingTheory.Nilpotent.Basic",
+   "Mathlib.RingTheory.Nilpotent.Defs",
+   "Mathlib.RingTheory.Nilpotent.Exp",
+   "Mathlib.RingTheory.Nilpotent.GeometricallyReduced",
+   "Mathlib.RingTheory.Nilpotent.Lemmas"
+  ],
+  "Mathlib.RingTheory.Noetherian": [
+   "Mathlib.RingTheory.Noetherian.Basic",
+   "Mathlib.RingTheory.Noetherian.Defs",
+   "Mathlib.RingTheory.Noetherian.Filter",
+   "Mathlib.RingTheory.Noetherian.Nilpotent",
+   "Mathlib.RingTheory.Noetherian.OfPrime",
+   "Mathlib.RingTheory.Noetherian.Orzech",
+   "Mathlib.RingTheory.Noetherian.UniqueFactorizationDomain"
+  ],
+  "Mathlib.RingTheory.Norm": [
+   "Mathlib.RingTheory.Norm.Basic",
+   "Mathlib.RingTheory.Norm.Defs",
+   "Mathlib.RingTheory.Norm.Transitivity"
+  ],
+  "Mathlib.RingTheory.QuotientNilpotent": [
+   "Mathlib.RingTheory.Ideal.Quotient.Nilpotent"
+  ],
+  "Mathlib.RingTheory.SimpleModule": [
+   "Mathlib.RingTheory.SimpleModule.Basic",
+   "Mathlib.RingTheory.SimpleModule.InjectiveProjective",
+   "Mathlib.RingTheory.SimpleModule.IsAlgClosed",
+   "Mathlib.RingTheory.SimpleModule.Isotypic",
+   "Mathlib.RingTheory.SimpleModule.Rank",
+   "Mathlib.RingTheory.SimpleModule.WedderburnArtin"
+  ],
+  "Mathlib.RingTheory.Subring.Pointwise": [
+   "Mathlib.Algebra.Ring.Subring.Pointwise"
+  ],
+  "Mathlib.RingTheory.Subsemiring.Pointwise": [
+   "Mathlib.Algebra.Ring.Subsemiring.Pointwise"
+  ],
+  "Mathlib.RingTheory.TensorProduct": [
+   "Mathlib.RingTheory.TensorProduct.Basic",
+   "Mathlib.RingTheory.TensorProduct.DirectLimitFG",
+   "Mathlib.RingTheory.TensorProduct.Finite",
+   "Mathlib.RingTheory.TensorProduct.Free",
+   "Mathlib.RingTheory.TensorProduct.IncludeLeftSubRight",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeFree",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeHom",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangePi",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeRightExact",
+   "Mathlib.RingTheory.TensorProduct.Maps",
+   "Mathlib.RingTheory.TensorProduct.MonoidAlgebra",
+   "Mathlib.RingTheory.TensorProduct.MvPolynomial",
+   "Mathlib.RingTheory.TensorProduct.Nontrivial",
+   "Mathlib.RingTheory.TensorProduct.Pi",
+   "Mathlib.RingTheory.TensorProduct.Quotient"
+  ],
+  "Mathlib.RingTheory.Trace": [
+   "Mathlib.RingTheory.Trace.Basic",
+   "Mathlib.RingTheory.Trace.Defs",
+   "Mathlib.RingTheory.Trace.Quotient"
+  ],
+  "Mathlib.RingTheory.UniqueFactorizationDomain": [
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Basic",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.ClassGroup",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Defs",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.FactorSet",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Finite",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Finsupp",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.GCDMonoid",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Ideal",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Kaplansky",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Localization",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Moebius",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicative",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicity",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Nat",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.NormalizedFactors"
+  ],
+  "Mathlib.Tactic.Clear!": [
+   "Mathlib.Tactic.ClearExclamation"
+  ],
+  "Mathlib.Tactic.Congr!": [
+   "Mathlib.Tactic.CongrExclamation"
+  ],
+  "Mathlib.Tactic.Congrm": [
+   "Mathlib.Tactic.CongrM"
+  ],
+  "Mathlib.Tactic.Linarith.Elimination": [
+   "Mathlib.Tactic.Linarith.Oracle.FourierMotzkin"
+  ],
+  "Mathlib.Tactic.Widget.Congrm": [
+   "Mathlib.Tactic.Widget.CongrM"
+  ],
+  "Mathlib.Tactic.Widget.Gcongr": [
+   "Mathlib.Tactic.Widget.GCongr"
+  ],
+  "Mathlib.Testing.SlimCheck.Functions": [
+   "Mathlib.Testing.Plausible.Functions"
+  ],
+  "Mathlib.Topology.Algebra.Module.CharacterSpace": [
+   "Mathlib.Topology.Algebra.Module.Spaces.CharacterSpace"
+  ],
+  "Mathlib.Topology.Algebra.Order.Compact": [
+   "Mathlib.Topology.Order.Compact"
+  ],
+  "Mathlib.Topology.Algebra.Order.ExtrClosure": [
+   "Mathlib.Topology.Order.ExtrClosure"
+  ],
+  "Mathlib.Topology.Algebra.Order.Filter": [
+   "Mathlib.Topology.Order.Filter"
+  ],
+  "Mathlib.Topology.Algebra.Order.MonotoneContinuity": [
+   "Mathlib.Topology.Order.MonotoneContinuity"
+  ],
+  "Mathlib.Topology.Algebra.Order.MonotoneConvergence": [
+   "Mathlib.Topology.Order.MonotoneConvergence"
+  ],
+  "Mathlib.Topology.Algebra.Order.Rolle": [
+   "Mathlib.Topology.Order.Rolle"
+  ],
+  "Mathlib.Topology.Algebra.Order.T5": [
+   "Mathlib.Topology.Order.T5"
+  ],
+  "Mathlib.Topology.Category.Profinite.Nobeling": [
+   "Mathlib.Topology.Category.Profinite.Nobeling.Basic",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Induction",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Span",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Successor",
+   "Mathlib.Topology.Category.Profinite.Nobeling.ZeroLimit"
+  ],
+  "Mathlib.Topology.Compactification.OnePoint": [
+   "Mathlib.Topology.Compactification.OnePoint.Basic"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Basic": [
+   "Mathlib.Topology.ContinuousMap.Basic"
+  ],
+  "Mathlib.Topology.ContinuousFunction.CocompactMap": [
+   "Mathlib.Topology.ContinuousMap.CocompactMap"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Ideals": [
+   "Mathlib.Topology.ContinuousMap.Ideals"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Polynomial": [
+   "Mathlib.Topology.ContinuousMap.Polynomial"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Sigma": [
+   "Mathlib.Topology.ContinuousMap.Sigma"
+  ],
+  "Mathlib.Topology.ContinuousFunction.StoneWeierstrass": [
+   "Mathlib.Topology.ContinuousMap.StoneWeierstrass"
+  ],
+  "Mathlib.Topology.ContinuousFunction.T0Sierpinski": [
+   "Mathlib.Topology.ContinuousMap.T0Sierpinski"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Units": [
+   "Mathlib.Topology.ContinuousMap.Units"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Weierstrass": [
+   "Mathlib.Topology.ContinuousMap.Weierstrass"
+  ],
+  "Mathlib.Topology.ContinuousFunction.ZeroAtInfty": [
+   "Mathlib.Topology.ContinuousMap.ZeroAtInfty"
+  ],
+  "Mathlib.Topology.CountableSeparatingOn": [
+   "Mathlib.Topology.Separation.CountableSeparatingOn"
+  ],
+  "Mathlib.Topology.Covering": [
+   "Mathlib.Topology.Covering.Basic",
+   "Mathlib.Topology.Covering.AddCircle",
+   "Mathlib.Topology.Covering.Quotient"
+  ],
+  "Mathlib.Topology.GDelta": [
+   "Mathlib.Topology.GDelta.Basic",
+   "Mathlib.Topology.GDelta.MetrizableSpace"
+  ],
+  "Mathlib.Topology.Homeomorph": [
+   "Mathlib.Topology.Homeomorph.Defs",
+   "Mathlib.Topology.Homeomorph.Lemmas",
+   "Mathlib.Topology.Homeomorph.Quotient",
+   "Mathlib.Topology.Homeomorph.TransferInstance"
+  ],
+  "Mathlib.Topology.Instances.AddCircle": [
+   "Mathlib.Topology.Instances.AddCircle.Defs",
+   "Mathlib.Topology.Instances.AddCircle.DenseSubgroup",
+   "Mathlib.Topology.Instances.AddCircle.Real"
+  ],
+  "Mathlib.Topology.Instances.ENNReal": [
+   "Mathlib.Topology.Instances.ENNReal.ENatENNReal",
+   "Mathlib.Topology.Instances.ENNReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.EReal": [
+   "Mathlib.Topology.Instances.EReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.NNReal": [
+   "Mathlib.Topology.Instances.NNReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.Real": [
+   "Mathlib.Topology.Instances.Real.Lemmas"
+  ],
+  "Mathlib.Topology.LocalExtr": [
+   "Mathlib.Topology.Order.LocalExtr"
+  ],
+  "Mathlib.Topology.Maps": [
+   "Mathlib.Topology.Maps.Basic",
+   "Mathlib.Topology.Maps.Strict.Basic",
+   "Mathlib.Topology.Maps.OpenQuotient",
+   "Mathlib.Topology.Maps.Proper.CompactlyGenerated",
+   "Mathlib.Topology.Maps.Proper.UniversallyClosed",
+   "Mathlib.Topology.Maps.Strict.Group",
+   "Mathlib.Topology.Maps.Strict.Module"
+  ],
+  "Mathlib.Topology.PartialHomeomorph": [
+   "Mathlib.Topology.PartialHomeomorph.Defs"
+  ],
+  "Mathlib.Topology.ProperMap": [
+   "Mathlib.Topology.Maps.Proper.Basic"
+  ],
+  "Mathlib.Topology.Semicontinuous": [
+   "Mathlib.Topology.Semicontinuity.Basic"
+  ],
+  "Mathlib.Topology.Separation": [
+   "Mathlib.Topology.Separation.Basic",
+   "Mathlib.Topology.Separation.AlexandrovDiscrete",
+   "Mathlib.Topology.Separation.CompletelyRegular",
+   "Mathlib.Topology.Separation.Connected",
+   "Mathlib.Topology.Separation.DisjointCover",
+   "Mathlib.Topology.Separation.GDelta",
+   "Mathlib.Topology.Separation.Hausdorff",
+   "Mathlib.Topology.Separation.Lemmas",
+   "Mathlib.Topology.Separation.LinearUpperLowerSetTopology",
+   "Mathlib.Topology.Separation.PerfectlyNormal",
+   "Mathlib.Topology.Separation.Profinite",
+   "Mathlib.Topology.Separation.Regular",
+   "Mathlib.Topology.Separation.SeparatedNhds"
+  ]
+ },
+ "old_rev": "95f91f8e66f14c0eecde8da6dbfeff39d44cbd81",
+ "renames": {
+  "Mathlib.Algebra.Algebra.Spectrum": [
+   "Mathlib.Algebra.Algebra.Spectrum.Basic"
+  ],
+  "Mathlib.Algebra.BigOperators.Finsupp": [
+   "Mathlib.Algebra.BigOperators.Finsupp.Basic"
+  ],
+  "Mathlib.Algebra.Category.GroupCat.Kernels": [
+   "Mathlib.Algebra.Category.Grp.Kernels"
+  ],
+  "Mathlib.Algebra.CovariantAndContravariant": [
+   "Mathlib.Algebra.Order.Monoid.Unbundled.Defs"
+  ],
+  "Mathlib.Algebra.Function.Finite": [
+   "Mathlib.Algebra.Notation.FiniteSupport"
+  ],
+  "Mathlib.Algebra.Group.TypeTags": [
+   "Mathlib.Algebra.Group.TypeTags.Basic"
+  ],
+  "Mathlib.Algebra.Group.UniqueProds": [
+   "Mathlib.Algebra.Group.UniqueProds.Basic"
+  ],
+  "Mathlib.Algebra.GroupPower.Identities": [
+   "Mathlib.Algebra.Ring.Identities"
+  ],
+  "Mathlib.Algebra.GroupPower.NegOnePow": [
+   "Mathlib.Algebra.Ring.NegOnePow"
+  ],
+  "Mathlib.Algebra.GroupRingAction.Invariant": [
+   "Mathlib.Algebra.Ring.Action.Invariant"
+  ],
+  "Mathlib.Algebra.GroupRingAction.Subobjects": [
+   "Mathlib.Algebra.Ring.Action.Subobjects"
+  ],
+  "Mathlib.Algebra.Invertible.Defs": [
+   "Mathlib.Algebra.Group.Invertible.Defs"
+  ],
+  "Mathlib.Algebra.Module.DirectLimitAndTensorProduct": [
+   "Mathlib.LinearAlgebra.TensorProduct.DirectLimit"
+  ],
+  "Mathlib.Algebra.Module.Opposites": [
+   "Mathlib.Algebra.Module.Equiv.Opposite"
+  ],
+  "Mathlib.Algebra.Module.Torsion": [
+   "Mathlib.Algebra.Module.Torsion.Basic"
+  ],
+  "Mathlib.Algebra.Order.AbsoluteValue": [
+   "Mathlib.Algebra.Order.AbsoluteValue.Basic"
+  ],
+  "Mathlib.Algebra.Order.EuclideanAbsoluteValue": [
+   "Mathlib.Algebra.Order.AbsoluteValue.Euclidean"
+  ],
+  "Mathlib.Algebra.Order.Support": [
+   "Mathlib.Algebra.Order.Group.Indicator"
+  ],
+  "Mathlib.AlgebraicGeometry.PrimeSpectrum.IsOpenComapC": [
+   "Mathlib.RingTheory.Spectrum.Prime.IsOpenComapC"
+  ],
+  "Mathlib.AlgebraicTopology.SimplicialObject": [
+   "Mathlib.AlgebraicTopology.SimplicialObject.Basic"
+  ],
+  "Mathlib.AlgebraicTopology.SplitSimplicialObject": [
+   "Mathlib.AlgebraicTopology.SimplicialObject.Split"
+  ],
+  "Mathlib.Analysis.Calculus.ContDiff.IsROrC": [
+   "Mathlib.Analysis.Calculus.ContDiff.RCLike"
+  ],
+  "Mathlib.Analysis.Calculus.Dslope": [
+   "Mathlib.Analysis.Calculus.DSlope"
+  ],
+  "Mathlib.Analysis.Calculus.IteratedDeriv": [
+   "Mathlib.Analysis.Calculus.IteratedDeriv.Defs"
+  ],
+  "Mathlib.Analysis.Calculus.Series": [
+   "Mathlib.Analysis.Calculus.SmoothSeries"
+  ],
+  "Mathlib.Analysis.Matrix": [
+   "Mathlib.Analysis.Matrix.Normed"
+  ],
+  "Mathlib.Analysis.Normed.Ring.Seminorm": [
+   "Mathlib.Analysis.Normed.Unbundled.RingSeminorm"
+  ],
+  "Mathlib.Analysis.NormedSpace.AddTorsor": [
+   "Mathlib.Analysis.Normed.Affine.AddTorsor"
+  ],
+  "Mathlib.Analysis.NormedSpace.AddTorsorBases": [
+   "Mathlib.Analysis.Normed.Affine.AddTorsorBases"
+  ],
+  "Mathlib.Analysis.NormedSpace.AffineIsometry": [
+   "Mathlib.Analysis.Normed.Affine.Isometry"
+  ],
+  "Mathlib.Analysis.NormedSpace.Algebra": [
+   "Mathlib.Analysis.Normed.Algebra.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.BallAction": [
+   "Mathlib.Analysis.Normed.Module.Ball.Action"
+  ],
+  "Mathlib.Analysis.NormedSpace.BanachSteinhaus": [
+   "Mathlib.Analysis.Normed.Operator.BanachSteinhaus"
+  ],
+  "Mathlib.Analysis.NormedSpace.BoundedLinearMaps": [
+   "Mathlib.Analysis.Normed.Operator.BoundedLinearMaps"
+  ],
+  "Mathlib.Analysis.NormedSpace.CompactOperator": [
+   "Mathlib.Analysis.Normed.Operator.Compact.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.ConformalLinearMap": [
+   "Mathlib.Analysis.Normed.Operator.Conformal"
+  ],
+  "Mathlib.Analysis.NormedSpace.Connected": [
+   "Mathlib.Analysis.Normed.Module.Connected"
+  ],
+  "Mathlib.Analysis.NormedSpace.ContinuousLinearMap": [
+   "Mathlib.Analysis.Normed.Operator.ContinuousLinearMap"
+  ],
+  "Mathlib.Analysis.NormedSpace.Extr": [
+   "Mathlib.Analysis.Normed.Module.Extr"
+  ],
+  "Mathlib.Analysis.NormedSpace.FiniteDimension": [
+   "Mathlib.Analysis.Normed.Module.FiniteDimension"
+  ],
+  "Mathlib.Analysis.NormedSpace.HomeomorphBall": [
+   "Mathlib.Analysis.Normed.Module.Ball.Homeomorph"
+  ],
+  "Mathlib.Analysis.NormedSpace.Int": [
+   "Mathlib.Analysis.Normed.Ring.Int"
+  ],
+  "Mathlib.Analysis.NormedSpace.IsROrC": [
+   "Mathlib.Analysis.Normed.Module.RCLike.Basic"
+  ],
+  "Mathlib.Analysis.NormedSpace.LinearIsometry": [
+   "Mathlib.Analysis.Normed.Operator.LinearIsometry"
+  ],
+  "Mathlib.Analysis.NormedSpace.MStructure": [
+   "Mathlib.Analysis.Normed.Module.MStructure"
+  ],
+  "Mathlib.Analysis.NormedSpace.MazurUlam": [
+   "Mathlib.Analysis.Normed.Affine.MazurUlam"
+  ],
+  "Mathlib.Analysis.NormedSpace.Multilinear.Curry": [
+   "Mathlib.Analysis.Normed.Module.Multilinear.Curry"
+  ],
+  "Mathlib.Analysis.NormedSpace.Pointwise": [
+   "Mathlib.Analysis.Normed.Module.Ball.Pointwise"
+  ],
+  "Mathlib.Analysis.NormedSpace.Ray": [
+   "Mathlib.Analysis.Normed.Module.Ray"
+  ],
+  "Mathlib.Analysis.NormedSpace.RieszLemma": [
+   "Mathlib.Analysis.Normed.Module.RieszLemma"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Exponential": [
+   "Mathlib.Analysis.CStarAlgebra.Exponential"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Multiplier": [
+   "Mathlib.Analysis.CStarAlgebra.Multiplier"
+  ],
+  "Mathlib.Analysis.NormedSpace.Star.Unitization": [
+   "Mathlib.Analysis.CStarAlgebra.Unitization"
+  ],
+  "Mathlib.Analysis.NormedSpace.Unitization": [
+   "Mathlib.Analysis.Normed.Algebra.Unitization"
+  ],
+  "Mathlib.Analysis.NormedSpace.Units": [
+   "Mathlib.Analysis.Normed.Ring.Units"
+  ],
+  "Mathlib.Analysis.NormedSpace.lpSpace": [
+   "Mathlib.Analysis.Normed.Lp.lpSpace"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Generator": [
+   "Mathlib.CategoryTheory.Generator.Abelian"
+  ],
+  "Mathlib.CategoryTheory.Abelian.InjectiveResolution": [
+   "Mathlib.CategoryTheory.Abelian.Injective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Abelian.ProjectiveResolution": [
+   "Mathlib.CategoryTheory.Abelian.Projective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Adjunction.Lifting": [
+   "Mathlib.CategoryTheory.Adjunction.Lifting.Left"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Strict": [
+   "Mathlib.CategoryTheory.Bicategory.Strict.Basic"
+  ],
+  "Mathlib.CategoryTheory.Closed.FunctorCategory": [
+   "Mathlib.CategoryTheory.Monoidal.Closed.FunctorCategory.Groupoid"
+  ],
+  "Mathlib.CategoryTheory.ComposableArrows": [
+   "Mathlib.CategoryTheory.ComposableArrows.Basic"
+  ],
+  "Mathlib.CategoryTheory.DiscreteCategory": [
+   "Mathlib.CategoryTheory.Discrete.Basic"
+  ],
+  "Mathlib.CategoryTheory.Limits.FunctorCategory": [
+   "Mathlib.CategoryTheory.Limits.FunctorCategory.Basic"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Generator": [
+   "Mathlib.CategoryTheory.Generator.Preadditive"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Injective": [
+   "Mathlib.CategoryTheory.Preadditive.Injective.Basic"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.InjectiveResolution": [
+   "Mathlib.CategoryTheory.Preadditive.Injective.Resolution"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.Projective": [
+   "Mathlib.CategoryTheory.Preadditive.Projective.Basic"
+  ],
+  "Mathlib.CategoryTheory.Preadditive.ProjectiveResolution": [
+   "Mathlib.CategoryTheory.Preadditive.Projective.Resolution"
+  ],
+  "Mathlib.Combinatorics.Additive.Behrend": [
+   "Mathlib.Combinatorics.Additive.AP.Three.Behrend"
+  ],
+  "Mathlib.Combinatorics.Composition": [
+   "Mathlib.Combinatorics.Enumerative.Composition"
+  ],
+  "Mathlib.Combinatorics.SetFamily.CauchyDavenport": [
+   "Mathlib.Combinatorics.Additive.CauchyDavenport"
+  ],
+  "Mathlib.Data.Complex.Cardinality": [
+   "Mathlib.Analysis.Complex.Cardinality"
+  ],
+  "Mathlib.Data.Complex.Determinant": [
+   "Mathlib.LinearAlgebra.Complex.Determinant"
+  ],
+  "Mathlib.Data.Complex.Module": [
+   "Mathlib.LinearAlgebra.Complex.Module"
+  ],
+  "Mathlib.Data.Complex.Orientation": [
+   "Mathlib.LinearAlgebra.Complex.Orientation"
+  ],
+  "Mathlib.Data.Finset.LocallyFinite": [
+   "Mathlib.Order.Interval.Finset.Basic"
+  ],
+  "Mathlib.Data.Finset.Pointwise.Interval": [
+   "Mathlib.Algebra.Group.Pointwise.Finset.Interval"
+  ],
+  "Mathlib.Data.Matrix.Kronecker": [
+   "Mathlib.LinearAlgebra.Matrix.Kronecker"
+  ],
+  "Mathlib.Data.Matrix.Notation": [
+   "Mathlib.LinearAlgebra.Matrix.Notation"
+  ],
+  "Mathlib.Data.Matroid.Init": [
+   "Mathlib.Combinatorics.Matroid.Init"
+  ],
+  "Mathlib.Data.MvPolynomial.Comap": [
+   "Mathlib.Algebra.MvPolynomial.Comap"
+  ],
+  "Mathlib.Data.MvPolynomial.CommRing": [
+   "Mathlib.Algebra.MvPolynomial.CommRing"
+  ],
+  "Mathlib.Data.MvPolynomial.Counit": [
+   "Mathlib.Algebra.MvPolynomial.Counit"
+  ],
+  "Mathlib.Data.MvPolynomial.Derivation": [
+   "Mathlib.Algebra.MvPolynomial.Derivation"
+  ],
+  "Mathlib.Data.MvPolynomial.Invertible": [
+   "Mathlib.Algebra.MvPolynomial.Invertible"
+  ],
+  "Mathlib.Data.MvPolynomial.Monad": [
+   "Mathlib.Algebra.MvPolynomial.Monad"
+  ],
+  "Mathlib.Data.MvPolynomial.Polynomial": [
+   "Mathlib.Algebra.MvPolynomial.Polynomial"
+  ],
+  "Mathlib.Data.MvPolynomial.Rename": [
+   "Mathlib.Algebra.MvPolynomial.Rename"
+  ],
+  "Mathlib.Data.MvPolynomial.Supported": [
+   "Mathlib.Algebra.MvPolynomial.Supported"
+  ],
+  "Mathlib.Data.Polynomial.CancelLeads": [
+   "Mathlib.Algebra.Polynomial.CancelLeads"
+  ],
+  "Mathlib.Data.Polynomial.Coeff": [
+   "Mathlib.Algebra.Polynomial.Coeff"
+  ],
+  "Mathlib.Data.Polynomial.Degree.CardPowDegree": [
+   "Mathlib.Algebra.Polynomial.Degree.CardPowDegree"
+  ],
+  "Mathlib.Data.Polynomial.Degree.TrailingDegree": [
+   "Mathlib.Algebra.Polynomial.Degree.TrailingDegree"
+  ],
+  "Mathlib.Data.Polynomial.DenomsClearable": [
+   "Mathlib.Algebra.Polynomial.DenomsClearable"
+  ],
+  "Mathlib.Data.Polynomial.Derivation": [
+   "Mathlib.Algebra.Polynomial.Derivation"
+  ],
+  "Mathlib.Data.Polynomial.Expand": [
+   "Mathlib.Algebra.Polynomial.Expand"
+  ],
+  "Mathlib.Data.Polynomial.FieldDivision": [
+   "Mathlib.Algebra.Polynomial.FieldDivision"
+  ],
+  "Mathlib.Data.Polynomial.HasseDeriv": [
+   "Mathlib.Algebra.Polynomial.HasseDeriv"
+  ],
+  "Mathlib.Data.Polynomial.Identities": [
+   "Mathlib.Algebra.Polynomial.Identities"
+  ],
+  "Mathlib.Data.Polynomial.Inductions": [
+   "Mathlib.Algebra.Polynomial.Inductions"
+  ],
+  "Mathlib.Data.Polynomial.Laurent": [
+   "Mathlib.Algebra.Polynomial.Laurent"
+  ],
+  "Mathlib.Data.Polynomial.Mirror": [
+   "Mathlib.Algebra.Polynomial.Mirror"
+  ],
+  "Mathlib.Data.Polynomial.Monic": [
+   "Mathlib.Algebra.Polynomial.Monic"
+  ],
+  "Mathlib.Data.Polynomial.Monomial": [
+   "Mathlib.Algebra.Polynomial.Monomial"
+  ],
+  "Mathlib.Data.Polynomial.Reverse": [
+   "Mathlib.Algebra.Polynomial.Reverse"
+  ],
+  "Mathlib.Data.Polynomial.UnitTrinomial": [
+   "Mathlib.Algebra.Polynomial.UnitTrinomial"
+  ],
+  "Mathlib.Data.Real.Cardinality": [
+   "Mathlib.Analysis.Real.Cardinality"
+  ],
+  "Mathlib.Data.Real.CauSeq": [
+   "Mathlib.Algebra.Order.CauSeq.Basic"
+  ],
+  "Mathlib.Data.Real.CauSeqCompletion": [
+   "Mathlib.Algebra.Order.CauSeq.Completion"
+  ],
+  "Mathlib.Data.Real.Hyperreal": [
+   "Mathlib.Analysis.Real.Hyperreal"
+  ],
+  "Mathlib.Data.Real.Pi.Wallis": [
+   "Mathlib.Analysis.Real.Pi.Wallis"
+  ],
+  "Mathlib.Data.Set.Intervals.Disjoint": [
+   "Mathlib.Order.Interval.Set.Disjoint"
+  ],
+  "Mathlib.Data.Set.Intervals.Group": [
+   "Mathlib.Algebra.Order.Interval.Set.Group"
+  ],
+  "Mathlib.Data.Set.Intervals.Image": [
+   "Mathlib.Order.Interval.Set.Image"
+  ],
+  "Mathlib.Data.Set.Intervals.Infinite": [
+   "Mathlib.Order.Interval.Set.Infinite"
+  ],
+  "Mathlib.Data.Set.Intervals.IsoIoo": [
+   "Mathlib.Order.Interval.Set.IsoIoo"
+  ],
+  "Mathlib.Data.Set.Intervals.Monoid": [
+   "Mathlib.Algebra.Order.Interval.Set.Monoid"
+  ],
+  "Mathlib.Data.Set.Intervals.Monotone": [
+   "Mathlib.Order.Interval.Set.Monotone"
+  ],
+  "Mathlib.Data.Set.Intervals.OrdConnected": [
+   "Mathlib.Order.Interval.Set.OrdConnected"
+  ],
+  "Mathlib.Data.Set.Intervals.OrdConnectedComponent": [
+   "Mathlib.Order.Interval.Set.OrdConnectedComponent"
+  ],
+  "Mathlib.Data.Set.Intervals.Pi": [
+   "Mathlib.Order.Interval.Set.Pi"
+  ],
+  "Mathlib.Data.Set.Intervals.ProjIcc": [
+   "Mathlib.Order.Interval.Set.ProjIcc"
+  ],
+  "Mathlib.Data.Set.Intervals.SurjOn": [
+   "Mathlib.Order.Interval.Set.SurjOn"
+  ],
+  "Mathlib.Data.Set.Intervals.UnorderedInterval": [
+   "Mathlib.Order.Interval.Set.UnorderedInterval"
+  ],
+  "Mathlib.Data.Set.Pointwise.Iterate": [
+   "Mathlib.Dynamics.FixedPoints.Prufer"
+  ],
+  "Mathlib.Data.Set.Pointwise.ListOfFn": [
+   "Mathlib.Algebra.Group.Pointwise.Set.ListOfFn"
+  ],
+  "Mathlib.Data.Vector": [
+   "Mathlib.Data.Vector.Defs"
+  ],
+  "Mathlib.Data.ZMod.Module": [
+   "Mathlib.Algebra.Module.ZMod"
+  ],
+  "Mathlib.Dynamics.PeriodicPts": [
+   "Mathlib.Dynamics.PeriodicPts.Defs"
+  ],
+  "Mathlib.FieldTheory.IntermediateField": [
+   "Mathlib.FieldTheory.IntermediateField.Basic"
+  ],
+  "Mathlib.FieldTheory.NormalClosure": [
+   "Mathlib.FieldTheory.Normal.Closure"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Option": [
+   "Mathlib.Algebra.Group.Action.Option"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Sigma": [
+   "Mathlib.Algebra.Group.Action.Sigma"
+  ],
+  "Mathlib.GroupTheory.GroupAction.Sum": [
+   "Mathlib.Algebra.Group.Action.Sum"
+  ],
+  "Mathlib.GroupTheory.Subgroup.Actions": [
+   "Mathlib.Algebra.Group.Subgroup.Actions"
+  ],
+  "Mathlib.GroupTheory.Subsemigroup.Membership": [
+   "Mathlib.Algebra.Group.Subsemigroup.Membership"
+  ],
+  "Mathlib.GroupTheory.Subsemigroup.Operations": [
+   "Mathlib.Algebra.Group.Subsemigroup.Operations"
+  ],
+  "Mathlib.Init.Data.Nat.Notation": [
+   "Mathlib.Data.Nat.Notation"
+  ],
+  "Mathlib.Init.Data.Ordering.Lemmas": [
+   "Mathlib.Data.Ordering.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.AffineSpace.Basic": [
+   "Mathlib.LinearAlgebra.AffineSpace.Defs"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.Determinant": [
+   "Mathlib.LinearAlgebra.Matrix.Determinant.Basic"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.LDL": [
+   "Mathlib.Analysis.Matrix.LDL"
+  ],
+  "Mathlib.LinearAlgebra.QuotientPi": [
+   "Mathlib.LinearAlgebra.Quotient.Pi"
+  ],
+  "Mathlib.LinearAlgebra.TensorPower": [
+   "Mathlib.LinearAlgebra.TensorPower.Basic"
+  ],
+  "Mathlib.Mathport.Notation": [
+   "Mathlib.Util.Notation3"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Polish": [
+   "Mathlib.MeasureTheory.Constructions.Polish.Basic"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Prod.Basic": [
+   "Mathlib.MeasureTheory.Measure.Prod"
+  ],
+  "Mathlib.MeasureTheory.Constructions.Prod.Integral": [
+   "Mathlib.MeasureTheory.Integral.Prod"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.Jordan": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Jordan"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.Lebesgue": [
+   "Mathlib.MeasureTheory.Measure.Decomposition.Lebesgue"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.SignedHahn": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Hahn"
+  ],
+  "Mathlib.MeasureTheory.Decomposition.SignedLebesgue": [
+   "Mathlib.MeasureTheory.VectorMeasure.Decomposition.Lebesgue"
+  ],
+  "Mathlib.MeasureTheory.Integral.FundThmCalculus": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus"
+  ],
+  "Mathlib.MeasureTheory.Integral.Periodic": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Periodic"
+  ],
+  "Mathlib.MeasureTheory.Integral.VitaliCaratheodory": [
+   "Mathlib.MeasureTheory.Integral.Bochner.VitaliCaratheodory"
+  ],
+  "Mathlib.MeasureTheory.Lattice": [
+   "Mathlib.MeasureTheory.Order.Lattice"
+  ],
+  "Mathlib.MeasureTheory.Measure.VectorMeasure": [
+   "Mathlib.MeasureTheory.VectorMeasure.Basic"
+  ],
+  "Mathlib.MeasureTheory.Measure.WithDensityVectorMeasure": [
+   "Mathlib.MeasureTheory.VectorMeasure.WithDensity"
+  ],
+  "Mathlib.NumberTheory.DiophantineApproximation": [
+   "Mathlib.NumberTheory.DiophantineApproximation.Basic"
+  ],
+  "Mathlib.NumberTheory.LegendreSymbol.GaussSum": [
+   "Mathlib.NumberTheory.GaussSum"
+  ],
+  "Mathlib.NumberTheory.LegendreSymbol.MulCharacter": [
+   "Mathlib.NumberTheory.MulChar.Basic"
+  ],
+  "Mathlib.NumberTheory.Liouville.Basic": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Basic"
+  ],
+  "Mathlib.NumberTheory.Liouville.LiouvilleNumber": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.LiouvilleNumber"
+  ],
+  "Mathlib.NumberTheory.Liouville.LiouvilleWith": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.LiouvilleWith"
+  ],
+  "Mathlib.NumberTheory.Liouville.Measure": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Measure"
+  ],
+  "Mathlib.NumberTheory.Liouville.Residual": [
+   "Mathlib.NumberTheory.Transcendental.Liouville.Residual"
+  ],
+  "Mathlib.NumberTheory.Padics.Harmonic": [
+   "Mathlib.NumberTheory.Harmonic.Int"
+  ],
+  "Mathlib.NumberTheory.Padics.PadicVal": [
+   "Mathlib.NumberTheory.Padics.PadicVal.Basic"
+  ],
+  "Mathlib.NumberTheory.VonMangoldt": [
+   "Mathlib.NumberTheory.ArithmeticFunction.VonMangoldt"
+  ],
+  "Mathlib.Order.CompactlyGenerated": [
+   "Mathlib.Order.CompactlyGenerated.Basic"
+  ],
+  "Mathlib.Order.Filter.Archimedean": [
+   "Mathlib.Order.Filter.AtTopBot.Archimedean"
+  ],
+  "Mathlib.Order.Filter.Bases": [
+   "Mathlib.Order.Filter.Bases.Basic"
+  ],
+  "Mathlib.Order.Filter.Germ": [
+   "Mathlib.Order.Filter.Germ.Basic"
+  ],
+  "Mathlib.Order.Filter.ModEq": [
+   "Mathlib.Order.Filter.AtTopBot.ModEq"
+  ],
+  "Mathlib.Order.Filter.Ultrafilter": [
+   "Mathlib.Order.Filter.Ultrafilter.Defs"
+  ],
+  "Mathlib.Order.Interval": [
+   "Mathlib.Order.Interval.Basic"
+  ],
+  "Mathlib.Probability.Cdf": [
+   "Mathlib.Probability.CDF"
+  ],
+  "Mathlib.RingTheory.GradedAlgebra.HomogeneousIdeal": [
+   "Mathlib.RingTheory.GradedAlgebra.Homogeneous.Ideal"
+  ],
+  "Mathlib.RingTheory.JacobsonIdeal": [
+   "Mathlib.RingTheory.Jacobson.Ideal"
+  ],
+  "Mathlib.RingTheory.Kaehler": [
+   "Mathlib.RingTheory.Kaehler.Basic"
+  ],
+  "Mathlib.RingTheory.MvPolynomial.NewtonIdentities": [
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.NewtonIdentities"
+  ],
+  "Mathlib.RingTheory.QuotientNilpotent": [
+   "Mathlib.RingTheory.Ideal.Quotient.Nilpotent"
+  ],
+  "Mathlib.RingTheory.Subring.Pointwise": [
+   "Mathlib.Algebra.Ring.Subring.Pointwise"
+  ],
+  "Mathlib.RingTheory.Subsemiring.Pointwise": [
+   "Mathlib.Algebra.Ring.Subsemiring.Pointwise"
+  ],
+  "Mathlib.Tactic.Clear!": [
+   "Mathlib.Tactic.ClearExclamation"
+  ],
+  "Mathlib.Tactic.Congr!": [
+   "Mathlib.Tactic.CongrExclamation"
+  ],
+  "Mathlib.Tactic.Congrm": [
+   "Mathlib.Tactic.CongrM"
+  ],
+  "Mathlib.Tactic.Linarith.Elimination": [
+   "Mathlib.Tactic.Linarith.Oracle.FourierMotzkin"
+  ],
+  "Mathlib.Tactic.Widget.Congrm": [
+   "Mathlib.Tactic.Widget.CongrM"
+  ],
+  "Mathlib.Tactic.Widget.Gcongr": [
+   "Mathlib.Tactic.Widget.GCongr"
+  ],
+  "Mathlib.Testing.SlimCheck.Functions": [
+   "Mathlib.Testing.Plausible.Functions"
+  ],
+  "Mathlib.Topology.Algebra.Module.CharacterSpace": [
+   "Mathlib.Topology.Algebra.Module.Spaces.CharacterSpace"
+  ],
+  "Mathlib.Topology.Algebra.Order.Compact": [
+   "Mathlib.Topology.Order.Compact"
+  ],
+  "Mathlib.Topology.Algebra.Order.ExtrClosure": [
+   "Mathlib.Topology.Order.ExtrClosure"
+  ],
+  "Mathlib.Topology.Algebra.Order.Filter": [
+   "Mathlib.Topology.Order.Filter"
+  ],
+  "Mathlib.Topology.Algebra.Order.MonotoneContinuity": [
+   "Mathlib.Topology.Order.MonotoneContinuity"
+  ],
+  "Mathlib.Topology.Algebra.Order.MonotoneConvergence": [
+   "Mathlib.Topology.Order.MonotoneConvergence"
+  ],
+  "Mathlib.Topology.Algebra.Order.Rolle": [
+   "Mathlib.Topology.Order.Rolle"
+  ],
+  "Mathlib.Topology.Algebra.Order.T5": [
+   "Mathlib.Topology.Order.T5"
+  ],
+  "Mathlib.Topology.Compactification.OnePoint": [
+   "Mathlib.Topology.Compactification.OnePoint.Basic"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Basic": [
+   "Mathlib.Topology.ContinuousMap.Basic"
+  ],
+  "Mathlib.Topology.ContinuousFunction.CocompactMap": [
+   "Mathlib.Topology.ContinuousMap.CocompactMap"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Ideals": [
+   "Mathlib.Topology.ContinuousMap.Ideals"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Polynomial": [
+   "Mathlib.Topology.ContinuousMap.Polynomial"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Sigma": [
+   "Mathlib.Topology.ContinuousMap.Sigma"
+  ],
+  "Mathlib.Topology.ContinuousFunction.StoneWeierstrass": [
+   "Mathlib.Topology.ContinuousMap.StoneWeierstrass"
+  ],
+  "Mathlib.Topology.ContinuousFunction.T0Sierpinski": [
+   "Mathlib.Topology.ContinuousMap.T0Sierpinski"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Units": [
+   "Mathlib.Topology.ContinuousMap.Units"
+  ],
+  "Mathlib.Topology.ContinuousFunction.Weierstrass": [
+   "Mathlib.Topology.ContinuousMap.Weierstrass"
+  ],
+  "Mathlib.Topology.ContinuousFunction.ZeroAtInfty": [
+   "Mathlib.Topology.ContinuousMap.ZeroAtInfty"
+  ],
+  "Mathlib.Topology.CountableSeparatingOn": [
+   "Mathlib.Topology.Separation.CountableSeparatingOn"
+  ],
+  "Mathlib.Topology.LocalExtr": [
+   "Mathlib.Topology.Order.LocalExtr"
+  ],
+  "Mathlib.Topology.ProperMap": [
+   "Mathlib.Topology.Maps.Proper.Basic"
+  ],
+  "Mathlib.Topology.Semicontinuous": [
+   "Mathlib.Topology.Semicontinuity.Basic"
+  ]
+ },
+ "splits": {
+  "Mathlib.Algebra.AddTorsor": [
+   "Mathlib.Algebra.AddTorsor.Basic",
+   "Mathlib.Algebra.AddTorsor.Defs"
+  ],
+  "Mathlib.Algebra.BigOperators.Ring": [
+   "Mathlib.Algebra.BigOperators.Ring.Finset",
+   "Mathlib.Algebra.BigOperators.Ring.List",
+   "Mathlib.Algebra.BigOperators.Ring.Multiset",
+   "Mathlib.Algebra.BigOperators.Ring.Nat"
+  ],
+  "Mathlib.Algebra.Group.Pi": [
+   "Mathlib.Algebra.Group.Pi.Basic",
+   "Mathlib.Algebra.Group.Pi.Lemmas",
+   "Mathlib.Algebra.Group.Pi.Units"
+  ],
+  "Mathlib.Algebra.Group.Units": [
+   "Mathlib.Algebra.Group.Units.Basic",
+   "Mathlib.Algebra.Group.Units.Defs",
+   "Mathlib.Algebra.Group.Units.Opposite"
+  ],
+  "Mathlib.Algebra.Lie.Semisimple": [
+   "Mathlib.Algebra.Lie.Semisimple.Basic",
+   "Mathlib.Algebra.Lie.Semisimple.Defs",
+   "Mathlib.Algebra.Lie.Semisimple.Lemmas"
+  ],
+  "Mathlib.Algebra.Module.Equiv": [
+   "Mathlib.Algebra.Module.Equiv.Basic",
+   "Mathlib.Algebra.Module.Equiv.Defs"
+  ],
+  "Mathlib.Algebra.Module.LinearMap": [
+   "Mathlib.Algebra.Module.LinearMap.Basic",
+   "Mathlib.Algebra.Module.LinearMap.Defs",
+   "Mathlib.Algebra.Module.LinearMap.DivisionRing",
+   "Mathlib.Algebra.Module.LinearMap.End",
+   "Mathlib.Algebra.Module.LinearMap.FiniteRange",
+   "Mathlib.Algebra.Module.LinearMap.Index",
+   "Mathlib.Algebra.Module.LinearMap.Polynomial",
+   "Mathlib.Algebra.Module.LinearMap.Prod",
+   "Mathlib.Algebra.Module.LinearMap.Rat",
+   "Mathlib.Algebra.Module.LinearMap.Star"
+  ],
+  "Mathlib.Algebra.Module.LocalizedModule": [
+   "Mathlib.Algebra.Module.LocalizedModule.Basic",
+   "Mathlib.Algebra.Module.LocalizedModule.AtPrime",
+   "Mathlib.Algebra.Module.LocalizedModule.Away",
+   "Mathlib.Algebra.Module.LocalizedModule.Exact",
+   "Mathlib.Algebra.Module.LocalizedModule.Int",
+   "Mathlib.Algebra.Module.LocalizedModule.IsLocalization",
+   "Mathlib.Algebra.Module.LocalizedModule.Submodule"
+  ],
+  "Mathlib.Algebra.Order.Archimedean": [
+   "Mathlib.Algebra.Order.Archimedean.Basic",
+   "Mathlib.Algebra.Order.Archimedean.Real.Basic",
+   "Mathlib.Algebra.Order.Archimedean.Class",
+   "Mathlib.Algebra.Order.Archimedean.Defs",
+   "Mathlib.Algebra.Order.Archimedean.Hom",
+   "Mathlib.Algebra.Order.Archimedean.IndicatorCard",
+   "Mathlib.Algebra.Order.Archimedean.Real.Hom",
+   "Mathlib.Algebra.Order.Archimedean.Submonoid"
+  ],
+  "Mathlib.Algebra.Order.Floor": [
+   "Mathlib.Algebra.Order.Floor.Defs",
+   "Mathlib.Algebra.Order.Floor.Div",
+   "Mathlib.Algebra.Order.Floor.Extended",
+   "Mathlib.Algebra.Order.Floor.Ring",
+   "Mathlib.Algebra.Order.Floor.Semifield",
+   "Mathlib.Algebra.Order.Floor.Semiring"
+  ],
+  "Mathlib.Algebra.Order.Interval": [
+   "Mathlib.Algebra.Order.Interval.Basic",
+   "Mathlib.Algebra.Order.Interval.Finset.Basic",
+   "Mathlib.Algebra.Order.Interval.Finset.SuccPred",
+   "Mathlib.Algebra.Order.Interval.Multiset",
+   "Mathlib.Algebra.Order.Interval.Set.Instances",
+   "Mathlib.Algebra.Order.Interval.Set.SuccPred"
+  ],
+  "Mathlib.Algebra.Squarefree": [
+   "Mathlib.Algebra.Squarefree.Basic"
+  ],
+  "Mathlib.AlgebraicGeometry.EllipticCurve.Affine": [
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Basic",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.AddSubMap",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Formula",
+   "Mathlib.AlgebraicGeometry.EllipticCurve.Affine.Point"
+  ],
+  "Mathlib.AlgebraicTopology.Quasicategory": [
+   "Mathlib.AlgebraicTopology.Quasicategory.Basic",
+   "Mathlib.AlgebraicTopology.Quasicategory.InnerFibration",
+   "Mathlib.AlgebraicTopology.Quasicategory.Nerve",
+   "Mathlib.AlgebraicTopology.Quasicategory.StrictBicategory",
+   "Mathlib.AlgebraicTopology.Quasicategory.StrictSegal",
+   "Mathlib.AlgebraicTopology.Quasicategory.TwoTruncated"
+  ],
+  "Mathlib.AlgebraicTopology.SimplexCategory": [
+   "Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.Basic",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Monoidal",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Defs",
+   "Mathlib.AlgebraicTopology.SimplexCategory.DeltaZeroIter",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.EpiMono",
+   "Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.NormalForms",
+   "Mathlib.AlgebraicTopology.SimplexCategory.MorphismProperty",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Rev",
+   "Mathlib.AlgebraicTopology.SimplexCategory.SemiSimplexCategory",
+   "Mathlib.AlgebraicTopology.SimplexCategory.ToMkOne",
+   "Mathlib.AlgebraicTopology.SimplexCategory.Truncated"
+  ],
+  "Mathlib.AlgebraicTopology.SimplicialSet": [
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Basic",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Inner.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.IsUniquelyCodimOneFace",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Op",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Pairing",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PairingCore",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Rank",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.RankNat",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.RelativeCellComplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.UnionProd",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Boundary",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CategoryWithFibrations",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CoherentIso",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CompStruct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.CompStructTruncated",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Coskeletal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Degenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Dimension",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Finite",
+   "Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HoFunctorMonoidal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomologyZero",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.HomotopyInvariance",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homology.Nondegenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Homotopy",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HomotopyCat",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Horn",
+   "Mathlib.AlgebraicTopology.SimplicialSet.HornColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.KanComplex.MulStruct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Monoidal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Monomorphisms",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nerve",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveAdjunction",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveCodiscrete",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NerveNondegenerate",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplices",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesColimit",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonDegenerateSimplicesSubcomplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nonempty",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Nonsingular",
+   "Mathlib.AlgebraicTopology.SimplicialSet.NonsingularColimit",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Op",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Path",
+   "Mathlib.AlgebraicTopology.SimplicialSet.PiZero",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Presentable",
+   "Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplexOne",
+   "Mathlib.AlgebraicTopology.SimplicialSet.PushoutProduct",
+   "Mathlib.AlgebraicTopology.SimplicialSet.RegularEpi",
+   "Mathlib.AlgebraicTopology.SimplicialSet.RelativeMorphism",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Simplices",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Skeleton",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Splitting",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StdSimplexOne",
+   "Mathlib.AlgebraicTopology.SimplicialSet.StrictSegal",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexColimits",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexEvaluation",
+   "Mathlib.AlgebraicTopology.SimplicialSet.SubcomplexOp",
+   "Mathlib.AlgebraicTopology.SimplicialSet.Subdivision",
+   "Mathlib.AlgebraicTopology.SimplicialSet.TopAdj"
+  ],
+  "Mathlib.Analysis.Calculus.TangentCone": [
+   "Mathlib.Analysis.Calculus.TangentCone.Basic",
+   "Mathlib.Analysis.Calculus.TangentCone.Defs",
+   "Mathlib.Analysis.Calculus.TangentCone.DimOne",
+   "Mathlib.Analysis.Calculus.TangentCone.Pi",
+   "Mathlib.Analysis.Calculus.TangentCone.Prod",
+   "Mathlib.Analysis.Calculus.TangentCone.ProperSpace",
+   "Mathlib.Analysis.Calculus.TangentCone.Real",
+   "Mathlib.Analysis.Calculus.TangentCone.Seq"
+  ],
+  "Mathlib.Analysis.Complex.Polynomial": [
+   "Mathlib.Analysis.Complex.Polynomial.Basic",
+   "Mathlib.Analysis.Complex.Polynomial.GaussLucas",
+   "Mathlib.Analysis.Complex.Polynomial.UnitTrinomial"
+  ],
+  "Mathlib.Analysis.InnerProductSpace.Projection": [
+   "Mathlib.Analysis.InnerProductSpace.Projection.Basic",
+   "Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Minimal",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Reflection",
+   "Mathlib.Analysis.InnerProductSpace.Projection.Submodule"
+  ],
+  "Mathlib.Analysis.NormedSpace.OperatorNorm": [
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.Completeness",
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.NNNorm",
+   "Mathlib.Analysis.NormedSpace.OperatorNorm.Prod"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Gaussian": [
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform",
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral",
+   "Mathlib.Analysis.SpecialFunctions.Gaussian.PoissonSummation"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Integrals": [
+   "Mathlib.Analysis.SpecialFunctions.Integrals.Basic",
+   "Mathlib.Analysis.SpecialFunctions.Integrals.LogTrigonometric",
+   "Mathlib.Analysis.SpecialFunctions.Integrals.PosLogEqCircleAverage"
+  ],
+  "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev": [
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Basic",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ChebyshevGauss",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Extremal",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Orthogonality",
+   "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.RootsExtrema"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Injective": [
+   "Mathlib.CategoryTheory.Abelian.Injective.Basic",
+   "Mathlib.CategoryTheory.Abelian.Injective.Dimension",
+   "Mathlib.CategoryTheory.Abelian.Injective.Ext",
+   "Mathlib.CategoryTheory.Abelian.Injective.Extend"
+  ],
+  "Mathlib.CategoryTheory.Abelian.Projective": [
+   "Mathlib.CategoryTheory.Abelian.Projective.Basic",
+   "Mathlib.CategoryTheory.Abelian.Projective.Dimension",
+   "Mathlib.CategoryTheory.Abelian.Projective.Ext",
+   "Mathlib.CategoryTheory.Abelian.Projective.Extend"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Adjunction": [
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Basic",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Adj",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Cat",
+   "Mathlib.CategoryTheory.Bicategory.Adjunction.Mate"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.Functor": [
+   "Mathlib.CategoryTheory.Bicategory.Functor.Cat",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Cat.ObjectProperty",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Lax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.LocallyDiscrete",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Prelax",
+   "Mathlib.CategoryTheory.Bicategory.Functor.Pseudofunctor",
+   "Mathlib.CategoryTheory.Bicategory.Functor.StrictPseudofunctor",
+   "Mathlib.CategoryTheory.Bicategory.Functor.StrictlyUnitary"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.FunctorBicategory": [
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Lax",
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.FunctorBicategory.Pseudo"
+  ],
+  "Mathlib.CategoryTheory.Bicategory.NaturalTransformation": [
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Lax",
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Oplax",
+   "Mathlib.CategoryTheory.Bicategory.NaturalTransformation.Pseudo"
+  ],
+  "Mathlib.CategoryTheory.Comma": [
+   "Mathlib.CategoryTheory.Comma.Basic",
+   "Mathlib.CategoryTheory.Comma.Over.Basic",
+   "Mathlib.CategoryTheory.Comma.Presheaf.Basic",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Basic",
+   "Mathlib.CategoryTheory.Comma.Arrow",
+   "Mathlib.CategoryTheory.Comma.CardinalArrow",
+   "Mathlib.CategoryTheory.Comma.CatCommSq",
+   "Mathlib.CategoryTheory.Comma.Final",
+   "Mathlib.CategoryTheory.Comma.LocallySmall",
+   "Mathlib.CategoryTheory.Comma.Over.OverClass",
+   "Mathlib.CategoryTheory.Comma.Over.Pullback",
+   "Mathlib.CategoryTheory.Comma.Over.StrictInitial",
+   "Mathlib.CategoryTheory.Comma.Presheaf.Colimit",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.CommaMap",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Final",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Functor",
+   "Mathlib.CategoryTheory.Comma.StructuredArrow.Small"
+  ],
+  "Mathlib.CategoryTheory.FinCategory": [
+   "Mathlib.CategoryTheory.FinCategory.Basic",
+   "Mathlib.CategoryTheory.FinCategory.AsType"
+  ],
+  "Mathlib.CategoryTheory.Functor.ReflectsIso": [
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Basic",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Balanced",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Exact",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Jointly",
+   "Mathlib.CategoryTheory.Functor.ReflectsIso.Limits"
+  ],
+  "Mathlib.CategoryTheory.Generator": [
+   "Mathlib.CategoryTheory.Generator.Basic",
+   "Mathlib.CategoryTheory.Generator.HomologicalComplex",
+   "Mathlib.CategoryTheory.Generator.Indization",
+   "Mathlib.CategoryTheory.Generator.Presheaf",
+   "Mathlib.CategoryTheory.Generator.Sheaf",
+   "Mathlib.CategoryTheory.Generator.StrongGenerator",
+   "Mathlib.CategoryTheory.Generator.Type"
+  ],
+  "Mathlib.CategoryTheory.Limits.ConcreteCategory": [
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.Basic",
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.Filtered",
+   "Mathlib.CategoryTheory.Limits.ConcreteCategory.WithAlgebraicStructures"
+  ],
+  "Mathlib.CategoryTheory.Limits.Types": [
+   "Mathlib.CategoryTheory.Limits.Types.Coequalizers",
+   "Mathlib.CategoryTheory.Limits.Types.ColimitType",
+   "Mathlib.CategoryTheory.Limits.Types.ColimitTypeFiltered",
+   "Mathlib.CategoryTheory.Limits.Types.Colimits",
+   "Mathlib.CategoryTheory.Limits.Types.Coproducts",
+   "Mathlib.CategoryTheory.Limits.Types.End",
+   "Mathlib.CategoryTheory.Limits.Types.Equalizers",
+   "Mathlib.CategoryTheory.Limits.Types.Filtered",
+   "Mathlib.CategoryTheory.Limits.Types.Images",
+   "Mathlib.CategoryTheory.Limits.Types.Limits",
+   "Mathlib.CategoryTheory.Limits.Types.Multicoequalizer",
+   "Mathlib.CategoryTheory.Limits.Types.Multiequalizer",
+   "Mathlib.CategoryTheory.Limits.Types.PreservesLimit",
+   "Mathlib.CategoryTheory.Limits.Types.Products",
+   "Mathlib.CategoryTheory.Limits.Types.Pullbacks",
+   "Mathlib.CategoryTheory.Limits.Types.Pushouts",
+   "Mathlib.CategoryTheory.Limits.Types.Yoneda"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Braided": [
+   "Mathlib.CategoryTheory.Monoidal.Braided.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Multifunctor",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Opposite",
+   "Mathlib.CategoryTheory.Monoidal.Braided.PushoutObjObj",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Reflection",
+   "Mathlib.CategoryTheory.Monoidal.Braided.Transport"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Internal.Types": [
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.CommGrp_",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Grp",
+   "Mathlib.CategoryTheory.Monoidal.Internal.Types.Grp_"
+  ],
+  "Mathlib.CategoryTheory.Monoidal.Limits": [
+   "Mathlib.CategoryTheory.Monoidal.Limits.Basic",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Cokernels",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Colimits",
+   "Mathlib.CategoryTheory.Monoidal.Limits.HasLimits",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Preserves",
+   "Mathlib.CategoryTheory.Monoidal.Limits.Shapes.Pullback"
+  ],
+  "Mathlib.CategoryTheory.MorphismProperty": [
+   "Mathlib.CategoryTheory.MorphismProperty.Basic",
+   "Mathlib.CategoryTheory.MorphismProperty.Comma",
+   "Mathlib.CategoryTheory.MorphismProperty.CommaSites",
+   "Mathlib.CategoryTheory.MorphismProperty.Composition",
+   "Mathlib.CategoryTheory.MorphismProperty.Concrete",
+   "Mathlib.CategoryTheory.MorphismProperty.Descent",
+   "Mathlib.CategoryTheory.MorphismProperty.Factorization",
+   "Mathlib.CategoryTheory.MorphismProperty.FunctorCategory",
+   "Mathlib.CategoryTheory.MorphismProperty.HasCardinalLT",
+   "Mathlib.CategoryTheory.MorphismProperty.Ind",
+   "Mathlib.CategoryTheory.MorphismProperty.IsInvertedBy",
+   "Mathlib.CategoryTheory.MorphismProperty.IsSmall",
+   "Mathlib.CategoryTheory.MorphismProperty.LiftingProperty",
+   "Mathlib.CategoryTheory.MorphismProperty.Limits",
+   "Mathlib.CategoryTheory.MorphismProperty.Local",
+   "Mathlib.CategoryTheory.MorphismProperty.LocalClosure",
+   "Mathlib.CategoryTheory.MorphismProperty.LocalEpi",
+   "Mathlib.CategoryTheory.MorphismProperty.OfObjectProperty",
+   "Mathlib.CategoryTheory.MorphismProperty.OverAdjunction",
+   "Mathlib.CategoryTheory.MorphismProperty.Quotient",
+   "Mathlib.CategoryTheory.MorphismProperty.Representable",
+   "Mathlib.CategoryTheory.MorphismProperty.Retract",
+   "Mathlib.CategoryTheory.MorphismProperty.RetractArgument",
+   "Mathlib.CategoryTheory.MorphismProperty.TransfiniteComposition",
+   "Mathlib.CategoryTheory.MorphismProperty.WeakFactorizationSystem"
+  ],
+  "Mathlib.CategoryTheory.PathCategory": [
+   "Mathlib.CategoryTheory.PathCategory.Basic",
+   "Mathlib.CategoryTheory.PathCategory.MorphismProperty"
+  ],
+  "Mathlib.CategoryTheory.Sites.Coherent": [
+   "Mathlib.CategoryTheory.Sites.Coherent.Basic",
+   "Mathlib.CategoryTheory.Sites.Coherent.CoherentSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.CoherentTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.Comparison",
+   "Mathlib.CategoryTheory.Sites.Coherent.Equivalence",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveColimits",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.ExtensiveTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.LocallySurjective",
+   "Mathlib.CategoryTheory.Sites.Coherent.ReflectsPrecoherent",
+   "Mathlib.CategoryTheory.Sites.Coherent.ReflectsPreregular",
+   "Mathlib.CategoryTheory.Sites.Coherent.RegularSheaves",
+   "Mathlib.CategoryTheory.Sites.Coherent.RegularTopology",
+   "Mathlib.CategoryTheory.Sites.Coherent.SequentialLimit",
+   "Mathlib.CategoryTheory.Sites.Coherent.SheafComparison"
+  ],
+  "Mathlib.CategoryTheory.Sites.DenseSubsite": [
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.Basic",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.InducedTopology",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.OneHypercoverDense",
+   "Mathlib.CategoryTheory.Sites.DenseSubsite.SheafEquiv"
+  ],
+  "Mathlib.CategoryTheory.Triangulated.Opposite": [
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Basic",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Functor",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.OpOp",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Pretriangulated",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Subcategory",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Triangle",
+   "Mathlib.CategoryTheory.Triangulated.Opposite.Triangulated"
+  ],
+  "Mathlib.CategoryTheory.Types": [
+   "Mathlib.CategoryTheory.Types.Basic",
+   "Mathlib.CategoryTheory.Types.Epimorphisms",
+   "Mathlib.CategoryTheory.Types.Monomorphisms",
+   "Mathlib.CategoryTheory.Types.Set"
+  ],
+  "Mathlib.CategoryTheory.WithTerminal": [
+   "Mathlib.CategoryTheory.WithTerminal.Basic",
+   "Mathlib.CategoryTheory.WithTerminal.Cone",
+   "Mathlib.CategoryTheory.WithTerminal.FinCategory",
+   "Mathlib.CategoryTheory.WithTerminal.Lemmas"
+  ],
+  "Mathlib.Combinatorics.SimpleGraph.Connectivity": [
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Connected",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.EdgeConnectivity",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.Represents",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.WalkCounting",
+   "Mathlib.Combinatorics.SimpleGraph.Connectivity.WalkDecomp"
+  ],
+  "Mathlib.Condensed.Discrete": [
+   "Mathlib.Condensed.Discrete.Basic",
+   "Mathlib.Condensed.Discrete.Characterization",
+   "Mathlib.Condensed.Discrete.Colimit",
+   "Mathlib.Condensed.Discrete.LocallyConstant",
+   "Mathlib.Condensed.Discrete.Module"
+  ],
+  "Mathlib.Data.Finset.Lattice": [
+   "Mathlib.Data.Finset.Lattice.Basic",
+   "Mathlib.Data.Finset.Lattice.Fold",
+   "Mathlib.Data.Finset.Lattice.Lemmas",
+   "Mathlib.Data.Finset.Lattice.Pi",
+   "Mathlib.Data.Finset.Lattice.Prod",
+   "Mathlib.Data.Finset.Lattice.Union"
+  ],
+  "Mathlib.Data.List.Perm": [
+   "Mathlib.Data.List.Perm.Basic",
+   "Mathlib.Data.List.Perm.Lattice",
+   "Mathlib.Data.List.Perm.Subperm"
+  ],
+  "Mathlib.Data.Nat.Cast.Order": [
+   "Mathlib.Data.Nat.Cast.Order.Basic",
+   "Mathlib.Data.Nat.Cast.Order.Field",
+   "Mathlib.Data.Nat.Cast.Order.Ring"
+  ],
+  "Mathlib.Data.Nat.Digits": [
+   "Mathlib.Data.Nat.Digits.Defs",
+   "Mathlib.Data.Nat.Digits.Div",
+   "Mathlib.Data.Nat.Digits.Lemmas"
+  ],
+  "Mathlib.Data.Nat.Prime": [
+   "Mathlib.Data.Nat.Prime.Basic",
+   "Mathlib.Data.Nat.Prime.Defs",
+   "Mathlib.Data.Nat.Prime.Factorial",
+   "Mathlib.Data.Nat.Prime.Infinite",
+   "Mathlib.Data.Nat.Prime.Int",
+   "Mathlib.Data.Nat.Prime.Nth",
+   "Mathlib.Data.Nat.Prime.Pow"
+  ],
+  "Mathlib.Data.Set.Finite": [
+   "Mathlib.Data.Set.Finite.Basic",
+   "Mathlib.Data.Set.Finite.Lattice",
+   "Mathlib.Data.Set.Finite.Lemmas",
+   "Mathlib.Data.Set.Finite.List",
+   "Mathlib.Data.Set.Finite.Monad",
+   "Mathlib.Data.Set.Finite.Powerset",
+   "Mathlib.Data.Set.Finite.Range"
+  ],
+  "Mathlib.Data.Sign": [
+   "Mathlib.Data.Sign.Basic",
+   "Mathlib.Data.Sign.Defs"
+  ],
+  "Mathlib.Data.Tree": [
+   "Mathlib.Data.Tree.Basic",
+   "Mathlib.Data.Tree.Get",
+   "Mathlib.Data.Tree.RBMap",
+   "Mathlib.Data.Tree.Traversable"
+  ],
+  "Mathlib.FieldTheory.Galois": [
+   "Mathlib.FieldTheory.Galois.Basic",
+   "Mathlib.FieldTheory.Galois.Abelian",
+   "Mathlib.FieldTheory.Galois.GaloisClosure",
+   "Mathlib.FieldTheory.Galois.Infinite",
+   "Mathlib.FieldTheory.Galois.IsGaloisGroup",
+   "Mathlib.FieldTheory.Galois.NormalBasis",
+   "Mathlib.FieldTheory.Galois.Notation",
+   "Mathlib.FieldTheory.Galois.Profinite"
+  ],
+  "Mathlib.FieldTheory.Normal": [
+   "Mathlib.FieldTheory.Normal.Basic",
+   "Mathlib.FieldTheory.Normal.Defs"
+  ],
+  "Mathlib.FieldTheory.RatFunc": [
+   "Mathlib.FieldTheory.RatFunc.Basic",
+   "Mathlib.FieldTheory.RatFunc.AsPolynomial",
+   "Mathlib.FieldTheory.RatFunc.Defs",
+   "Mathlib.FieldTheory.RatFunc.Degree",
+   "Mathlib.FieldTheory.RatFunc.IntermediateField",
+   "Mathlib.FieldTheory.RatFunc.Luroth",
+   "Mathlib.FieldTheory.RatFunc.Valuation"
+  ],
+  "Mathlib.Geometry.Manifold.MFDeriv": [
+   "Mathlib.Geometry.Manifold.MFDeriv.Basic",
+   "Mathlib.Geometry.Manifold.MFDeriv.Atlas",
+   "Mathlib.Geometry.Manifold.MFDeriv.Defs",
+   "Mathlib.Geometry.Manifold.MFDeriv.FDeriv",
+   "Mathlib.Geometry.Manifold.MFDeriv.NormedSpace",
+   "Mathlib.Geometry.Manifold.MFDeriv.SpecificFunctions",
+   "Mathlib.Geometry.Manifold.MFDeriv.Tangent",
+   "Mathlib.Geometry.Manifold.MFDeriv.UniqueDifferential"
+  ],
+  "Mathlib.GroupTheory.Abelianization": [
+   "Mathlib.GroupTheory.Abelianization.Defs",
+   "Mathlib.GroupTheory.Abelianization.Finite"
+  ],
+  "Mathlib.GroupTheory.Commutator": [
+   "Mathlib.GroupTheory.Commutator.Basic",
+   "Mathlib.GroupTheory.Commutator.Finite"
+  ],
+  "Mathlib.GroupTheory.Congruence": [
+   "Mathlib.GroupTheory.Congruence.Basic",
+   "Mathlib.GroupTheory.Congruence.BigOperators",
+   "Mathlib.GroupTheory.Congruence.Defs",
+   "Mathlib.GroupTheory.Congruence.Hom",
+   "Mathlib.GroupTheory.Congruence.Opposite",
+   "Mathlib.GroupTheory.Congruence.Star"
+  ],
+  "Mathlib.GroupTheory.Coset": [
+   "Mathlib.GroupTheory.Coset.Basic",
+   "Mathlib.GroupTheory.Coset.Card",
+   "Mathlib.GroupTheory.Coset.Defs"
+  ],
+  "Mathlib.GroupTheory.FiniteAbelian": [
+   "Mathlib.GroupTheory.FiniteAbelian.Basic",
+   "Mathlib.GroupTheory.FiniteAbelian.Duality"
+  ],
+  "Mathlib.GroupTheory.MonoidLocalization": [
+   "Mathlib.GroupTheory.MonoidLocalization.Basic",
+   "Mathlib.GroupTheory.MonoidLocalization.Away",
+   "Mathlib.GroupTheory.MonoidLocalization.Cardinality",
+   "Mathlib.GroupTheory.MonoidLocalization.DivPairs",
+   "Mathlib.GroupTheory.MonoidLocalization.Divisibility",
+   "Mathlib.GroupTheory.MonoidLocalization.Finite",
+   "Mathlib.GroupTheory.MonoidLocalization.GrothendieckGroup",
+   "Mathlib.GroupTheory.MonoidLocalization.Lemmas",
+   "Mathlib.GroupTheory.MonoidLocalization.Maps",
+   "Mathlib.GroupTheory.MonoidLocalization.MonoidWithZero",
+   "Mathlib.GroupTheory.MonoidLocalization.Order",
+   "Mathlib.GroupTheory.MonoidLocalization.UniqueFactorization"
+  ],
+  "Mathlib.GroupTheory.QuotientGroup": [
+   "Mathlib.GroupTheory.QuotientGroup.Basic",
+   "Mathlib.GroupTheory.QuotientGroup.Defs",
+   "Mathlib.GroupTheory.QuotientGroup.Finite",
+   "Mathlib.GroupTheory.QuotientGroup.ModEq"
+  ],
+  "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace": [
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Basic",
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Defs",
+   "Mathlib.LinearAlgebra.AffineSpace.AffineSubspace.Shift"
+  ],
+  "Mathlib.LinearAlgebra.Basis": [
+   "Mathlib.LinearAlgebra.Basis.Basic",
+   "Mathlib.LinearAlgebra.Basis.Cardinality",
+   "Mathlib.LinearAlgebra.Basis.Defs",
+   "Mathlib.LinearAlgebra.Basis.Exact",
+   "Mathlib.LinearAlgebra.Basis.Fin",
+   "Mathlib.LinearAlgebra.Basis.MulOpposite",
+   "Mathlib.LinearAlgebra.Basis.Prod",
+   "Mathlib.LinearAlgebra.Basis.SMul",
+   "Mathlib.LinearAlgebra.Basis.Submodule"
+  ],
+  "Mathlib.LinearAlgebra.Dual": [
+   "Mathlib.LinearAlgebra.Dual.BaseChange",
+   "Mathlib.LinearAlgebra.Dual.Basis",
+   "Mathlib.LinearAlgebra.Dual.Defs",
+   "Mathlib.LinearAlgebra.Dual.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.FiniteDimensional": [
+   "Mathlib.LinearAlgebra.FiniteDimensional.Basic",
+   "Mathlib.LinearAlgebra.FiniteDimensional.Defs",
+   "Mathlib.LinearAlgebra.FiniteDimensional.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.Finsupp": [
+   "Mathlib.LinearAlgebra.Finsupp.Defs",
+   "Mathlib.LinearAlgebra.Finsupp.LSum",
+   "Mathlib.LinearAlgebra.Finsupp.LinearCombination",
+   "Mathlib.LinearAlgebra.Finsupp.Pi",
+   "Mathlib.LinearAlgebra.Finsupp.Span",
+   "Mathlib.LinearAlgebra.Finsupp.SumProd",
+   "Mathlib.LinearAlgebra.Finsupp.Supported",
+   "Mathlib.LinearAlgebra.Finsupp.VectorSpace"
+  ],
+  "Mathlib.LinearAlgebra.GeneralLinearGroup": [
+   "Mathlib.LinearAlgebra.GeneralLinearGroup.Basic",
+   "Mathlib.LinearAlgebra.GeneralLinearGroup.AlgEquiv"
+  ],
+  "Mathlib.LinearAlgebra.LinearIndependent": [
+   "Mathlib.LinearAlgebra.LinearIndependent.Basic",
+   "Mathlib.LinearAlgebra.LinearIndependent.BaseChange",
+   "Mathlib.LinearAlgebra.LinearIndependent.Defs",
+   "Mathlib.LinearAlgebra.LinearIndependent.Lemmas"
+  ],
+  "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup": [
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Basic",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Card",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Defs",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.FinTwo",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.MvPolynomial",
+   "Mathlib.LinearAlgebra.Matrix.GeneralLinearGroup.Projective"
+  ],
+  "Mathlib.LinearAlgebra.PerfectPairing": [
+   "Mathlib.LinearAlgebra.PerfectPairing.Basic",
+   "Mathlib.LinearAlgebra.PerfectPairing.Restrict"
+  ],
+  "Mathlib.LinearAlgebra.Quotient": [
+   "Mathlib.LinearAlgebra.Quotient.Basic",
+   "Mathlib.LinearAlgebra.Quotient.Bilinear",
+   "Mathlib.LinearAlgebra.Quotient.Card",
+   "Mathlib.LinearAlgebra.Quotient.Defs"
+  ],
+  "Mathlib.LinearAlgebra.SModEq": [
+   "Mathlib.LinearAlgebra.SModEq.Basic",
+   "Mathlib.LinearAlgebra.SModEq.Pointwise",
+   "Mathlib.LinearAlgebra.SModEq.Pow"
+  ],
+  "Mathlib.LinearAlgebra.SesquilinearForm": [
+   "Mathlib.LinearAlgebra.SesquilinearForm.Basic",
+   "Mathlib.LinearAlgebra.SesquilinearForm.Orthogonal",
+   "Mathlib.LinearAlgebra.SesquilinearForm.Star"
+  ],
+  "Mathlib.LinearAlgebra.Span": [
+   "Mathlib.LinearAlgebra.Span.Basic",
+   "Mathlib.LinearAlgebra.Span.Defs",
+   "Mathlib.LinearAlgebra.Span.TensorProduct"
+  ],
+  "Mathlib.LinearAlgebra.TensorProduct": [
+   "Mathlib.LinearAlgebra.TensorProduct.Basic",
+   "Mathlib.LinearAlgebra.TensorProduct.Associator",
+   "Mathlib.LinearAlgebra.TensorProduct.Basis",
+   "Mathlib.LinearAlgebra.TensorProduct.Decomposition",
+   "Mathlib.LinearAlgebra.TensorProduct.Defs",
+   "Mathlib.LinearAlgebra.TensorProduct.Finiteness",
+   "Mathlib.LinearAlgebra.TensorProduct.Free",
+   "Mathlib.LinearAlgebra.TensorProduct.Map",
+   "Mathlib.LinearAlgebra.TensorProduct.Pi",
+   "Mathlib.LinearAlgebra.TensorProduct.Quotient",
+   "Mathlib.LinearAlgebra.TensorProduct.Subalgebra",
+   "Mathlib.LinearAlgebra.TensorProduct.Submodule",
+   "Mathlib.LinearAlgebra.TensorProduct.Vanishing"
+  ],
+  "Mathlib.Logic.Equiv.Fin": [
+   "Mathlib.Logic.Equiv.Fin.Basic",
+   "Mathlib.Logic.Equiv.Fin.Rotate"
+  ],
+  "Mathlib.MeasureTheory.Function.L1Space": [
+   "Mathlib.MeasureTheory.Function.L1Space.AEEqFun",
+   "Mathlib.MeasureTheory.Function.L1Space.HasFiniteIntegral",
+   "Mathlib.MeasureTheory.Function.L1Space.Integrable"
+  ],
+  "Mathlib.MeasureTheory.Function.LpSeminorm": [
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Basic",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.ChebyshevMarkov",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Count",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Defs",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Indicator",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.LpNorm",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Monotonicity",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Prod",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.SMul",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.TriangleInequality",
+   "Mathlib.MeasureTheory.Function.LpSeminorm.Trim"
+  ],
+  "Mathlib.MeasureTheory.Function.LpSpace": [
+   "Mathlib.MeasureTheory.Function.LpSpace.Basic",
+   "Mathlib.MeasureTheory.Function.LpSpace.Complete",
+   "Mathlib.MeasureTheory.Function.LpSpace.CompleteOfCompleteLp",
+   "Mathlib.MeasureTheory.Function.LpSpace.ContinuousCompMeasurePreserving",
+   "Mathlib.MeasureTheory.Function.LpSpace.ContinuousFunctions",
+   "Mathlib.MeasureTheory.Function.LpSpace.DomAct.Continuous",
+   "Mathlib.MeasureTheory.Function.LpSpace.Indicator",
+   "Mathlib.MeasureTheory.Function.LpSpace.InfiniteSum"
+  ],
+  "Mathlib.MeasureTheory.Integral.Bochner": [
+   "Mathlib.MeasureTheory.Integral.Bochner.Basic",
+   "Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap",
+   "Mathlib.MeasureTheory.Integral.Bochner.FundThmCalculus",
+   "Mathlib.MeasureTheory.Integral.Bochner.L1",
+   "Mathlib.MeasureTheory.Integral.Bochner.Set",
+   "Mathlib.MeasureTheory.Integral.Bochner.SumMeasure"
+  ],
+  "Mathlib.MeasureTheory.Integral.IntervalIntegral": [
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.AbsolutelyContinuousFun",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.ContDiff",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.DerivIntegrable",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.DistLEIntegral",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.IntegrationByParts",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.MeanValue",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.Slope",
+   "Mathlib.MeasureTheory.Integral.IntervalIntegral.TrapezoidalRule"
+  ],
+  "Mathlib.MeasureTheory.Integral.Lebesgue": [
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Basic",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Add",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Countable",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.DominatedConvergence",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Map",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Markov",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Norm",
+   "Mathlib.MeasureTheory.Integral.Lebesgue.Sub"
+  ],
+  "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani": [
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Basic",
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.NNReal",
+   "Mathlib.MeasureTheory.Integral.RieszMarkovKakutani.Real"
+  ],
+  "Mathlib.MeasureTheory.Measure.Typeclasses": [
+   "Mathlib.MeasureTheory.Measure.Typeclasses.Finite",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.NoAtoms",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.NullSingletonClass",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.Probability",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.SFinite",
+   "Mathlib.MeasureTheory.Measure.Typeclasses.ZeroOne"
+  ],
+  "Mathlib.NumberTheory.ArithmeticFunction": [
+   "Mathlib.NumberTheory.ArithmeticFunction.Carmichael",
+   "Mathlib.NumberTheory.ArithmeticFunction.Defs",
+   "Mathlib.NumberTheory.ArithmeticFunction.LFunction",
+   "Mathlib.NumberTheory.ArithmeticFunction.Liouville",
+   "Mathlib.NumberTheory.ArithmeticFunction.Misc",
+   "Mathlib.NumberTheory.ArithmeticFunction.Moebius",
+   "Mathlib.NumberTheory.ArithmeticFunction.Zeta"
+  ],
+  "Mathlib.NumberTheory.LSeries": [
+   "Mathlib.NumberTheory.LSeries.Basic",
+   "Mathlib.NumberTheory.LSeries.AbstractFuncEq",
+   "Mathlib.NumberTheory.LSeries.Convergence",
+   "Mathlib.NumberTheory.LSeries.Convolution",
+   "Mathlib.NumberTheory.LSeries.Deriv",
+   "Mathlib.NumberTheory.LSeries.Dirichlet",
+   "Mathlib.NumberTheory.LSeries.DirichletContinuation",
+   "Mathlib.NumberTheory.LSeries.HurwitzZeta",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaEven",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaOdd",
+   "Mathlib.NumberTheory.LSeries.HurwitzZetaValues",
+   "Mathlib.NumberTheory.LSeries.Injectivity",
+   "Mathlib.NumberTheory.LSeries.Linearity",
+   "Mathlib.NumberTheory.LSeries.MellinEqDirichlet",
+   "Mathlib.NumberTheory.LSeries.Nonvanishing",
+   "Mathlib.NumberTheory.LSeries.Positivity",
+   "Mathlib.NumberTheory.LSeries.PrimesInAP",
+   "Mathlib.NumberTheory.LSeries.RiemannZeta",
+   "Mathlib.NumberTheory.LSeries.SumCoeff",
+   "Mathlib.NumberTheory.LSeries.ZMod",
+   "Mathlib.NumberTheory.LSeries.ZetaZeros"
+  ],
+  "Mathlib.NumberTheory.NumberField.CanonicalEmbedding": [
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.Basic",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.ConvexBody",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.FundamentalCone",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.NormLeOne",
+   "Mathlib.NumberTheory.NumberField.CanonicalEmbedding.PolarCoord"
+  ],
+  "Mathlib.NumberTheory.NumberField.Discriminant": [
+   "Mathlib.NumberTheory.NumberField.Discriminant.Basic",
+   "Mathlib.NumberTheory.NumberField.Discriminant.Defs",
+   "Mathlib.NumberTheory.NumberField.Discriminant.Different"
+  ],
+  "Mathlib.NumberTheory.NumberField.Units": [
+   "Mathlib.NumberTheory.NumberField.Units.Basic",
+   "Mathlib.NumberTheory.NumberField.Units.DirichletTheorem",
+   "Mathlib.NumberTheory.NumberField.Units.Regulator"
+  ],
+  "Mathlib.NumberTheory.RamificationInertia": [
+   "Mathlib.NumberTheory.RamificationInertia.Basic",
+   "Mathlib.NumberTheory.RamificationInertia.Galois",
+   "Mathlib.NumberTheory.RamificationInertia.HilbertTheory",
+   "Mathlib.NumberTheory.RamificationInertia.Inertia",
+   "Mathlib.NumberTheory.RamificationInertia.Ramification",
+   "Mathlib.NumberTheory.RamificationInertia.Unramified",
+   "Mathlib.NumberTheory.RamificationInertia.Valuation"
+  ],
+  "Mathlib.Order.BooleanAlgebra": [
+   "Mathlib.Order.BooleanAlgebra.Basic",
+   "Mathlib.Order.BooleanAlgebra.Defs",
+   "Mathlib.Order.BooleanAlgebra.Set"
+  ],
+  "Mathlib.Order.BoundedOrder": [
+   "Mathlib.Order.BoundedOrder.Basic",
+   "Mathlib.Order.BoundedOrder.Lattice",
+   "Mathlib.Order.BoundedOrder.Monotone"
+  ],
+  "Mathlib.Order.CompleteLattice": [
+   "Mathlib.Order.CompleteLattice.Basic",
+   "Mathlib.Order.CompleteLattice.Chain",
+   "Mathlib.Order.CompleteLattice.Defs",
+   "Mathlib.Order.CompleteLattice.Finset",
+   "Mathlib.Order.CompleteLattice.Group",
+   "Mathlib.Order.CompleteLattice.Lemmas",
+   "Mathlib.Order.CompleteLattice.MulticoequalizerDiagram",
+   "Mathlib.Order.CompleteLattice.PiLex",
+   "Mathlib.Order.CompleteLattice.SetLike"
+  ],
+  "Mathlib.Order.Filter.AtTopBot": [
+   "Mathlib.Order.Filter.AtTopBot.Basic",
+   "Mathlib.Order.Filter.AtTopBot.BigOperators",
+   "Mathlib.Order.Filter.AtTopBot.CompleteLattice",
+   "Mathlib.Order.Filter.AtTopBot.CountablyGenerated",
+   "Mathlib.Order.Filter.AtTopBot.Defs",
+   "Mathlib.Order.Filter.AtTopBot.Disjoint",
+   "Mathlib.Order.Filter.AtTopBot.Field",
+   "Mathlib.Order.Filter.AtTopBot.Finite",
+   "Mathlib.Order.Filter.AtTopBot.Finset",
+   "Mathlib.Order.Filter.AtTopBot.Floor",
+   "Mathlib.Order.Filter.AtTopBot.Group",
+   "Mathlib.Order.Filter.AtTopBot.Interval",
+   "Mathlib.Order.Filter.AtTopBot.Map",
+   "Mathlib.Order.Filter.AtTopBot.Monoid",
+   "Mathlib.Order.Filter.AtTopBot.Prod",
+   "Mathlib.Order.Filter.AtTopBot.Ring",
+   "Mathlib.Order.Filter.AtTopBot.Tendsto"
+  ],
+  "Mathlib.Order.GaloisConnection": [
+   "Mathlib.Order.GaloisConnection.Basic",
+   "Mathlib.Order.GaloisConnection.Defs"
+  ],
+  "Mathlib.Probability.Distributions.Gaussian": [
+   "Mathlib.Probability.Distributions.Gaussian.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Basic",
+   "Mathlib.Probability.Distributions.Gaussian.CharFun",
+   "Mathlib.Probability.Distributions.Gaussian.Fernique",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Def",
+   "Mathlib.Probability.Distributions.Gaussian.HasGaussianLaw.Independence",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Def",
+   "Mathlib.Probability.Distributions.Gaussian.IsGaussianProcess.Independence",
+   "Mathlib.Probability.Distributions.Gaussian.Multivariate",
+   "Mathlib.Probability.Distributions.Gaussian.Real"
+  ],
+  "Mathlib.Probability.Independence.Kernel": [
+   "Mathlib.Probability.Independence.Kernel.Indep",
+   "Mathlib.Probability.Independence.Kernel.IndepFun"
+  ],
+  "Mathlib.Probability.Kernel.Composition": [
+   "Mathlib.Probability.Kernel.Composition.AbsolutelyContinuous",
+   "Mathlib.Probability.Kernel.Composition.Comp",
+   "Mathlib.Probability.Kernel.Composition.CompMap",
+   "Mathlib.Probability.Kernel.Composition.CompNotation",
+   "Mathlib.Probability.Kernel.Composition.CompProd",
+   "Mathlib.Probability.Kernel.Composition.IntegralCompProd",
+   "Mathlib.Probability.Kernel.Composition.KernelLemmas",
+   "Mathlib.Probability.Kernel.Composition.Lemmas",
+   "Mathlib.Probability.Kernel.Composition.MapComap",
+   "Mathlib.Probability.Kernel.Composition.MeasureComp",
+   "Mathlib.Probability.Kernel.Composition.MeasureCompProd",
+   "Mathlib.Probability.Kernel.Composition.ParallelComp",
+   "Mathlib.Probability.Kernel.Composition.Prod",
+   "Mathlib.Probability.Kernel.Composition.RadonNikodym"
+  ],
+  "Mathlib.Probability.Kernel.Disintegration": [
+   "Mathlib.Probability.Kernel.Disintegration.Basic",
+   "Mathlib.Probability.Kernel.Disintegration.CDFToKernel",
+   "Mathlib.Probability.Kernel.Disintegration.CondCDF",
+   "Mathlib.Probability.Kernel.Disintegration.Density",
+   "Mathlib.Probability.Kernel.Disintegration.Integral",
+   "Mathlib.Probability.Kernel.Disintegration.MeasurableStieltjes",
+   "Mathlib.Probability.Kernel.Disintegration.StandardBorel",
+   "Mathlib.Probability.Kernel.Disintegration.Unique"
+  ],
+  "Mathlib.Probability.Moments": [
+   "Mathlib.Probability.Moments.Basic",
+   "Mathlib.Probability.Moments.ComplexMGF",
+   "Mathlib.Probability.Moments.Covariance",
+   "Mathlib.Probability.Moments.CovarianceBilin",
+   "Mathlib.Probability.Moments.CovarianceBilinDual",
+   "Mathlib.Probability.Moments.IntegrableExpMul",
+   "Mathlib.Probability.Moments.MGFAnalytic",
+   "Mathlib.Probability.Moments.SubGaussian",
+   "Mathlib.Probability.Moments.Tilted",
+   "Mathlib.Probability.Moments.Variance"
+  ],
+  "Mathlib.RepresentationTheory.Rep": [
+   "Mathlib.RepresentationTheory.Rep.Basic",
+   "Mathlib.RepresentationTheory.Rep.Iso",
+   "Mathlib.RepresentationTheory.Rep.Res"
+  ],
+  "Mathlib.RingTheory.Algebraic": [
+   "Mathlib.RingTheory.Algebraic.Basic",
+   "Mathlib.RingTheory.Algebraic.Cardinality",
+   "Mathlib.RingTheory.Algebraic.Defs",
+   "Mathlib.RingTheory.Algebraic.Integral",
+   "Mathlib.RingTheory.Algebraic.LinearIndependent",
+   "Mathlib.RingTheory.Algebraic.MvPolynomial",
+   "Mathlib.RingTheory.Algebraic.Pi",
+   "Mathlib.RingTheory.Algebraic.StronglyTranscendental"
+  ],
+  "Mathlib.RingTheory.AlgebraicIndependent": [
+   "Mathlib.RingTheory.AlgebraicIndependent.Basic",
+   "Mathlib.RingTheory.AlgebraicIndependent.Adjoin",
+   "Mathlib.RingTheory.AlgebraicIndependent.AlgebraicClosure",
+   "Mathlib.RingTheory.AlgebraicIndependent.Defs",
+   "Mathlib.RingTheory.AlgebraicIndependent.RankAndCardinality",
+   "Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis",
+   "Mathlib.RingTheory.AlgebraicIndependent.Transcendental"
+  ],
+  "Mathlib.RingTheory.Artinian": [
+   "Mathlib.RingTheory.Artinian.Algebra",
+   "Mathlib.RingTheory.Artinian.Defs",
+   "Mathlib.RingTheory.Artinian.Instances",
+   "Mathlib.RingTheory.Artinian.Module",
+   "Mathlib.RingTheory.Artinian.Ring"
+  ],
+  "Mathlib.RingTheory.Coalgebra": [
+   "Mathlib.RingTheory.Coalgebra.Basic",
+   "Mathlib.RingTheory.Coalgebra.CoassocSimps",
+   "Mathlib.RingTheory.Coalgebra.Convolution",
+   "Mathlib.RingTheory.Coalgebra.Equiv",
+   "Mathlib.RingTheory.Coalgebra.GroupLike",
+   "Mathlib.RingTheory.Coalgebra.Hom",
+   "Mathlib.RingTheory.Coalgebra.MonoidAlgebra",
+   "Mathlib.RingTheory.Coalgebra.MulOpposite",
+   "Mathlib.RingTheory.Coalgebra.Quotient",
+   "Mathlib.RingTheory.Coalgebra.TensorProduct"
+  ],
+  "Mathlib.RingTheory.Congruence": [
+   "Mathlib.RingTheory.Congruence.Basic",
+   "Mathlib.RingTheory.Congruence.BigOperators",
+   "Mathlib.RingTheory.Congruence.Defs",
+   "Mathlib.RingTheory.Congruence.Hom",
+   "Mathlib.RingTheory.Congruence.Opposite",
+   "Mathlib.RingTheory.Congruence.Star"
+  ],
+  "Mathlib.RingTheory.DedekindDomain.Ideal": [
+   "Mathlib.RingTheory.DedekindDomain.Ideal.Basic",
+   "Mathlib.RingTheory.DedekindDomain.Ideal.Lemmas"
+  ],
+  "Mathlib.RingTheory.Etale": [
+   "Mathlib.RingTheory.Etale.Basic",
+   "Mathlib.RingTheory.Etale.Descent",
+   "Mathlib.RingTheory.Etale.Field",
+   "Mathlib.RingTheory.Etale.Finite",
+   "Mathlib.RingTheory.Etale.Kaehler",
+   "Mathlib.RingTheory.Etale.Locus",
+   "Mathlib.RingTheory.Etale.Pi",
+   "Mathlib.RingTheory.Etale.QuasiFinite",
+   "Mathlib.RingTheory.Etale.StandardEtale",
+   "Mathlib.RingTheory.Etale.Weakly"
+  ],
+  "Mathlib.RingTheory.Finiteness": [
+   "Mathlib.RingTheory.Finiteness.Basic",
+   "Mathlib.RingTheory.Finiteness.Bilinear",
+   "Mathlib.RingTheory.Finiteness.Cardinality",
+   "Mathlib.RingTheory.Finiteness.Cofinite",
+   "Mathlib.RingTheory.Finiteness.Defs",
+   "Mathlib.RingTheory.Finiteness.Descent",
+   "Mathlib.RingTheory.Finiteness.FinitePresentationLocal",
+   "Mathlib.RingTheory.Finiteness.FiniteTypeLocal",
+   "Mathlib.RingTheory.Finiteness.Finsupp",
+   "Mathlib.RingTheory.Finiteness.Ideal",
+   "Mathlib.RingTheory.Finiteness.Lattice",
+   "Mathlib.RingTheory.Finiteness.ModuleFinitePresentation",
+   "Mathlib.RingTheory.Finiteness.Nakayama",
+   "Mathlib.RingTheory.Finiteness.Nilpotent",
+   "Mathlib.RingTheory.Finiteness.NilpotentKer",
+   "Mathlib.RingTheory.Finiteness.Prod",
+   "Mathlib.RingTheory.Finiteness.Projective",
+   "Mathlib.RingTheory.Finiteness.Quotient",
+   "Mathlib.RingTheory.Finiteness.Small",
+   "Mathlib.RingTheory.Finiteness.Subalgebra"
+  ],
+  "Mathlib.RingTheory.Flat": [
+   "Mathlib.RingTheory.Flat.Basic",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Basic",
+   "Mathlib.RingTheory.Flat.CategoryTheory",
+   "Mathlib.RingTheory.Flat.Domain",
+   "Mathlib.RingTheory.Flat.Equalizer",
+   "Mathlib.RingTheory.Flat.EquationalCriterion",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Algebra",
+   "Mathlib.RingTheory.Flat.FaithfullyFlat.Descent",
+   "Mathlib.RingTheory.Flat.IsBaseChange",
+   "Mathlib.RingTheory.Flat.Localization",
+   "Mathlib.RingTheory.Flat.LocallyFree",
+   "Mathlib.RingTheory.Flat.Rank",
+   "Mathlib.RingTheory.Flat.Stability",
+   "Mathlib.RingTheory.Flat.Tensor",
+   "Mathlib.RingTheory.Flat.TorsionFree"
+  ],
+  "Mathlib.RingTheory.FractionalIdeal": [
+   "Mathlib.RingTheory.FractionalIdeal.Basic",
+   "Mathlib.RingTheory.FractionalIdeal.Extended",
+   "Mathlib.RingTheory.FractionalIdeal.Inverse",
+   "Mathlib.RingTheory.FractionalIdeal.Norm",
+   "Mathlib.RingTheory.FractionalIdeal.Operations"
+  ],
+  "Mathlib.RingTheory.HahnSeries": [
+   "Mathlib.RingTheory.HahnSeries.Basic",
+   "Mathlib.RingTheory.HahnSeries.Addition",
+   "Mathlib.RingTheory.HahnSeries.Binomial",
+   "Mathlib.RingTheory.HahnSeries.Cardinal",
+   "Mathlib.RingTheory.HahnSeries.HEval",
+   "Mathlib.RingTheory.HahnSeries.HahnEmbedding",
+   "Mathlib.RingTheory.HahnSeries.Lex",
+   "Mathlib.RingTheory.HahnSeries.Multiplication",
+   "Mathlib.RingTheory.HahnSeries.PowerSeries",
+   "Mathlib.RingTheory.HahnSeries.Summable",
+   "Mathlib.RingTheory.HahnSeries.Valuation"
+  ],
+  "Mathlib.RingTheory.Ideal.AssociatedPrime": [
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Basic",
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Finiteness",
+   "Mathlib.RingTheory.Ideal.AssociatedPrime.Localization"
+  ],
+  "Mathlib.RingTheory.Ideal.MinimalPrime": [
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Basic",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Colon",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Localization",
+   "Mathlib.RingTheory.Ideal.MinimalPrime.Noetherian"
+  ],
+  "Mathlib.RingTheory.Ideal.Norm": [
+   "Mathlib.RingTheory.Ideal.Norm.AbsNorm",
+   "Mathlib.RingTheory.Ideal.Norm.RelNorm"
+  ],
+  "Mathlib.RingTheory.Ideal.Quotient": [
+   "Mathlib.RingTheory.Ideal.Quotient.Basic",
+   "Mathlib.RingTheory.Ideal.Quotient.ChineseRemainder",
+   "Mathlib.RingTheory.Ideal.Quotient.Defs",
+   "Mathlib.RingTheory.Ideal.Quotient.HasFiniteQuotients",
+   "Mathlib.RingTheory.Ideal.Quotient.Index",
+   "Mathlib.RingTheory.Ideal.Quotient.Noetherian",
+   "Mathlib.RingTheory.Ideal.Quotient.Operations",
+   "Mathlib.RingTheory.Ideal.Quotient.Over",
+   "Mathlib.RingTheory.Ideal.Quotient.PowTransition"
+  ],
+  "Mathlib.RingTheory.IntegralClosure": [
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Basic",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.Basic",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Basic",
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Defs",
+   "Mathlib.RingTheory.IntegralClosure.Algebra.Ideal",
+   "Mathlib.RingTheory.IntegralClosure.GoingDown",
+   "Mathlib.RingTheory.IntegralClosure.IntegralRestrict",
+   "Mathlib.RingTheory.IntegralClosure.IntegrallyClosed",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.AlmostIntegral",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegral.Defs",
+   "Mathlib.RingTheory.IntegralClosure.IsIntegralClosure.Defs"
+  ],
+  "Mathlib.RingTheory.Jacobson": [
+   "Mathlib.RingTheory.Jacobson.Artinian",
+   "Mathlib.RingTheory.Jacobson.Polynomial",
+   "Mathlib.RingTheory.Jacobson.Radical",
+   "Mathlib.RingTheory.Jacobson.Ring",
+   "Mathlib.RingTheory.Jacobson.Semiprimary"
+  ],
+  "Mathlib.RingTheory.LocalProperties": [
+   "Mathlib.RingTheory.LocalProperties.Basic",
+   "Mathlib.RingTheory.LocalProperties.Exactness",
+   "Mathlib.RingTheory.LocalProperties.FinitePresentation",
+   "Mathlib.RingTheory.LocalProperties.Injective",
+   "Mathlib.RingTheory.LocalProperties.InjectiveDimension",
+   "Mathlib.RingTheory.LocalProperties.IntegrallyClosed",
+   "Mathlib.RingTheory.LocalProperties.Projective",
+   "Mathlib.RingTheory.LocalProperties.ProjectiveDimension",
+   "Mathlib.RingTheory.LocalProperties.Reduced",
+   "Mathlib.RingTheory.LocalProperties.Semilocal",
+   "Mathlib.RingTheory.LocalProperties.Submodule"
+  ],
+  "Mathlib.RingTheory.Localization.AtPrime": [
+   "Mathlib.RingTheory.Localization.AtPrime.Basic",
+   "Mathlib.RingTheory.Localization.AtPrime.Extension"
+  ],
+  "Mathlib.RingTheory.MvPolynomial.Symmetric": [
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.Defs",
+   "Mathlib.RingTheory.MvPolynomial.Symmetric.FundamentalTheorem"
+  ],
+  "Mathlib.RingTheory.Nilpotent": [
+   "Mathlib.RingTheory.Nilpotent.Basic",
+   "Mathlib.RingTheory.Nilpotent.Defs",
+   "Mathlib.RingTheory.Nilpotent.Exp",
+   "Mathlib.RingTheory.Nilpotent.GeometricallyReduced",
+   "Mathlib.RingTheory.Nilpotent.Lemmas"
+  ],
+  "Mathlib.RingTheory.Noetherian": [
+   "Mathlib.RingTheory.Noetherian.Basic",
+   "Mathlib.RingTheory.Noetherian.Defs",
+   "Mathlib.RingTheory.Noetherian.Filter",
+   "Mathlib.RingTheory.Noetherian.Nilpotent",
+   "Mathlib.RingTheory.Noetherian.OfPrime",
+   "Mathlib.RingTheory.Noetherian.Orzech",
+   "Mathlib.RingTheory.Noetherian.UniqueFactorizationDomain"
+  ],
+  "Mathlib.RingTheory.Norm": [
+   "Mathlib.RingTheory.Norm.Basic",
+   "Mathlib.RingTheory.Norm.Defs",
+   "Mathlib.RingTheory.Norm.Transitivity"
+  ],
+  "Mathlib.RingTheory.SimpleModule": [
+   "Mathlib.RingTheory.SimpleModule.Basic",
+   "Mathlib.RingTheory.SimpleModule.InjectiveProjective",
+   "Mathlib.RingTheory.SimpleModule.IsAlgClosed",
+   "Mathlib.RingTheory.SimpleModule.Isotypic",
+   "Mathlib.RingTheory.SimpleModule.Rank",
+   "Mathlib.RingTheory.SimpleModule.WedderburnArtin"
+  ],
+  "Mathlib.RingTheory.TensorProduct": [
+   "Mathlib.RingTheory.TensorProduct.Basic",
+   "Mathlib.RingTheory.TensorProduct.DirectLimitFG",
+   "Mathlib.RingTheory.TensorProduct.Finite",
+   "Mathlib.RingTheory.TensorProduct.Free",
+   "Mathlib.RingTheory.TensorProduct.IncludeLeftSubRight",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeFree",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeHom",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangePi",
+   "Mathlib.RingTheory.TensorProduct.IsBaseChangeRightExact",
+   "Mathlib.RingTheory.TensorProduct.Maps",
+   "Mathlib.RingTheory.TensorProduct.MonoidAlgebra",
+   "Mathlib.RingTheory.TensorProduct.MvPolynomial",
+   "Mathlib.RingTheory.TensorProduct.Nontrivial",
+   "Mathlib.RingTheory.TensorProduct.Pi",
+   "Mathlib.RingTheory.TensorProduct.Quotient"
+  ],
+  "Mathlib.RingTheory.Trace": [
+   "Mathlib.RingTheory.Trace.Basic",
+   "Mathlib.RingTheory.Trace.Defs",
+   "Mathlib.RingTheory.Trace.Quotient"
+  ],
+  "Mathlib.RingTheory.UniqueFactorizationDomain": [
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Basic",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.ClassGroup",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Defs",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.FactorSet",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Finite",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Finsupp",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.GCDMonoid",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Ideal",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Kaplansky",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Localization",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Moebius",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicative",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicity",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.Nat",
+   "Mathlib.RingTheory.UniqueFactorizationDomain.NormalizedFactors"
+  ],
+  "Mathlib.Topology.Category.Profinite.Nobeling": [
+   "Mathlib.Topology.Category.Profinite.Nobeling.Basic",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Induction",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Span",
+   "Mathlib.Topology.Category.Profinite.Nobeling.Successor",
+   "Mathlib.Topology.Category.Profinite.Nobeling.ZeroLimit"
+  ],
+  "Mathlib.Topology.Covering": [
+   "Mathlib.Topology.Covering.Basic",
+   "Mathlib.Topology.Covering.AddCircle",
+   "Mathlib.Topology.Covering.Quotient"
+  ],
+  "Mathlib.Topology.GDelta": [
+   "Mathlib.Topology.GDelta.Basic",
+   "Mathlib.Topology.GDelta.MetrizableSpace"
+  ],
+  "Mathlib.Topology.Homeomorph": [
+   "Mathlib.Topology.Homeomorph.Defs",
+   "Mathlib.Topology.Homeomorph.Lemmas",
+   "Mathlib.Topology.Homeomorph.Quotient",
+   "Mathlib.Topology.Homeomorph.TransferInstance"
+  ],
+  "Mathlib.Topology.Instances.AddCircle": [
+   "Mathlib.Topology.Instances.AddCircle.Defs",
+   "Mathlib.Topology.Instances.AddCircle.DenseSubgroup",
+   "Mathlib.Topology.Instances.AddCircle.Real"
+  ],
+  "Mathlib.Topology.Instances.ENNReal": [
+   "Mathlib.Topology.Instances.ENNReal.ENatENNReal",
+   "Mathlib.Topology.Instances.ENNReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.EReal": [
+   "Mathlib.Topology.Instances.EReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.NNReal": [
+   "Mathlib.Topology.Instances.NNReal.Lemmas"
+  ],
+  "Mathlib.Topology.Instances.Real": [
+   "Mathlib.Topology.Instances.Real.Lemmas"
+  ],
+  "Mathlib.Topology.Maps": [
+   "Mathlib.Topology.Maps.Basic",
+   "Mathlib.Topology.Maps.Strict.Basic",
+   "Mathlib.Topology.Maps.OpenQuotient",
+   "Mathlib.Topology.Maps.Proper.CompactlyGenerated",
+   "Mathlib.Topology.Maps.Proper.UniversallyClosed",
+   "Mathlib.Topology.Maps.Strict.Group",
+   "Mathlib.Topology.Maps.Strict.Module"
+  ],
+  "Mathlib.Topology.PartialHomeomorph": [
+   "Mathlib.Topology.PartialHomeomorph.Defs"
+  ],
+  "Mathlib.Topology.Separation": [
+   "Mathlib.Topology.Separation.Basic",
+   "Mathlib.Topology.Separation.AlexandrovDiscrete",
+   "Mathlib.Topology.Separation.CompletelyRegular",
+   "Mathlib.Topology.Separation.Connected",
+   "Mathlib.Topology.Separation.DisjointCover",
+   "Mathlib.Topology.Separation.GDelta",
+   "Mathlib.Topology.Separation.Hausdorff",
+   "Mathlib.Topology.Separation.Lemmas",
+   "Mathlib.Topology.Separation.LinearUpperLowerSetTopology",
+   "Mathlib.Topology.Separation.PerfectlyNormal",
+   "Mathlib.Topology.Separation.Profinite",
+   "Mathlib.Topology.Separation.Regular",
+   "Mathlib.Topology.Separation.SeparatedNhds"
+  ]
+ },
+ "subdir": "Mathlib"
+}

@@ -201,25 +201,77 @@ def rewrite_text(
     return "".join(out), subs
 
 
+# `[ \t]*` rather than `\s*`: a trailing `\s*$` swallows the newline itself,
+# and the replacement then silently welds the next line onto this one.
+IMPORT_RE = re.compile(
+    r"^(?P<indent>[ \t]*)import[ \t]+(?P<mod>[A-Za-z_][A-Za-z0-9_.]*)[ \t]*$", re.M
+)
+
+
+def rewrite_imports(text: str, module_map: dict[str, list[str]]) -> tuple[str, list[Substitution]]:
+    """Rewrite `import Old.Module` using the tier-1c module map.
+
+    A split module expands to imports of ALL its children: importing the
+    superset is the highest-probability repair, and a wrong guess costs a red
+    build rather than a false green, so verification arbitrates.
+
+    Duplicate imports introduced by two old modules splitting into overlapping
+    children are collapsed, since Lean would warn on them.
+    """
+    subs: list[Substitution] = []
+    seen_imports: set[str] = set()
+
+    for m in IMPORT_RE.finditer(text):
+        seen_imports.add(m.group("mod"))
+
+    def replace(m: re.Match) -> str:
+        old = m.group("mod")
+        new = module_map.get(old)
+        if not new:
+            return m.group(0)
+        indent = m.group("indent")
+        line = text[: m.start()].count("\n") + 1
+        subs.append(Substitution(old, " + ".join(new), line, len(indent) + 1))
+        # Drop children already imported elsewhere in the file.
+        emit = [n for n in new if n not in seen_imports or n == old]
+        seen_imports.update(emit)
+        return "\n".join(f"{indent}import {n}" for n in emit) or m.group(0)
+
+    return IMPORT_RE.sub(replace, text), subs
+
+
 def rewrite_file(
-    path: Path, qualified: dict[str, str], short: dict[str, str], *, dry_run: bool = False
+    path: Path,
+    qualified: dict[str, str],
+    short: dict[str, str],
+    *,
+    module_map: dict[str, list[str]] | None = None,
+    dry_run: bool = False,
 ) -> list[Substitution]:
     original = path.read_text(errors="replace")
     updated, subs = rewrite_text(original, qualified, short)
+    if module_map:
+        updated, import_subs = rewrite_imports(updated, module_map)
+        subs = subs + import_subs
     if subs and not dry_run and updated != original:
         path.write_text(updated)
     return subs
 
 
 def rewrite_tree(
-    root: Path, qualified: dict[str, str], short: dict[str, str], *, dry_run: bool = False
+    root: Path,
+    qualified: dict[str, str],
+    short: dict[str, str],
+    *,
+    module_map: dict[str, list[str]] | None = None,
+    dry_run: bool = False,
 ) -> dict[str, list[Substitution]]:
     """Rewrite a package's own sources, never its vendored dependencies."""
     changes: dict[str, list[Substitution]] = {}
     for path in sorted(root.rglob("*.lean")):
         if ".lake" in path.parts:
             continue  # dependency checkouts are upstream's problem, not ours
-        subs = rewrite_file(path, qualified, short, dry_run=dry_run)
+        subs = rewrite_file(path, qualified, short, module_map=module_map, dry_run=dry_run)
         if subs:
             changes[str(path.relative_to(root))] = subs
     return changes

@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from rewrite import code_spans, rewrite_text  # noqa: E402
+from rewrite import code_spans, rewrite_imports, rewrite_text  # noqa: E402
 
 Q = {"String.trim": "String.trimAscii", "Foo.old": "Foo.new"}
 S = {"oldName": "newName"}
@@ -109,6 +109,59 @@ def test_substitutions_are_reported_with_positions():
 
 def test_code_spans_cover_plain_code():
     assert code_spans("abc") == [(0, 3)]
+
+
+# --- tier-1c: module renames and splits -------------------------------------
+
+# The real fixture, from ImperialCollegeLondon/formalising-mathematics-2024:
+# `bad import 'Mathlib.MeasureTheory.Integral.Bochner'`. Upstream deleted the
+# module and replaced it with a directory of the same name.
+BOCHNER = "Mathlib.MeasureTheory.Integral.Bochner"
+MODULE_MAP = {
+    BOCHNER: [f"{BOCHNER}.Basic", f"{BOCHNER}.ContinuousLinearMap"],
+    "Mathlib.Algebra.Category.GroupCat.Kernels": ["Mathlib.Algebra.Category.Grp.Kernels"],
+}
+
+
+def test_simple_module_rename():
+    src = "import Mathlib.Algebra.Category.GroupCat.Kernels\n"
+    out, subs = rewrite_imports(src, MODULE_MAP)
+    assert out == "import Mathlib.Algebra.Category.Grp.Kernels\n"
+    assert len(subs) == 1
+
+
+def test_module_split_expands_to_all_children():
+    """The formalising-mathematics-2024 fixture case."""
+    src = f"import {BOCHNER}\n"
+    out, _ = rewrite_imports(src, MODULE_MAP)
+    assert f"import {BOCHNER}.Basic" in out
+    assert f"import {BOCHNER}.ContinuousLinearMap" in out
+    assert f"import {BOCHNER}\n" not in out
+
+
+def test_unmapped_imports_untouched():
+    src = "import Mathlib.Tactic\nimport Std.Data.List\n"
+    out, subs = rewrite_imports(src, MODULE_MAP)
+    assert out == src and subs == []
+
+
+def test_import_indentation_preserved():
+    out, _ = rewrite_imports("  import Mathlib.Algebra.Category.GroupCat.Kernels\n", MODULE_MAP)
+    assert out.startswith("  import ")
+
+
+def test_split_does_not_duplicate_existing_child_import():
+    """A child already imported elsewhere must not be imported twice."""
+    src = f"import {BOCHNER}.Basic\nimport {BOCHNER}\n"
+    out, _ = rewrite_imports(src, MODULE_MAP)
+    assert out.count(f"import {BOCHNER}.Basic") == 1
+
+
+def test_import_rewrite_ignores_prefix_matches():
+    """A map entry for `A.B` must not rewrite `import A.B.C`."""
+    src = f"import {BOCHNER}.Something\n"
+    out, subs = rewrite_imports(src, MODULE_MAP)
+    assert out == src and subs == []
 
 
 if __name__ == "__main__":
