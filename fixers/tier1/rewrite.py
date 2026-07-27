@@ -91,6 +91,36 @@ def code_spans(text: str) -> list[tuple[int, int]]:
     return [(a, b) for a, b in spans if a < b]
 
 
+def is_distinctive(short_name: str) -> bool:
+    """May this bare name be rewritten without a namespace qualifier?
+
+    "Unambiguous within the rename map" is NOT sufficient. Mathlib declares
+    deprecated aliases for names like `mul`, `x` and `add`, which are also the
+    commonest field and local-variable names in Lean. Rewriting those globally
+    corrupted kmill/render: `Mul.mul` became `Mul.stdPart_mul` and `w.x` became
+    an unknown identifier -- 105 substitutions, source destroyed.
+
+    So a bare name is rewritten only when it is unlikely to be a local: it must
+    look like a Mathlib lemma name (snake_case, reasonably long) or simply be
+    long enough that collision is implausible.
+    """
+    if short_name in COMMON_NAMES:
+        return False
+    if "_" in short_name and len(short_name) >= 8:
+        return True
+    return len(short_name) >= 12
+
+
+# Names that are field/local names far more often than they are lemma names.
+COMMON_NAMES = {
+    "x", "y", "z", "w", "n", "m", "k", "i", "j", "a", "b", "c", "f", "g", "h", "s", "t",
+    "add", "mul", "sub", "div", "neg", "inv", "zero", "one", "pow", "map", "comp",
+    "val", "fst", "snd", "left", "right", "trans", "symm", "refl", "cast", "coe",
+    "min", "max", "abs", "sup", "inf", "top", "bot", "get", "set", "run", "size",
+    "length", "toList", "toArray", "mk", "elim", "rec", "cons", "nil", "append",
+}
+
+
 def load_supplement(path: Path = SUPPLEMENT_PATH) -> list[dict]:
     """Curated entries for renames extraction cannot see.
 
@@ -130,9 +160,20 @@ def load_map(
     short: dict[str, str] = {}
     for r in doc["renames"]:
         if r["old"] and r["new"] and r["old"] != r["new"]:
-            qualified[r["old"]] = r["new"]
-        # Short names are only safe when they resolve to exactly one target.
-        if r["old_short"] not in ambiguous and r["old_short"] != r["new_short"]:
+            # A "qualified" key can still be BARE, when the alias was declared
+            # outside any namespace. Those are exactly as dangerous as short
+            # names: mathlib has a root-level `lo`, which rewrote kmill/render's
+            # `lo` binders into `MonomialOrder.linearOrderSyn` and produced
+            # invalid non-atomic binder names. Gate bare keys the same way.
+            if "." in r["old"] or is_distinctive(r["old"]):
+                qualified[r["old"]] = r["new"]
+        # Short names are only safe when they resolve to exactly one target AND
+        # are distinctive enough not to collide with ordinary local names.
+        if (
+            r["old_short"] not in ambiguous
+            and r["old_short"] != r["new_short"]
+            and is_distinctive(r["old_short"])
+        ):
             short[r["old_short"]] = r["new_short"]
 
     # Curated entries are applied last and win on conflict: they exist

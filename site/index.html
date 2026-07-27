@@ -1,0 +1,68 @@
+<!doctype html><meta charset=utf-8>
+<meta name=viewport content='width=device-width,initial-scale=1'>
+<title>Colim — Lean ecosystem health</title>
+<style>
+:root { --bg:#0d1117; --fg:#e6edf3; --dim:#8b949e; --line:#30363d;
+        --red:#f85149; --green:#3fb950; --amber:#d29922; --accent:#58a6ff; }
+@media (prefers-color-scheme: light) {
+  :root { --bg:#fff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0;
+          --red:#cf222e; --green:#1a7f37; --amber:#9a6700; --accent:#0969da; }
+}
+* { box-sizing:border-box; }
+body { margin:0; padding:2.5rem 1.5rem; background:var(--bg); color:var(--fg);
+       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
+.wrap { max-width:960px; margin:0 auto; }
+h1 { font-size:1.9rem; margin:0 0 .25rem; letter-spacing:-.02em; }
+.sub { color:var(--dim); margin:0 0 2rem; font-size:.95rem; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; margin-bottom:1rem; }
+.kpi { border:1px solid var(--line); border-radius:10px; padding:1rem 1.15rem; }
+.kpi .n { font-size:2.1rem; font-weight:650; letter-spacing:-.03em; }
+.kpi .l { color:var(--dim); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; }
+.note { border-left:3px solid var(--amber); padding:.6rem 1rem; margin:1.25rem 0;
+        background:color-mix(in srgb, var(--amber) 8%, transparent); border-radius:0 6px 6px 0;
+        font-size:.9rem; }
+h2 { font-size:1.05rem; margin:2.25rem 0 .75rem; text-transform:uppercase;
+     letter-spacing:.07em; color:var(--dim); }
+table { border-collapse:collapse; width:100%; font-size:.9rem; }
+th,td { text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); }
+th { color:var(--dim); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; }
+td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; }
+.bar { height:7px; border-radius:4px; background:var(--line); overflow:hidden; }
+.bar > i { display:block; height:100%; }
+code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; }
+a { color:var(--accent); }
+.red{color:var(--red)} .green{color:var(--green)} .amber{color:var(--amber)}
+footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
+         color:var(--dim); font-size:.82rem; }
+.scroll { overflow-x:auto; }
+</style><div class=wrap>
+<h1>Colim</h1>
+<p class=sub>Automated repair of formal mathematics. Census of the Lean package registry on <code>leanprover/lean4:v4.32.1</code>.</p>
+<div class=kpis>
+<div class=kpi><div class=n>758</div><div class=l>K · packages in scope</div></div>
+<div class=kpi><div class='n red'>501</div><div class=l>M · red regressions</div></div>
+<div class=kpi><div class=n>66%</div><div class=l>M / K</div></div>
+<div class=kpi><div class='n green'>1</div><div class=l>N · repaired &amp; verified</div></div>
+</div>
+<div class=note><strong>Quote this alongside M.</strong> 87 of the 501 reds are <code>infra_uninformative</code> — the registry's build failed on a cache fetch, so its log cannot say whether the package's own code survives. They are being resolved by measurement, not assumption. Until that finishes, M is an upper bound.</div>
+<h2>Classification</h2><div class=scroll><table>
+<tr><th>Status</th><th class=n>Packages</th><th class=n>% of K</th><th></th></tr>
+<tr><td><code>RED_REGRESSION</code></td><td class=n>501</td><td class=n>66.1%</td><td style='width:38%'><div class=bar><i style='width:66.1%;background:var(--red)'></i></div></td></tr>
+<tr><td><code>GREEN_CURRENT</code></td><td class=n>174</td><td class=n>23.0%</td><td style='width:38%'><div class=bar><i style='width:23.0%;background:var(--green)'></i></div></td></tr>
+<tr><td><code>NEVER_GREEN</code></td><td class=n>75</td><td class=n>9.9%</td><td style='width:38%'><div class=bar><i style='width:9.9%;background:var(--dim)'></i></div></td></tr>
+<tr><td><code>FORCED_DOWNGRADE</code></td><td class=n>7</td><td class=n>0.9%</td><td style='width:38%'><div class=bar><i style='width:0.9%;background:var(--amber)'></i></div></td></tr>
+<tr><td><code>UNKNOWN</code></td><td class=n>1</td><td class=n>0.1%</td><td style='width:38%'><div class=bar><i style='width:0.1%;background:var(--dim)'></i></div></td></tr>
+</table></div>
+<h2>Why each red is red</h2><div class=scroll><table>
+<tr><th>Basis</th><th class=n>Packages</th></tr>
+<tr><td><code>code_error</code></td><td class=n>403</td></tr>
+<tr><td><code>infra_uninformative</code></td><td class=n>87</td></tr>
+<tr><td><code>measured_local</code></td><td class=n>11</td></tr>
+</table></div>
+<h2>Repaired &amp; kernel-verified</h2><div class=scroll><table>
+<tr><th>Package</th><th class=n>Stars</th><th>Was pinned to</th><th class=n>Lines changed</th></tr>
+<tr><td><code>kmill/render</code></td><td class=n>146</td><td><code>v4.8.0-rc1</code></td><td class=n>2</td></tr>
+</table></div>
+<h2>Local reproduction — checking the registry against reality</h2>
+<p>11 of 11 conclusive local rebuilds reproduced the registry's recorded red, under the same forced toolchain. A build that compiles nothing is recorded as inconclusive, never as green.</p>
+<footer>Every number on this page is a SQL query over <code>ledger/colim.sqlite</code>, derived from Reservoir index snapshot <code>2acc551043c3</code>. Nothing here is estimated or interpolated.</footer></div>
