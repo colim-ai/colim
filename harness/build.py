@@ -211,7 +211,11 @@ def lake_build_verified(
     no-target warning means nothing could be built at all, which the caller
     must never treat as green.
     """
-    code, timed_out = _run(["lake", "build"], dest, env, timeout, log)
+    # --keep-toolchain is load-bearing. Without it, resolving a workspace whose
+    # manifest is absent makes Lake rewrite lean-toolchain to whatever the
+    # dependency wants: bumping to v4.32.1 silently became v4.33.0-rc1 because
+    # mathlib master pins that. We would then have measured the wrong toolchain.
+    code, timed_out = _run(["lake", "--keep-toolchain", "build"], dest, env, timeout, log)
     if code != 0 or not NO_TARGET_RE.search("\n".join(log)):
         return code, timed_out, []
 
@@ -224,8 +228,29 @@ def lake_build_verified(
         )
         return code, timed_out, []
 
-    code, timed_out = _run(["lake", "build", *targets], dest, env, timeout, log)
+    code, timed_out = _run(
+        ["lake", "--keep-toolchain", "build", *targets], dest, env, timeout, log
+    )
     return code, timed_out, targets
+
+
+def assert_toolchain_intact(dest: Path, expected: str, log: list[str]) -> None:
+    """Fail loudly if the build changed the toolchain out from under us.
+
+    Silent toolchain drift would invalidate the measurement without any visible
+    error, so this is checked rather than assumed.
+    """
+    path = dest / "lean-toolchain"
+    if not path.exists():
+        return
+    actual = path.read_text().strip()
+    if actual != expected:
+        msg = (
+            f"toolchain drift: lean-toolchain is {actual!r}, expected {expected!r}. "
+            "Lake rewrote the pin during dependency resolution."
+        )
+        log.append(f"##[error] {msg}")
+        raise RuntimeError(msg)
 
 
 def build_package(

@@ -25,7 +25,14 @@ REPO_ROOT = HERE.parent.parent
 for p in (REPO_ROOT, REPO_ROOT / "harness", HERE):
     sys.path.insert(0, str(p))
 
-from build import DiskFloorExceeded, build_package, clone_at, free_gb, tree_path  # noqa: E402
+from build import (  # noqa: E402
+    DiskFloorExceeded,
+    assert_toolchain_intact,
+    build_package,
+    clone_at,
+    free_gb,
+    tree_path,
+)
 from bump import bump  # noqa: E402
 from config import BUILD, CONFIG, EVAL_TOOLCHAIN  # noqa: E402
 from ledger.db import connect, now  # noqa: E402
@@ -106,6 +113,13 @@ def main() -> None:
         except DiskFloorExceeded as e:
             print(f"  STOPPING: {e}")
             break
+
+        # A green on a toolchain we did not pin is not a green for the campaign.
+        try:
+            assert_toolchain_intact(dest, TARGET["toolchain"], [])
+        except RuntimeError as e:
+            print(f"  INVALID: {e}")
+            continue
 
         ok = res.verified_green
         fixed += int(ok)

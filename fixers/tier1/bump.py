@@ -57,21 +57,33 @@ def bump_toolchain(root: Path, target: str, res: BumpResult) -> None:
     res.files_changed.append("lean-toolchain")
 
 
+# The `@ "rev"` clause is OPTIONAL, and the URL is frequently on its own line:
+#
+#     require mathlib from git
+#       "https://github.com/leanprover-community/mathlib4.git"
+#
+# A pattern that demanded `@ "rev"` silently skipped exactly these packages,
+# leaving them tracking mathlib master. Lake then resolved master and rewrote
+# lean-toolchain to v4.33.0-rc1 -- so the "bump" pinned the package to the
+# wrong toolchain entirely. Match with the rev optional and always emit one.
+LAKEFILE_REQUIRE_RE = re.compile(
+    r'(?P<head>require\s+\S+\s+from\s+git\s+)"(?P<url>[^"]+)"'
+    r'(?P<revclause>\s*@\s*"(?P<rev>[^"]*)")?'
+)
+
+
 def _bump_lakefile_lean(text: str, tag: str) -> tuple[str, str | None]:
-    """`require mathlib from git "<url>" @ "<rev>"` -> pinned to `tag`."""
+    """Pin the Mathlib `require` to `tag`, adding a rev clause if absent."""
     found: str | None = None
 
     def sub(m: re.Match) -> str:
         nonlocal found
         if not any(u in m.group("url") for u in MATHLIB_URLS):
             return m.group(0)
-        found = m.group("rev")
+        found = m.group("rev") if m.group("revclause") else "(unpinned: tracked master)"
         return f'{m.group("head")}"{m.group("url")}" @ "{tag}"'
 
-    pattern = re.compile(
-        r'(?P<head>require\s+\S+\s+from\s+git\s+)"(?P<url>[^"]+)"\s*@\s*"(?P<rev>[^"]*)"'
-    )
-    return pattern.sub(sub, text), found
+    return LAKEFILE_REQUIRE_RE.sub(sub, text), found
 
 
 def _bump_lakefile_toml(text: str, tag: str) -> tuple[str, str | None]:
