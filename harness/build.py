@@ -237,6 +237,7 @@ def build_package(
     mathlib_downstream: bool,
     lake_jobs: int,
     disk_floor_gb: float,
+    skip_clone: bool = False,
     clone_timeout: int = 900,
     cache_timeout: int = 3600,
     build_timeout: int = 7200,
@@ -258,7 +259,14 @@ def build_package(
     timed_out = False
     targets: list[str] = []
 
-    code = clone_at(repo_url, revision, dest, log, clone_timeout)
+    if skip_clone:
+        # The tree is already checked out and deliberately modified (tier-1 has
+        # bumped pins and rewritten sources). Re-cloning would `git clean` those
+        # edits away and we would be measuring the unrepaired package.
+        log.append(f"##[note] using existing tree at {dest}; clone skipped")
+        code = 0
+    else:
+        code = clone_at(repo_url, revision, dest, log, clone_timeout)
 
     if code == 0:
         # elan reads ELAN_TOOLCHAIN in preference to lean-toolchain, which is
