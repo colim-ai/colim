@@ -95,11 +95,11 @@ section:last-child{border-bottom:0}
 
 /* 1 — hero */
 .hero{padding-top:4rem}
-.figs{display:flex;align-items:baseline;gap:1.6rem;flex-wrap:wrap}
+.figs{display:flex;align-items:baseline;gap:1.1rem;flex-wrap:wrap}
+.prefix{font:500 34px/1 var(--sans);color:var(--grey)}
 .big{font:700 128px/.9 var(--mono);letter-spacing:-.045em;color:var(--red)}
-.of{font:400 46px/1 var(--mono);color:var(--grey)}
-.pct{font:600 46px/1 var(--mono);color:var(--ink);margin-left:.4rem}
-.thesis{font-size:30px;line-height:1.35;font-weight:500;max-width:26ch;margin-top:1.5rem}
+.of{font:400 40px/1 var(--mono);color:var(--grey)}
+.thesis{font-size:30px;line-height:1.35;font-weight:500;max-width:30ch;margin-top:1.5rem}
 .qualifier{font-size:22px;line-height:1.45;margin-top:1.5rem;padding-left:1.1rem;
            border-left:4px solid var(--red);max-width:56ch}
 .caption{font-size:16px;color:var(--grey);margin-top:1.6rem;max-width:70ch}
@@ -242,17 +242,17 @@ def main() -> None:
         "<section class=hero>",
         "<div class=eyebrow>Colim · census of Lean’s official package registry</div>",
         "<div class=figs>",
-        f"<span class=big>{m}</span>",
-        f"<span class=of>of {k}</span>",
-        f"<span class=pct>{m / k:.0%}</span>",
+        "<span class=prefix>at least</span>",
+        f"<span class=big>{floor / k:.0%}</span>",
+        f"<span class=of>of {k} packages</span>",
         "</div>",
-        "<p class=thesis>packages in Lean’s official registry fail to build on the "
+        "<p class=thesis>in Lean’s official registry fail to build on the "
         f"current stable toolchain.{proof('', REPORT, 'SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status=&#39;RED_REGRESSION&#39;')}</p>",
-        f"<p class=qualifier>{uninf} of the failing packages are recorded only as "
-        "infrastructure-ambiguous, so this figure is an upper bound while "
-        "independent measurement continues. <strong>Even if every one of them "
-        f"turned out healthy, the figure would still be {floor / k:.0%}</strong> "
-        f"({floor} of {k}). Of the {measured_amb} measured so far, "
+        f"<p class=qualifier>We publish the floor, not the headline. Our records show "
+        f"<strong>{m} failing ({m / k:.0%})</strong>, but {uninf} of those are "
+        "infrastructure-ambiguous — the registry’s build died before compiling "
+        f"anything, so its log cannot say. Discount every one of them and {floor} "
+        f"still fail. Of the {measured_amb} we have since rebuilt ourselves, "
         f"{stayed_broken} were genuinely broken."
         f"{proof('', MEASURE_RUN, 'SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;')}</p>",
         f"<p class=caption>Source: Reservoir build history, {observations:,} records. "
