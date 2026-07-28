@@ -16,7 +16,8 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE.parent))
+REPO_ROOT = HERE.parent
+sys.path.insert(0, str(REPO_ROOT))
 
 from ledger.db import connect, get_meta  # noqa: E402
 
@@ -114,6 +115,7 @@ section:last-child{border-bottom:0}
 .diff{font:15px/1.65 var(--mono);background:var(--paper);border:1px solid var(--rule);
       border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
 .diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
+.diff b{color:var(--grey);font-weight:600}
 .verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
 .links{margin-top:.85rem;display:flex;gap:1.6rem;flex-wrap:wrap;font-size:16px}
 .links a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
@@ -145,6 +147,35 @@ a{color:inherit}
   .wrap{padding:0 1.4rem} .big{font-size:84px} .claims{grid-template-columns:1fr}
 }
 """
+
+
+def repair_diff(pkg_key: str) -> str:
+    """Render the ACTUAL committed diff, rather than a hand-picked excerpt.
+
+    The card previously showed one representative line while the fact box said
+    two, which reads as an inconsistency and invites the obvious question.
+    Generating from git keeps the two in step permanently.
+    """
+    import html
+    import subprocess
+
+    tree = REPO_ROOT / "work" / pkg_key.replace("/", "--")
+    if not (tree / ".git").exists():
+        return ""
+    proc = subprocess.run(
+        ["git", "show", "HEAD", "--unified=0", "--", "Main.lean", "old/vec.lean",
+         "lean-toolchain"],
+        cwd=tree, capture_output=True, text=True,
+    )
+    out = []
+    for line in proc.stdout.splitlines():
+        if line.startswith("+++ b/"):
+            out.append(f"<b>{html.escape(line[6:])}</b>")
+        elif line.startswith("-") and not line.startswith("---"):
+            out.append(f"<span class=minus>{html.escape(line)}</span>")
+        elif line.startswith("+") and not line.startswith("+++"):
+            out.append(f"<span class=plus>{html.escape(line)}</span>")
+    return "\n".join(out)
 
 
 def proof(label: str, href: str, sql: str) -> str:
@@ -223,15 +254,12 @@ def main() -> None:
             "<div class=k>Lean 4 raytracer</div></div>",
             f"<div class=fact><div class=v>{old_tc}</div>"
             "<div class=k>Compiler it was pinned to</div></div>",
-            f"<div class=fact><div class=v>{render.get('substitutions', '?')} lines</div>"
-            "<div class=k>Changed by Colim</div></div>",
+            f"<div class=fact><div class=v>{render.get('substitutions', '?')} source lines</div>"
+            "<div class=k>Plus the toolchain pin</div></div>",
             f"<div class=fact><div class=v>{eval_tc}</div>"
             "<div class=k>Now builds on</div></div>",
             "</div>",
-            "<div class=diff>"
-            "<span class=minus>- Array.mkArray (height * width) Color.black</span>\n"
-            "<span class=plus>+ Array.replicate (height * width) Color.black</span>"
-            "</div>",
+            f"<div class=diff>{repair_diff('kmill/render')}</div>",
             "<p class=verdict>Kernel-verified green on our fork — public CI, "
             "timestamped.</p>",
             "<p class=links>"

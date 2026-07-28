@@ -41,6 +41,7 @@ section:last-child{border-bottom:0}
 .diff{font:15px/1.65 var(--mono);background:var(--paper);border:1px solid var(--rule);
       border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
 .diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
+.diff b{color:var(--grey);font-weight:600}
 .verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
 .links{margin-top:.85rem;display:flex;gap:1.6rem;flex-wrap:wrap;font-size:16px}
 .links a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
@@ -90,11 +91,18 @@ a{color:inherit}
 <div class=facts>
 <div class=fact><div class=v>146★</div><div class=k>Lean 4 raytracer</div></div>
 <div class=fact><div class=v>v4.8.0-rc1</div><div class=k>Compiler it was pinned to</div></div>
-<div class=fact><div class=v>2 lines</div><div class=k>Changed by Colim</div></div>
+<div class=fact><div class=v>2 source lines</div><div class=k>Plus the toolchain pin</div></div>
 <div class=fact><div class=v>v4.32.1</div><div class=k>Now builds on</div></div>
 </div>
-<div class=diff><span class=minus>- Array.mkArray (height * width) Color.black</span>
-<span class=plus>+ Array.replicate (height * width) Color.black</span></div>
+<div class=diff><b>Main.lean</b>
+<span class=minus>-  let mut pixels : Array (Color Float) := Array.mkArray (height * width) Color.black</span>
+<span class=plus>+  let mut pixels : Array (Color Float) := Array.replicate (height * width) Color.black</span>
+<b>lean-toolchain</b>
+<span class=minus>-leanprover/lean4:v4.8.0-rc1</span>
+<span class=plus>+leanprover/lean4:v4.32.1</span>
+<b>old/vec.lean</b>
+<span class=minus>-    array := Array.mkArray (Enumerable.card ι) a</span>
+<span class=plus>+    array := Array.replicate (Enumerable.card ι) a</span></div>
 <p class=verdict>Kernel-verified green on our fork — public CI, timestamped.</p>
 <p class=links><a href='https://github.com/leanprover/reservoir/actions/runs/30206205851/job/89804749112#step:4:1'>Upstream build failing ↗</a><a href='https://github.com/colim-ai/lean4-raytracer/commit/7597a340c83f0a1e08f4e354d0f39ef5f56ca119'>Our 2-line fix ↗</a><a href='https://github.com/colim-ai/lean4-raytracer/actions/runs/30322697478'>Green CI run ↗</a></p>
 </div></section>
