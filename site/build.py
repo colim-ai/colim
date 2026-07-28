@@ -142,6 +142,8 @@ h3:first-of-type{margin-top:0}
        border-bottom:1px dotted var(--rule);white-space:nowrap;margin-left:.55rem}
 .proof:hover{color:var(--ink)}
 footer{padding-top:2.4rem;color:var(--grey);font-size:15px}
+.cta{margin-top:2.6rem;font-size:20px;font-weight:600}
+.cta a{text-decoration:none;border-bottom:2px solid var(--ink);padding-bottom:2px}
 a{color:inherit}
 @media (max-width:820px){
   .wrap{padding:0 1.4rem} .big{font-size:84px} .claims{grid-template-columns:1fr}
@@ -328,6 +330,7 @@ def main() -> None:
         "do not sum to the total.</p></section>"
     )
 
+    h.append("<p class=cta><a href='/request/'>Request a repair for a package →</a></p>")
     h.append(
         "<footer>Reservoir index snapshot "
         f"<code>{get_meta(conn, 'index_commit')[:12]}</code> · evaluation toolchain "

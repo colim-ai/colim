@@ -1,0 +1,59 @@
+name: Request a package repair
+description: Ask Colim to attempt a repair on a Lean package that no longer builds.
+title: "[request] "
+labels: ["repo-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the request. A few things worth knowing before you file:
+
+        - We work only on **our own forks**. We do not open pull requests against
+          your repository unless you ask us to.
+        - A repair is only counted if it builds green and is **statement-preserving**:
+          declaration names and their types must be unchanged. Anything else is
+          flagged for human review rather than claimed as a fix.
+        - We cannot promise a timeline, and some packages need real proof work that
+          automation will not solve.
+
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: The GitHub URL, or owner/name.
+      placeholder: https://github.com/owner/name
+    validations:
+      required: true
+
+  - type: dropdown
+    id: relationship
+    attributes:
+      label: Your relationship to it
+      options:
+        - I maintain it
+        - I depend on it
+        - I just want it to work
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything we should know
+      description: >
+        Optional. A branch to target, parts that are expected to be broken,
+        a toolchain you need specifically, or anything that would waste our time
+        if we did not know it.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Fork permission
+      options:
+        - label: >
+            I understand Colim will fork this repository publicly to attempt the
+            repair, and that the fork's CI results will be public.
+          required: true

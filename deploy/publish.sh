@@ -23,7 +23,9 @@ fi
 
 echo "==> regenerating from the ledger"
 python3 site/build.py
+python3 site/fetch_requests.py
 python3 site/build_demo.py
+python3 site/build_request.py
 python3 census/report.py --write >/dev/null
 
 echo "==> checking the generated page"
@@ -41,8 +43,9 @@ PY
 echo "==> publishing"
 install -m 0644 site/index.html "$WEBROOT/index.html"
 # Ship the audit trail alongside the page the numbers came from.
-mkdir -p "$WEBROOT/census" "$WEBROOT/demo"
+mkdir -p "$WEBROOT/census" "$WEBROOT/demo" "$WEBROOT/request"
 install -m 0644 site/demo/index.html "$WEBROOT/demo/index.html"
+install -m 0644 site/request/index.html "$WEBROOT/request/index.html"
 install -m 0644 census/report.md "$WEBROOT/census/report.md"
 install -m 0644 METHODOLOGY.md "$WEBROOT/METHODOLOGY.md"
 
