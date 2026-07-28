@@ -35,10 +35,30 @@ echo
 
 # --- sanity: DNS must resolve here before certbot will issue -----------------
 MYIP="$(curl -fsS --max-time 10 https://api.ipify.org || echo unknown)"
+# Cloudflare's proxy ("orange cloud") answers with its OWN anycast addresses,
+# so the A record will not resolve to this box even when it is configured
+# correctly. Certbot's HTTP-01 challenge then validates against Cloudflare
+# rather than nginx, which fails unless the edge already trusts the origin.
+# The reliable order is: grey-cloud (DNS only) -> issue the cert -> optionally
+# re-enable the proxy with SSL mode "Full (strict)".
+is_cloudflare() {
+  local ip="$1"
+  [[ $ip == 104.1[6-9].* || $ip == 104.2[0-7].* || $ip == 172.6[4-9].* \
+     || $ip == 172.7[0-1].* || $ip == 173.245.* || $ip == 188.114.* \
+     || $ip == 190.93.* || $ip == 197.234.* || $ip == 198.41.* ]]
+}
+
 for d in "${DOMAINS[@]}"; do
   GOT="$(dig +short "$d" A | tail -1)"
   if [[ -z "$GOT" ]]; then
     echo "!! $d does not resolve yet. Add an A record -> $MYIP, then re-run." >&2
+    exit 1
+  elif is_cloudflare "$GOT"; then
+    echo "!! $d resolves to $GOT, which is a Cloudflare proxy address." >&2
+    echo "   In the Cloudflare DNS panel, set the record for '$d' to DNS only" >&2
+    echo "   (grey cloud), wait a minute, then re-run this script." >&2
+    echo "   You can switch the proxy back on afterwards -- set SSL/TLS mode to" >&2
+    echo "   'Full (strict)' once the origin certificate exists." >&2
     exit 1
   elif [[ "$GOT" != "$MYIP" && "$MYIP" != "unknown" ]]; then
     echo "!! $d resolves to $GOT but this box is $MYIP." >&2
