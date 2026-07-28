@@ -40,15 +40,15 @@ footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
 <p class=sub>Automated repair of formal mathematics. Census of the Lean package registry on <code>leanprover/lean4:v4.32.1</code>.</p>
 <div class=kpis>
 <div class=kpi><div class=n>758</div><div class=l>K · packages in scope</div></div>
-<div class=kpi><div class='n red'>501</div><div class=l>M · red regressions</div></div>
+<div class=kpi><div class='n red'>500</div><div class=l>M · red regressions</div></div>
 <div class=kpi><div class=n>66%</div><div class=l>M / K</div></div>
 <div class=kpi><div class='n green'>1</div><div class=l>N · repaired &amp; verified</div></div>
 </div>
-<div class=note><strong>Quote this alongside M.</strong> 87 of the 501 reds are <code>infra_uninformative</code> — the registry's build failed on a cache fetch, so its log cannot say whether the package's own code survives. They are being resolved by measurement, not assumption. Until that finishes, M is an upper bound.</div>
+<div class=note><strong>Quote this alongside M.</strong> 52 of the 500 reds are <code>infra_uninformative</code> — the registry's build failed on a cache fetch, so its log cannot say whether the package's own code survives. They are being resolved by measurement, not assumption. Until that finishes, M is an upper bound.</div>
 <h2>Classification</h2><div class=scroll><table>
 <tr><th>Status</th><th class=n>Packages</th><th class=n>% of K</th><th></th></tr>
-<tr><td><code>RED_REGRESSION</code></td><td class=n>501</td><td class=n>66.1%</td><td style='width:38%'><div class=bar><i style='width:66.1%;background:var(--red)'></i></div></td></tr>
-<tr><td><code>GREEN_CURRENT</code></td><td class=n>174</td><td class=n>23.0%</td><td style='width:38%'><div class=bar><i style='width:23.0%;background:var(--green)'></i></div></td></tr>
+<tr><td><code>RED_REGRESSION</code></td><td class=n>500</td><td class=n>66.0%</td><td style='width:38%'><div class=bar><i style='width:66.0%;background:var(--red)'></i></div></td></tr>
+<tr><td><code>GREEN_CURRENT</code></td><td class=n>175</td><td class=n>23.1%</td><td style='width:38%'><div class=bar><i style='width:23.1%;background:var(--green)'></i></div></td></tr>
 <tr><td><code>NEVER_GREEN</code></td><td class=n>75</td><td class=n>9.9%</td><td style='width:38%'><div class=bar><i style='width:9.9%;background:var(--dim)'></i></div></td></tr>
 <tr><td><code>FORCED_DOWNGRADE</code></td><td class=n>7</td><td class=n>0.9%</td><td style='width:38%'><div class=bar><i style='width:0.9%;background:var(--amber)'></i></div></td></tr>
 <tr><td><code>UNKNOWN</code></td><td class=n>1</td><td class=n>0.1%</td><td style='width:38%'><div class=bar><i style='width:0.1%;background:var(--dim)'></i></div></td></tr>
@@ -56,7 +56,8 @@ footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
 <h2>Why each red is red</h2><div class=scroll><table>
 <tr><th>Basis</th><th class=n>Packages</th></tr>
 <tr><td><code>code_error</code></td><td class=n>403</td></tr>
-<tr><td><code>infra_uninformative</code></td><td class=n>87</td></tr>
+<tr><td><code>infra_uninformative</code></td><td class=n>52</td></tr>
+<tr><td><code>measured_actions</code></td><td class=n>34</td></tr>
 <tr><td><code>measured_local</code></td><td class=n>11</td></tr>
 </table></div>
 <h2>Repaired &amp; kernel-verified</h2><div class=scroll><table>

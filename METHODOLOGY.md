@@ -49,7 +49,7 @@ So when this project says a package is **red**, the claim is precisely:
 It is **not** the claim that the maintainer's own pinned build is broken. Most of these
 packages build fine today on the older toolchain they pin. The question we are asking — and
 the one the product answers — is *"can this package move to the current compiler?"*, and for
-501 of 758 packages the answer is no.
+500 of 758 packages the answer is no.
 
 If you think the weaker reading ("66% of Lean packages are broken") is the interesting claim,
 we agree it would be more dramatic and we are not making it.
@@ -150,7 +150,7 @@ Everything else stays in. In particular:
   Mathlib-downstream campaign is reported against its own denominator **K_m = 489**, never
   silently swapped for K.
 - **Staleness never excludes.** Abandoned-but-once-green *is* the market. We record
-  `last_commit` and publish the "active in the last 12 months" slice (K=564, M=357, 63.3%)
+  `last_commit` and publish the "active in the last 12 months" slice (K=564, M=356, 63.1%)
   because you were going to ask for it.
 
 ### Statement-preserving repair (the honesty gate for N)
@@ -186,7 +186,7 @@ additionally as **N_tier1** vs **N_tier2**.
 
 ## What we have not done
 
-- **We have not locally reproduced all 501 red builds.** The census runs on Reservoir's
+- **We have not rebuilt all 500 reds ourselves.** The census runs on Reservoir's
   recorded outcomes. Day 2 reproduces a sample locally to check Reservoir against reality, and
   every package we actually repair is rebuilt from scratch by definition.
 - **`failure_origin` (self / dependency / both) is resolved from build logs.** Until that pass

@@ -166,6 +166,36 @@ For contrast, the 24 ARCHIVED packages *would* have contributed 17 RED_REGRESSIO
 NEVER_GREEN and 3 GREEN_CURRENT had they stayed in K. That exclusion is load-bearing and
 is what CLAUDE.md's census scope already required.
 
+## Measurement chunk 1 — M delta (2026-07-28)
+
+First batch of the `infra_uninformative` cohort rebuilt in our own Actions matrix
+(run [30310736200](https://github.com/colim-ai/colim/actions/runs/30310736200), 40 jobs).
+
+| outcome | n |
+|---|---:|
+| stayed in M — real code errors found | 34 |
+| **moved OUT of M — measured green** | **1** (`VCA-EPFL/graphiti`) |
+| still infrastructure, remains flagged | 5 |
+
+**Delta: M 501 → 500, M/K 66.1% → 66.0%.** K unchanged at 758.
+
+`red_basis` after ingest: `code_error` 403, `infra_uninformative` 52 (was 87),
+`measured_actions` 34, `measured_local` 11.
+
+**What this settles.** The worry that the infra cohort materially overstated M does not
+survive contact with measurement: 34 of the 35 conclusive rebuilds found genuine Lean/Lake
+errors once the cache fetch succeeded. Reservoir's cache failure was masking real breakage
+rather than inventing it — the same pattern first seen locally on `teorth/equational_theories`.
+
+This is reported as the measured subset only. **It is not extrapolated to the remaining 52**,
+per the standing rule; those are resolved by chunks 2 and 3, not by inference.
+
+Three jobs (`leanprover/lean-eval`, `leanprover/hex`, `Vilin97/lean-pool`) exceeded the
+90-minute job timeout and produced no verdict. They are deliberately NOT counted as green —
+absence of a verdict is never evidence of success — and stay `infra_uninformative`. That two
+of them are very slow builds is itself a plausible explanation for Reservoir's original
+cache-fetch failure on them.
+
 ## FORCED_DOWNGRADE — an explicit class, not a footnote
 
 Because Reservoir forces the toolchain, a package whose own pin is *newer* than the
