@@ -263,8 +263,9 @@ def main() -> None:
             "<p class=verdict>Kernel-verified green on our fork — public CI, "
             "timestamped.</p>",
             "<p class=links>"
+            "<a href='/demo/'>Walk through this repair ↗</a>"
             f"<a href='{r['eval_build_url']}'>Upstream build failing ↗</a>"
-            f"<a href='{REPAIR_DIFF}'>Our 2-line fix ↗</a>"
+            f"<a href='{REPAIR_DIFF}'>Our fix ↗</a>"
             f"<a href='{REPAIR_CI}'>Green CI run ↗</a>"
             "</p>",
             "</div></section>",

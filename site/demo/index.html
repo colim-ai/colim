@@ -1,0 +1,163 @@
+<!doctype html><html lang=en><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Colim — repairing a broken Lean package, step by step</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--paper:#fbfaf7;--ink:#14161a;--grey:#6b7280;--rule:#d8d5cd;
+      --red:#a81c1c;--green:#1a6b3c;--wash:#fff;
+      --mono:"SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,monospace;
+      --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+body{background:var(--paper);color:var(--ink);font:18px/1.55 var(--sans);
+     font-variant-numeric:tabular-nums;padding:2.5rem 1.5rem 5rem}
+.wrap{max-width:920px;margin:0 auto}
+a{color:inherit}
+.top{display:flex;justify-content:space-between;align-items:baseline;
+     border-bottom:1px solid var(--rule);padding-bottom:1rem;margin-bottom:2rem;
+     flex-wrap:wrap;gap:.6rem}
+.top h1{font-size:23px;font-weight:650;letter-spacing:-.01em}
+.top .sub{color:var(--grey);font-size:15px}
+.replay{border-left:4px solid var(--grey);padding:.55rem .95rem;margin-bottom:2rem;
+        font-size:15px;color:var(--grey);background:#f3f1ec;border-radius:0 4px 4px 0}
+.step{border:1px solid var(--rule);border-radius:5px;background:var(--wash);
+      padding:1.6rem 1.8rem;margin-bottom:1.1rem}
+.step .n{font:600 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+         color:var(--grey);margin-bottom:.7rem}
+.step h2{font-size:25px;font-weight:600;line-height:1.25;margin-bottom:.6rem}
+.step p{color:#3c4148;margin-bottom:.55rem}
+.step p:last-child{margin-bottom:0}
+pre{font:14px/1.6 var(--mono);background:var(--paper);border:1px solid var(--rule);
+    border-radius:3px;padding:.85rem 1rem;overflow-x:auto;margin:.9rem 0;
+    white-space:pre;color:var(--ink)}
+pre .minus{color:var(--red)} pre .plus{color:var(--green)}
+pre .dim{color:var(--grey)} pre .err{color:var(--red)}
+pre b{color:var(--grey);font-weight:600}
+.kv{display:flex;gap:2rem;flex-wrap:wrap;margin:.9rem 0}
+.kv div span{display:block}
+.kv .v{font:600 21px/1.15 var(--mono)}
+.kv .k{font-size:13px;color:var(--grey);text-transform:uppercase;letter-spacing:.06em}
+.ok{color:var(--green);font-weight:600}
+.bad{color:var(--red);font-weight:600}
+.links{display:flex;gap:1.4rem;flex-wrap:wrap;margin-top:1rem;font-size:16px}
+.links a{text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
+.links a:hover{border-color:var(--ink)}
+.nav{display:flex;gap:.7rem;align-items:center;margin:2rem 0 1rem;flex-wrap:wrap}
+button{font:inherit;font-size:16px;padding:.5rem 1.1rem;border:1px solid var(--ink);
+       background:var(--ink);color:var(--paper);border-radius:3px;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink)}
+button[disabled]{opacity:.35;cursor:default}
+.dots{display:flex;gap:.4rem;margin-left:auto}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--rule);display:block}
+.dots i.on{background:var(--ink)}
+footer{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid var(--rule);
+       color:var(--grey);font-size:14px}
+.js .step{display:none} .js .step.on{display:block}
+@media (max-width:700px){body{padding:1.5rem 1rem 4rem}.step{padding:1.2rem}}
+</style>
+<body><div class=wrap>
+<div class=top>
+  <h1>Repairing a broken Lean package</h1>
+  <span class=sub><a href="/">← colim.ai</a></span>
+</div>
+<p class=replay>A replay of one real repair. Every panel below shows output that was
+actually produced &mdash; nothing is simulated, and nothing compiles in your browser.
+Reproduce it yourself in about six seconds with <code>./demo/run_render.sh</code>.</p>
+<section class=step><div class=n>Step 1 of 6</div><h2>A real package, frozen in time</h2>
+<p><a href="https://github.com/kmill/lean4-raytracer">kmill/lean4-raytracer</a> is a raytracer written in
+Lean 4. It works. Its author has not touched it since
+2024-05-16.</p>
+<div class=kv>
+  <div><span class=v>146★</span><span class=k>Stars</span></div>
+  <div><span class=v>v4.8.0-rc1</span><span class=k>Compiler it pins</span></div>
+  <div><span class=v>v4.32.1</span><span class=k>Current stable</span></div>
+</div>
+<p>Nothing is wrong with the code. The compiler moved underneath it — that is the
+entire problem Colim exists to solve.</p></section><section class=step><div class=n>Step 2 of 6</div><h2>It no longer builds on today’s compiler</h2>
+<p>Lean’s official registry rebuilds every indexed package against each new
+toolchain. Here is what it recorded, verbatim:</p>
+<pre><span class=err>error: Main.lean:291:42: Unknown constant `Array.mkArray`</span>
+<span class=err>error: Lean exited with code 1</span>
+<span class=err>error: build failed</span></pre>
+<p>One removed name. The package is dead on the current compiler until somebody
+edits it.</p>
+<div class=links><a href="https://github.com/leanprover/reservoir/actions/runs/30206205851/job/89804749112#step:4:1">The registry’s failing build log ↗</a></div></section><section class=step><div class=n>Step 3 of 6</div><h2>Why the obvious fix does not work</h2>
+<p>Lean and Mathlib mark most renames with a deprecation alias, and Colim extracts
+them automatically — <strong>4,515 renames</strong> from the sources at the
+target revision.</p>
+<pre><span class=dim>$ grep Array.mkArray fixers/tier1/renames.json</span>
+<span class=dim>(no match)</span></pre>
+<p><code>Array.mkArray</code> is not in that map. It was removed outright, with no
+alias left behind, so no amount of automatic extraction will find it. This is the
+class of failure that makes naive rename tooling stall.</p></section><section class=step><div class=n>Step 4 of 6</div><h2>So we go and find the evidence</h2>
+<p>The replacement exists — it just was not advertised. Colim records it as a
+curated entry, and <strong>every curated entry must cite upstream</strong>:</p>
+<pre>old      = "Array.mkArray"
+new      = "Array.replicate"
+kind     = "rename"
+evidence = "https://github.com/leanprover/lean4/pull/7544"</pre>
+<p>No entry may rest on recollection. A test refuses to load the map if any entry
+lacks an evidence link.</p>
+<div class=links><a href="https://github.com/leanprover/lean4/pull/7544">The upstream commit that renamed it ↗</a></div></section><section class=step><div class=n>Step 5 of 6</div><h2>The repair</h2>
+<p>Colim clones the package at the exact revision the registry built, bumps the
+toolchain pin, and applies the rename maps at identifier boundaries — never inside
+strings or comments.</p>
+<pre><b>Main.lean</b>
+<span class=minus>-  let mut pixels : Array (Color Float) := Array.mkArray (height * width) Color.black</span>
+<span class=plus>+  let mut pixels : Array (Color Float) := Array.replicate (height * width) Color.black</span>
+<b>lean-toolchain</b>
+<span class=minus>-leanprover/lean4:v4.8.0-rc1</span>
+<span class=plus>+leanprover/lean4:v4.32.1</span>
+<b>old/vec.lean</b>
+<span class=minus>-    array := Array.mkArray (Enumerable.card ι) a</span>
+<span class=plus>+    array := Array.replicate (Enumerable.card ι) a</span></pre>
+<p>2 source lines, plus the toolchain pin. That is the
+whole change.</p></section><section class=step><div class=n>Step 6 of 6</div><h2>Verified, in public</h2>
+<p>The repaired branch is pushed to <strong>our own fork</strong> and built by CI
+there. Nothing is proposed upstream. The verdict is machine-emitted:</p>
+<pre>"verified_green":   <span class=plus>true</span>
+"built_nothing":    <span class=plus>false</span>   <span class=dim>&larr; it really compiled something</span>
+"toolchain_intact": <span class=plus>true</span>    <span class=dim>&larr; on the toolchain we pinned</span>
+"targets":          ["Render", "render"]</pre>
+<p>Those three booleans are the guards. A build that exits zero without compiling
+anything, or that ran on a toolchain something swapped underneath us, cannot be
+reported as green.</p>
+<p class=ok>kmill/render builds green on v4.32.1, checked by the Lean kernel.</p>
+<div class=links>
+  <a href="https://github.com/colim-ai/lean4-raytracer/commit/7597a340c83f0a1e08f4e354d0f39ef5f56ca119">Our commit ↗</a>
+  <a href="https://github.com/colim-ai/lean4-raytracer/actions/runs/30322697478">The green CI run ↗</a>
+  <a href="https://github.com/colim-ai/colim">Source ↗</a>
+</div></section>
+<div class=nav>
+  <button class=ghost id=prev>&larr; Back</button>
+  <button id=next>Next &rarr;</button>
+  <span class=dots id=dots></span>
+</div>
+<footer>Use ← and → to step through. With JavaScript disabled every step is shown
+at once &mdash; nothing here needs interaction to be read.</footer>
+</div>
+<script>
+// Progressive enhancement only: without this the page is a readable document
+// with every step visible. Nothing here fetches, computes or hides evidence.
+(function(){
+  var d=document, steps=[].slice.call(d.querySelectorAll('.step'));
+  if(!steps.length) return;
+  d.documentElement.classList.add('js');
+  var i=0, prev=d.getElementById('prev'), next=d.getElementById('next'),
+      dots=d.getElementById('dots');
+  steps.forEach(function(){ var s=d.createElement('i'); dots.appendChild(s); });
+  function show(n){
+    i=Math.max(0,Math.min(steps.length-1,n));
+    steps.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+    [].forEach.call(dots.children,function(s,k){ s.classList.toggle('on',k<=i); });
+    prev.disabled=(i===0); next.disabled=(i===steps.length-1);
+    next.textContent=(i===steps.length-1)?'Done':'Next \u2192';
+  }
+  prev.onclick=function(){show(i-1)};
+  next.onclick=function(){show(i+1)};
+  d.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' ') {e.preventDefault(); show(i+1);}
+    if(e.key==='ArrowLeft') show(i-1);
+  });
+  show(0);
+})();
+</script>
+</body></html>
