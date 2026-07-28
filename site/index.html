@@ -83,7 +83,7 @@ a{color:inherit}
 <span class=pct>66%</span>
 </div>
 <p class=thesis>packages in Lean’s official registry fail to build on the current stable toolchain.<a class=proof href="/census/report.md" title="SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status=&#39;RED_REGRESSION&#39;">proof ↗</a></p>
-<p class=qualifier>52 of the failing packages are recorded only as infrastructure-ambiguous. Independent measurement is in progress; until it completes this figure is an upper bound.<a class=proof href="https://github.com/colim-ai/colim/actions/runs/30310736200" title="SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;">proof ↗</a></p>
+<p class=qualifier>52 of the failing packages are recorded only as infrastructure-ambiguous, so this figure is an upper bound while independent measurement continues. <strong>Even if every one of them turned out healthy, the figure would still be 59%</strong> (448 of 758). Of the 35 measured so far, 34 were genuinely broken.<a class=proof href="https://github.com/colim-ai/colim/actions/runs/30310736200" title="SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;">proof ↗</a></p>
 <p class=caption>Source: Reservoir build history, 116,874 records. Every figure is a SQL query over our ledger; every row links to a public build log.</p>
 </section>
 <section>

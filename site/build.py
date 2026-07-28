@@ -214,6 +214,21 @@ def main() -> None:
     ).fetchone()
     render = json.loads(r["tier1_result"]) if r and r["tier1_result"] else {}
 
+    # The arithmetic floor: what M would be if EVERY still-ambiguous package
+    # turned out healthy. Stating it alongside the headline is stronger than
+    # shading the headline down to a rounder number -- a rounder number would
+    # be below this floor, i.e. false in the other direction.
+    floor = m - uninf
+    stayed_broken = one(
+        "SELECT COUNT(*) FROM packages WHERE red_basis='measured_actions' "
+        "AND final_status='RED_REGRESSION'"
+    )
+    went_green = one(
+        "SELECT COUNT(*) FROM packages WHERE red_basis='measured_actions' "
+        "AND final_status='GREEN_CURRENT'"
+    )
+    measured_amb = stayed_broken + went_green
+
     REPORT = "/census/report.md"
     h: list[str] = [
         "<!doctype html><html lang=en><meta charset=utf-8>",
@@ -234,8 +249,11 @@ def main() -> None:
         "<p class=thesis>packages in Lean’s official registry fail to build on the "
         f"current stable toolchain.{proof('', REPORT, 'SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status=&#39;RED_REGRESSION&#39;')}</p>",
         f"<p class=qualifier>{uninf} of the failing packages are recorded only as "
-        "infrastructure-ambiguous. Independent measurement is in progress; until it "
-        "completes this figure is an upper bound."
+        "infrastructure-ambiguous, so this figure is an upper bound while "
+        "independent measurement continues. <strong>Even if every one of them "
+        f"turned out healthy, the figure would still be {floor / k:.0%}</strong> "
+        f"({floor} of {k}). Of the {measured_amb} measured so far, "
+        f"{stayed_broken} were genuinely broken."
         f"{proof('', MEASURE_RUN, 'SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;')}</p>",
         f"<p class=caption>Source: Reservoir build history, {observations:,} records. "
         "Every figure is a SQL query over our ledger; every row links to a public "
