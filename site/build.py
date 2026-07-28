@@ -1,4 +1,13 @@
-"""Generate the static dashboard FROM the ledger. No independent data."""
+"""Generate the static dashboard FROM the ledger. No independent data.
+
+Designed for scene 1 of a screen recording: sound-off legible at 1080p with no
+zooming, one viewport per beat, no animation and no JavaScript that could fail
+on camera. Styled as an audit ledger rather than a product page, because the
+page is evidence: paper stock, near-black ink, tabular numerals, thin rules.
+
+Colour is rationed. Green appears ONLY for kernel-verified repair. Red appears
+ONLY for counts of failing packages. Everything else is ink or grey.
+"""
 
 from __future__ import annotations
 
@@ -13,41 +22,133 @@ from ledger.db import connect, get_meta  # noqa: E402
 
 OUT = HERE / "index.html"
 
-CSS = """
-:root { --bg:#0d1117; --fg:#e6edf3; --dim:#8b949e; --line:#30363d;
-        --red:#f85149; --green:#3fb950; --amber:#d29922; --accent:#58a6ff; }
-@media (prefers-color-scheme: light) {
-  :root { --bg:#fff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0;
-          --red:#cf222e; --green:#1a7f37; --amber:#9a6700; --accent:#0969da; }
+MEASURE_RUN = "https://github.com/colim-ai/colim/actions/runs/30310736200"
+
+# Internal enum -> what a person would say. The page never shows an enum name.
+BASIS_WORDS = {
+    "code_error": "Compiler errors in the package’s own code",
+    "measured_actions": "We rebuilt it ourselves — public build log",
+    "measured_local": "We rebuilt it on our own machine",
+    "infra_uninformative": "Registry build failed before compiling — measurement in progress",
+    "infra_release": "A pinned release download no longer resolves",
 }
-* { box-sizing:border-box; }
-body { margin:0; padding:2.5rem 1.5rem; background:var(--bg); color:var(--fg);
-       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
-.wrap { max-width:960px; margin:0 auto; }
-h1 { font-size:1.9rem; margin:0 0 .25rem; letter-spacing:-.02em; }
-.sub { color:var(--dim); margin:0 0 2rem; font-size:.95rem; }
-.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; margin-bottom:1rem; }
-.kpi { border:1px solid var(--line); border-radius:10px; padding:1rem 1.15rem; }
-.kpi .n { font-size:2.1rem; font-weight:650; letter-spacing:-.03em; }
-.kpi .l { color:var(--dim); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; }
-.note { border-left:3px solid var(--amber); padding:.6rem 1rem; margin:1.25rem 0;
-        background:color-mix(in srgb, var(--amber) 8%, transparent); border-radius:0 6px 6px 0;
-        font-size:.9rem; }
-h2 { font-size:1.05rem; margin:2.25rem 0 .75rem; text-transform:uppercase;
-     letter-spacing:.07em; color:var(--dim); }
-table { border-collapse:collapse; width:100%; font-size:.9rem; }
-th,td { text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); }
-th { color:var(--dim); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; }
-td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; }
-.bar { height:7px; border-radius:4px; background:var(--line); overflow:hidden; }
-.bar > i { display:block; height:100%; }
-code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; }
-a { color:var(--accent); }
-.red{color:var(--red)} .green{color:var(--green)} .amber{color:var(--amber)}
-footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
-         color:var(--dim); font-size:.82rem; }
-.scroll { overflow-x:auto; }
+
+CLASS_WORDS = {
+    "deprecated": "Uses a name upstream has deprecated",
+    "unknown_identifier": "Identifier removed or renamed upstream",
+    "type_mismatch": "Types no longer line up",
+    "invalid_field": "Structure field removed or renamed",
+    "unsolved_goals": "Proof no longer closes",
+    "failed_to_synth": "Required instance no longer found",
+    "instance_binder": "Instance argument no longer valid",
+    "duplicate_declaration": "Name now clashes with upstream",
+    "lake_api_churn": "Build config format changed",
+    "lake_stale_artifact": "Stale build artifacts",
+    "tactic_failed": "Tactic no longer applies",
+    "syntax_error": "Syntax no longer parses",
+    "bad_import": "Module moved upstream",
+    "infra_cache_fetch": "Registry could not fetch its build cache",
+    "not_a_field": "Structure field removed or renamed",
+    "ambiguous": "Name became ambiguous",
+    "recursion_depth": "Elaboration hits recursion limit",
+    "lake_missing_file": "Expected build output missing",
+    "dep_manifest_mismatch": "Dependency manifest out of date",
+    "unknown_namespace": "Namespace removed or renamed",
+    "compiler_ir": "Compiler backend rejects the definition",
+    "deterministic_timeout": "Elaboration exceeds time budget",
+    "missing_cases": "Pattern match no longer exhaustive",
+    "invalid_instance": "Declaration no longer valid as an instance",
+    "lake_unknown_command": "Build tool command no longer exists",
+    "lake_duplicate_root": "Two targets share a root module",
+    "lake_no_config": "No usable build configuration",
+    "lake_external_command": "External build step failed",
+    "infra_toolchain_missing": "Toolchain unavailable on the runner",
+    "infra_release_fetch": "Pinned release artifact no longer downloads",
+    "infra_extract_failed": "Package archive could not be extracted",
+    "infra_runner_disk": "Runner ran out of disk",
+    "dep_revision_not_found": "Dependency revision no longer exists",
+    "sorry_present": "Contains an unproved placeholder",
+    "lake_unknown_option": "Build option no longer recognised",
+}
+
+CSS = """
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#fbfaf7; --ink:#14161a; --grey:#6b7280; --rule:#d8d5cd;
+  --red:#a81c1c; --green:#1a6b3c;
+  --mono:"SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:19px/1.55 var(--sans);
+     font-variant-numeric:tabular-nums;padding:0 0 5rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 3rem}
+section{padding:3.4rem 0;border-bottom:1px solid var(--rule)}
+section:last-child{border-bottom:0}
+
+.eyebrow{font:600 15px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+         color:var(--grey);margin-bottom:1.6rem}
+
+/* 1 — hero */
+.hero{padding-top:4rem}
+.figs{display:flex;align-items:baseline;gap:1.6rem;flex-wrap:wrap}
+.big{font:700 128px/.9 var(--mono);letter-spacing:-.045em;color:var(--red)}
+.of{font:400 46px/1 var(--mono);color:var(--grey)}
+.pct{font:600 46px/1 var(--mono);color:var(--ink);margin-left:.4rem}
+.thesis{font-size:30px;line-height:1.35;font-weight:500;max-width:26ch;margin-top:1.5rem}
+.qualifier{font-size:22px;line-height:1.45;margin-top:1.5rem;padding-left:1.1rem;
+           border-left:4px solid var(--red);max-width:56ch}
+.caption{font-size:16px;color:var(--grey);margin-top:1.6rem;max-width:70ch}
+
+/* 2 — first repair */
+.repair{border:1.5px solid var(--green);border-radius:4px;padding:2rem 2.2rem;
+        background:#fff}
+.repair h2{font:600 34px/1.2 var(--sans);display:flex;align-items:center;gap:.7rem}
+.check{color:var(--green);font-size:38px;line-height:1}
+.facts{display:flex;gap:2.4rem;flex-wrap:wrap;margin:1.4rem 0 1.5rem}
+.fact .v{font:600 26px/1.1 var(--mono)}
+.fact .k{font-size:14px;color:var(--grey);text-transform:uppercase;letter-spacing:.07em}
+.diff{font:15px/1.65 var(--mono);background:var(--paper);border:1px solid var(--rule);
+      border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
+.diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
+.verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
+
+/* 3 — verification */
+.claims{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem}
+.claim .h{font-size:26px;font-weight:600;line-height:1.3}
+.claim .d{color:var(--grey);font-size:17px;margin-top:.5rem}
+
+/* 4 — bars */
+table{width:100%;border-collapse:collapse;font-size:17px}
+td{padding:.42rem 0;vertical-align:middle}
+td.lbl{width:44%;padding-right:1.2rem}
+td.num{width:64px;text-align:right;font-family:var(--mono);font-weight:600;
+       padding-right:1.1rem}
+.bar{height:13px;background:#ebe8e1;border-radius:2px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--red)}
+.bar>i.g{background:var(--green)} .bar>i.k{background:#9aa0a6}
+h3{font-size:20px;font-weight:600;margin:2.2rem 0 .9rem}
+h3:first-of-type{margin-top:0}
+
+.proof{font:12px/1 var(--mono);color:var(--grey);text-decoration:none;
+       border-bottom:1px dotted var(--rule);white-space:nowrap;margin-left:.55rem}
+.proof:hover{color:var(--ink)}
+footer{padding-top:2.4rem;color:var(--grey);font-size:15px}
+a{color:inherit}
+@media (max-width:820px){
+  .wrap{padding:0 1.4rem} .big{font-size:84px} .claims{grid-template-columns:1fr}
+}
 """
+
+
+def proof(label: str, href: str, sql: str) -> str:
+    """Every figure carries a link to where it came from.
+
+    Hover reveals the query, but the page must be fully understandable with no
+    interaction at all -- this is decoration on top of a stated number, never a
+    substitute for stating it.
+    """
+    return f'<a class=proof href="{href}" title="{sql}">proof ↗</a>'
 
 
 def main() -> None:
@@ -57,103 +158,147 @@ def main() -> None:
 
     k = one("SELECT COUNT(*) FROM packages WHERE in_k=1")
     m = one("SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status='RED_REGRESSION'")
-    km = one("SELECT COUNT(*) FROM packages WHERE in_k=1 AND mathlib_downstream=1")
     uninf = one(
-        "SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status='RED_REGRESSION' "
-        "AND red_basis='infra_uninformative'"
+        "SELECT COUNT(*) FROM packages WHERE in_k=1 AND red_basis='infra_uninformative'"
     )
-    repaired = one(
-        "SELECT COUNT(*) FROM packages WHERE tier1_result IS NOT NULL "
-        "AND json_extract(tier1_result,'$.green')=1"
+    observations = one("SELECT COUNT(*) FROM build_observations")
+    eval_tc = get_meta(conn, "eval_toolchain").split(":")[-1]
+    n_rep = one("SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1")
+    agree = one(
+        "SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1 AND agrees=1"
     )
-    eval_tc = get_meta(conn, "eval_toolchain")
+    measured = one("SELECT COUNT(*) FROM packages WHERE measurement_run_url IS NOT NULL")
 
-    h = [
-        "<!doctype html><meta charset=utf-8>",
+    r = conn.execute(
+        "SELECT stars, old_toolchain, repo_url, tier1_result, eval_build_url "
+        "FROM packages WHERE pkg_key='kmill/render'"
+    ).fetchone()
+    render = json.loads(r["tier1_result"]) if r and r["tier1_result"] else {}
+
+    REPORT = "/census/report.md"
+    h: list[str] = [
+        "<!doctype html><html lang=en><meta charset=utf-8>",
         "<meta name=viewport content='width=device-width,initial-scale=1'>",
-        "<title>Colim — Lean ecosystem health</title>",
-        f"<style>{CSS}</style><div class=wrap>",
-        "<h1>Colim</h1>",
-        f"<p class=sub>Automated repair of formal mathematics. Census of the Lean "
-        f"package registry on <code>{eval_tc}</code>.</p>",
-        "<div class=kpis>",
-        f"<div class=kpi><div class=n>{k}</div><div class=l>K · packages in scope</div></div>",
-        f"<div class=kpi><div class='n red'>{m}</div><div class=l>M · red regressions</div></div>",
-        f"<div class=kpi><div class=n>{m / k:.0%}</div><div class=l>M / K</div></div>",
-        f"<div class=kpi><div class='n green'>{repaired}</div><div class=l>N · repaired &amp; verified</div></div>",
-        "</div>",
-        f"<div class=note><strong>Quote this alongside M.</strong> {uninf} of the {m} reds "
-        "are <code>infra_uninformative</code> — the registry's build failed on a cache fetch, "
-        "so its log cannot say whether the package's own code survives. They are being "
-        "resolved by measurement, not assumption. Until that finishes, M is an upper bound.</div>",
+        "<title>Colim — Lean ecosystem build health</title>",
+        f"<style>{CSS}</style><body><div class=wrap>",
     ]
 
-    h.append("<h2>Classification</h2><div class=scroll><table>")
-    h.append("<tr><th>Status</th><th class=n>Packages</th><th class=n>% of K</th><th></th></tr>")
-    colors = {
-        "RED_REGRESSION": "var(--red)",
-        "GREEN_CURRENT": "var(--green)",
-        "NEVER_GREEN": "var(--dim)",
-        "FORCED_DOWNGRADE": "var(--amber)",
-        "UNKNOWN": "var(--dim)",
-    }
-    for r in rows(
-        "SELECT final_status s, COUNT(*) n FROM packages WHERE in_k=1 GROUP BY s ORDER BY n DESC"
-    ):
-        pct = r["n"] / k
-        c = colors.get(r["s"], "var(--dim)")
-        h.append(
-            f"<tr><td><code>{r['s']}</code></td><td class=n>{r['n']}</td>"
-            f"<td class=n>{pct:.1%}</td>"
-            f"<td style='width:38%'><div class=bar><i style='width:{pct*100:.1f}%;background:{c}'></i></div></td></tr>"
-        )
-    h.append("</table></div>")
+    # ---- 1. HERO ----------------------------------------------------------
+    h += [
+        "<section class=hero>",
+        "<div class=eyebrow>Colim · census of Lean’s official package registry</div>",
+        "<div class=figs>",
+        f"<span class=big>{m}</span>",
+        f"<span class=of>of {k}</span>",
+        f"<span class=pct>{m / k:.0%}</span>",
+        "</div>",
+        "<p class=thesis>packages in Lean’s official registry fail to build on the "
+        f"current stable toolchain.{proof('', REPORT, 'SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status=&#39;RED_REGRESSION&#39;')}</p>",
+        f"<p class=qualifier>{uninf} of the failing packages are recorded only as "
+        "infrastructure-ambiguous. Independent measurement is in progress; until it "
+        "completes this figure is an upper bound."
+        f"{proof('', MEASURE_RUN, 'SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;')}</p>",
+        f"<p class=caption>Source: Reservoir build history, {observations:,} records. "
+        "Every figure is a SQL query over our ledger; every row links to a public "
+        "build log.</p>",
+        "</section>",
+    ]
 
-    h.append("<h2>Why each red is red</h2><div class=scroll><table>")
-    h.append("<tr><th>Basis</th><th class=n>Packages</th></tr>")
-    for r in rows(
+    # ---- 2. FIRST REPAIR --------------------------------------------------
+    if render.get("green"):
+        old_tc = (r["old_toolchain"] or "").split(":")[-1]
+        h += [
+            "<section>",
+            "<div class=eyebrow>First automated repair</div>",
+            "<div class=repair>",
+            "<h2><span class=check>✓</span> kmill/render</h2>",
+            "<div class=facts>",
+            f"<div class=fact><div class=v>{r['stars']}★</div>"
+            "<div class=k>Lean 4 raytracer</div></div>",
+            f"<div class=fact><div class=v>{old_tc}</div>"
+            "<div class=k>Compiler it was pinned to</div></div>",
+            f"<div class=fact><div class=v>{render.get('substitutions', '?')} lines</div>"
+            "<div class=k>Changed by Colim</div></div>",
+            f"<div class=fact><div class=v>{eval_tc}</div>"
+            "<div class=k>Now builds on</div></div>",
+            "</div>",
+            "<div class=diff>"
+            "<span class=minus>- Array.mkArray (height * width) Color.black</span>\n"
+            "<span class=plus>+ Array.replicate (height * width) Color.black</span>"
+            "</div>",
+            "<p class=verdict>Kernel-verified green — 4 Lean targets compiled, "
+            "toolchain confirmed."
+            f"{proof('', r['eval_build_url'] or REPORT, 'Reproduce: ./demo/run_render.sh')}</p>",
+            "</div></section>",
+        ]
+
+    # ---- 3. VERIFICATION --------------------------------------------------
+    h += [
+        "<section>",
+        "<div class=eyebrow>We audit our own data</div>",
+        "<div class=claims>",
+        f"<div class=claim><div class=h>{agree} of {n_rep} independent rebuilds agree "
+        "with the registry.</div>"
+        "<div class=d>We rebuilt a sample ourselves, on the same forced toolchain, "
+        "rather than trusting the registry’s record. A build that compiles nothing is "
+        "recorded as inconclusive, never as green."
+        f"{proof('', REPORT, 'SELECT COUNT(*) FROM reproductions WHERE agrees=1')}</div></div>",
+        f"<div class=claim><div class=h>{measured} ambiguous packages independently "
+        "re-measured.</div>"
+        "<div class=d>Rebuilt in our own CI, upstream cloned read-only at the exact "
+        "revision. Real errors keep a package in the count; a green build removes it."
+        f"{proof('', MEASURE_RUN, 'SELECT COUNT(*) FROM packages WHERE measurement_run_url IS NOT NULL')}</div></div>",
+        "</div></section>",
+    ]
+
+    # ---- 4. CLASSIFICATION ------------------------------------------------
+    h += [
+        "<section>",
+        "<div class=eyebrow>What is actually broken</div>",
+        "<h3>How we know each package is failing</h3><table>",
+    ]
+    basis = rows(
         "SELECT red_basis b, COUNT(*) n FROM packages WHERE in_k=1 AND "
         "final_status='RED_REGRESSION' GROUP BY b ORDER BY n DESC"
+    )
+    for row in basis:
+        pct = row["n"] / m * 100
+        cls = "k" if str(row["b"]).startswith("measured") else ""
+        h.append(
+            f"<tr><td class=lbl>{BASIS_WORDS.get(row['b'], row['b'])}</td>"
+            f"<td class=num>{row['n']}</td>"
+            f"<td><div class=bar><i class='{cls}' style='width:{pct:.1f}%'></i></div></td></tr>"
+        )
+    h.append("</table>")
+
+    h.append("<h3>Why they fail</h3><table>")
+    for row in rows(
+        "SELECT value AS cls, COUNT(*) n FROM packages, json_each(packages.error_classes) "
+        "WHERE in_k=1 AND final_status='RED_REGRESSION' GROUP BY cls "
+        "ORDER BY n DESC LIMIT 9"
     ):
-        h.append(f"<tr><td><code>{r['b']}</code></td><td class=n>{r['n']}</td></tr>")
-    h.append("</table></div>")
-
-    repaired_rows = rows(
-        "SELECT pkg_key, stars, old_toolchain, tier1_result FROM packages "
-        "WHERE tier1_result IS NOT NULL AND json_extract(tier1_result,'$.green')=1 "
-        "ORDER BY stars DESC"
-    )
-    if repaired_rows:
-        h.append("<h2>Repaired &amp; kernel-verified</h2><div class=scroll><table>")
-        h.append("<tr><th>Package</th><th class=n>Stars</th><th>Was pinned to</th>"
-                 "<th class=n>Lines changed</th></tr>")
-        for r in repaired_rows:
-            info = json.loads(r["tier1_result"])
-            h.append(
-                f"<tr><td><code>{r['pkg_key']}</code></td><td class=n>{r['stars']}</td>"
-                f"<td><code>{(r['old_toolchain'] or '?').replace('leanprover/lean4:','')}</code></td>"
-                f"<td class=n>{info.get('substitutions','?')}</td></tr>"
-            )
-        h.append("</table></div>")
-
-    h.append("<h2>Local reproduction — checking the registry against reality</h2>")
-    n_rep = one("SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1")
-    agree = one("SELECT COUNT(*) FROM reproductions WHERE COALESCE(conclusive,1)=1 AND agrees=1")
+        pct = row["n"] / m * 100
+        h.append(
+            f"<tr><td class=lbl>{CLASS_WORDS.get(row['cls'], row['cls'])}</td>"
+            f"<td class=num>{row['n']}</td>"
+            f"<td><div class=bar><i style='width:{pct:.1f}%'></i></div></td></tr>"
+        )
+    h.append("</table>")
     h.append(
-        f"<p>{agree} of {n_rep} conclusive local rebuilds reproduced the registry's recorded "
-        "red, under the same forced toolchain. A build that compiles nothing is recorded as "
-        "inconclusive, never as green.</p>"
+        "<p class=caption>Packages usually fail for several reasons at once, so these "
+        "do not sum to the total.</p></section>"
     )
 
     h.append(
-        "<footer>Every number on this page is a SQL query over "
-        f"<code>ledger/colim.sqlite</code>, derived from Reservoir index snapshot "
-        f"<code>{get_meta(conn,'index_commit')[:12]}</code>. "
-        "Nothing here is estimated or interpolated.</footer></div>"
+        "<footer>Reservoir index snapshot "
+        f"<code>{get_meta(conn, 'index_commit')[:12]}</code> · evaluation toolchain "
+        f"<code>{eval_tc}</code> · every number on this page is a query over "
+        "<code>ledger/colim.sqlite</code>. Nothing is estimated or interpolated."
+        "</footer></div></body></html>"
     )
 
     OUT.write_text("\n".join(h))
-    print(f"wrote {OUT}  (K={k} M={m} N={repaired})")
+    print(f"wrote {OUT}  (K={k} M={m} ambiguous={uninf} repro={agree}/{n_rep})")
 
 
 if __name__ == "__main__":

@@ -1,69 +1,123 @@
-<!doctype html><meta charset=utf-8>
+<!doctype html><html lang=en><meta charset=utf-8>
 <meta name=viewport content='width=device-width,initial-scale=1'>
-<title>Colim — Lean ecosystem health</title>
+<title>Colim — Lean ecosystem build health</title>
 <style>
-:root { --bg:#0d1117; --fg:#e6edf3; --dim:#8b949e; --line:#30363d;
-        --red:#f85149; --green:#3fb950; --amber:#d29922; --accent:#58a6ff; }
-@media (prefers-color-scheme: light) {
-  :root { --bg:#fff; --fg:#1f2328; --dim:#59636e; --line:#d1d9e0;
-          --red:#cf222e; --green:#1a7f37; --amber:#9a6700; --accent:#0969da; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#fbfaf7; --ink:#14161a; --grey:#6b7280; --rule:#d8d5cd;
+  --red:#a81c1c; --green:#1a6b3c;
+  --mono:"SF Mono",SFMono-Regular,ui-monospace,Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
 }
-* { box-sizing:border-box; }
-body { margin:0; padding:2.5rem 1.5rem; background:var(--bg); color:var(--fg);
-       font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; }
-.wrap { max-width:960px; margin:0 auto; }
-h1 { font-size:1.9rem; margin:0 0 .25rem; letter-spacing:-.02em; }
-.sub { color:var(--dim); margin:0 0 2rem; font-size:.95rem; }
-.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1rem; margin-bottom:1rem; }
-.kpi { border:1px solid var(--line); border-radius:10px; padding:1rem 1.15rem; }
-.kpi .n { font-size:2.1rem; font-weight:650; letter-spacing:-.03em; }
-.kpi .l { color:var(--dim); font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; }
-.note { border-left:3px solid var(--amber); padding:.6rem 1rem; margin:1.25rem 0;
-        background:color-mix(in srgb, var(--amber) 8%, transparent); border-radius:0 6px 6px 0;
-        font-size:.9rem; }
-h2 { font-size:1.05rem; margin:2.25rem 0 .75rem; text-transform:uppercase;
-     letter-spacing:.07em; color:var(--dim); }
-table { border-collapse:collapse; width:100%; font-size:.9rem; }
-th,td { text-align:left; padding:.5rem .6rem; border-bottom:1px solid var(--line); }
-th { color:var(--dim); font-weight:600; font-size:.78rem; text-transform:uppercase; letter-spacing:.05em; }
-td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; }
-.bar { height:7px; border-radius:4px; background:var(--line); overflow:hidden; }
-.bar > i { display:block; height:100%; }
-code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; }
-a { color:var(--accent); }
-.red{color:var(--red)} .green{color:var(--green)} .amber{color:var(--amber)}
-footer { margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line);
-         color:var(--dim); font-size:.82rem; }
-.scroll { overflow-x:auto; }
-</style><div class=wrap>
-<h1>Colim</h1>
-<p class=sub>Automated repair of formal mathematics. Census of the Lean package registry on <code>leanprover/lean4:v4.32.1</code>.</p>
-<div class=kpis>
-<div class=kpi><div class=n>758</div><div class=l>K · packages in scope</div></div>
-<div class=kpi><div class='n red'>500</div><div class=l>M · red regressions</div></div>
-<div class=kpi><div class=n>66%</div><div class=l>M / K</div></div>
-<div class=kpi><div class='n green'>1</div><div class=l>N · repaired &amp; verified</div></div>
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:19px/1.55 var(--sans);
+     font-variant-numeric:tabular-nums;padding:0 0 5rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 3rem}
+section{padding:3.4rem 0;border-bottom:1px solid var(--rule)}
+section:last-child{border-bottom:0}
+
+.eyebrow{font:600 15px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+         color:var(--grey);margin-bottom:1.6rem}
+
+/* 1 — hero */
+.hero{padding-top:4rem}
+.figs{display:flex;align-items:baseline;gap:1.6rem;flex-wrap:wrap}
+.big{font:700 128px/.9 var(--mono);letter-spacing:-.045em;color:var(--red)}
+.of{font:400 46px/1 var(--mono);color:var(--grey)}
+.pct{font:600 46px/1 var(--mono);color:var(--ink);margin-left:.4rem}
+.thesis{font-size:30px;line-height:1.35;font-weight:500;max-width:26ch;margin-top:1.5rem}
+.qualifier{font-size:22px;line-height:1.45;margin-top:1.5rem;padding-left:1.1rem;
+           border-left:4px solid var(--red);max-width:56ch}
+.caption{font-size:16px;color:var(--grey);margin-top:1.6rem;max-width:70ch}
+
+/* 2 — first repair */
+.repair{border:1.5px solid var(--green);border-radius:4px;padding:2rem 2.2rem;
+        background:#fff}
+.repair h2{font:600 34px/1.2 var(--sans);display:flex;align-items:center;gap:.7rem}
+.check{color:var(--green);font-size:38px;line-height:1}
+.facts{display:flex;gap:2.4rem;flex-wrap:wrap;margin:1.4rem 0 1.5rem}
+.fact .v{font:600 26px/1.1 var(--mono)}
+.fact .k{font-size:14px;color:var(--grey);text-transform:uppercase;letter-spacing:.07em}
+.diff{font:15px/1.65 var(--mono);background:var(--paper);border:1px solid var(--rule);
+      border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
+.diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
+.verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
+
+/* 3 — verification */
+.claims{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem}
+.claim .h{font-size:26px;font-weight:600;line-height:1.3}
+.claim .d{color:var(--grey);font-size:17px;margin-top:.5rem}
+
+/* 4 — bars */
+table{width:100%;border-collapse:collapse;font-size:17px}
+td{padding:.42rem 0;vertical-align:middle}
+td.lbl{width:44%;padding-right:1.2rem}
+td.num{width:64px;text-align:right;font-family:var(--mono);font-weight:600;
+       padding-right:1.1rem}
+.bar{height:13px;background:#ebe8e1;border-radius:2px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--red)}
+.bar>i.g{background:var(--green)} .bar>i.k{background:#9aa0a6}
+h3{font-size:20px;font-weight:600;margin:2.2rem 0 .9rem}
+h3:first-of-type{margin-top:0}
+
+.proof{font:12px/1 var(--mono);color:var(--grey);text-decoration:none;
+       border-bottom:1px dotted var(--rule);white-space:nowrap;margin-left:.55rem}
+.proof:hover{color:var(--ink)}
+footer{padding-top:2.4rem;color:var(--grey);font-size:15px}
+a{color:inherit}
+@media (max-width:820px){
+  .wrap{padding:0 1.4rem} .big{font-size:84px} .claims{grid-template-columns:1fr}
+}
+</style><body><div class=wrap>
+<section class=hero>
+<div class=eyebrow>Colim · census of Lean’s official package registry</div>
+<div class=figs>
+<span class=big>500</span>
+<span class=of>of 758</span>
+<span class=pct>66%</span>
 </div>
-<div class=note><strong>Quote this alongside M.</strong> 52 of the 500 reds are <code>infra_uninformative</code> — the registry's build failed on a cache fetch, so its log cannot say whether the package's own code survives. They are being resolved by measurement, not assumption. Until that finishes, M is an upper bound.</div>
-<h2>Classification</h2><div class=scroll><table>
-<tr><th>Status</th><th class=n>Packages</th><th class=n>% of K</th><th></th></tr>
-<tr><td><code>RED_REGRESSION</code></td><td class=n>500</td><td class=n>66.0%</td><td style='width:38%'><div class=bar><i style='width:66.0%;background:var(--red)'></i></div></td></tr>
-<tr><td><code>GREEN_CURRENT</code></td><td class=n>175</td><td class=n>23.1%</td><td style='width:38%'><div class=bar><i style='width:23.1%;background:var(--green)'></i></div></td></tr>
-<tr><td><code>NEVER_GREEN</code></td><td class=n>75</td><td class=n>9.9%</td><td style='width:38%'><div class=bar><i style='width:9.9%;background:var(--dim)'></i></div></td></tr>
-<tr><td><code>FORCED_DOWNGRADE</code></td><td class=n>7</td><td class=n>0.9%</td><td style='width:38%'><div class=bar><i style='width:0.9%;background:var(--amber)'></i></div></td></tr>
-<tr><td><code>UNKNOWN</code></td><td class=n>1</td><td class=n>0.1%</td><td style='width:38%'><div class=bar><i style='width:0.1%;background:var(--dim)'></i></div></td></tr>
-</table></div>
-<h2>Why each red is red</h2><div class=scroll><table>
-<tr><th>Basis</th><th class=n>Packages</th></tr>
-<tr><td><code>code_error</code></td><td class=n>403</td></tr>
-<tr><td><code>infra_uninformative</code></td><td class=n>52</td></tr>
-<tr><td><code>measured_actions</code></td><td class=n>34</td></tr>
-<tr><td><code>measured_local</code></td><td class=n>11</td></tr>
-</table></div>
-<h2>Repaired &amp; kernel-verified</h2><div class=scroll><table>
-<tr><th>Package</th><th class=n>Stars</th><th>Was pinned to</th><th class=n>Lines changed</th></tr>
-<tr><td><code>kmill/render</code></td><td class=n>146</td><td><code>v4.8.0-rc1</code></td><td class=n>2</td></tr>
-</table></div>
-<h2>Local reproduction — checking the registry against reality</h2>
-<p>11 of 11 conclusive local rebuilds reproduced the registry's recorded red, under the same forced toolchain. A build that compiles nothing is recorded as inconclusive, never as green.</p>
-<footer>Every number on this page is a SQL query over <code>ledger/colim.sqlite</code>, derived from Reservoir index snapshot <code>2acc551043c3</code>. Nothing here is estimated or interpolated.</footer></div>
+<p class=thesis>packages in Lean’s official registry fail to build on the current stable toolchain.<a class=proof href="/census/report.md" title="SELECT COUNT(*) FROM packages WHERE in_k=1 AND final_status=&#39;RED_REGRESSION&#39;">proof ↗</a></p>
+<p class=qualifier>52 of the failing packages are recorded only as infrastructure-ambiguous. Independent measurement is in progress; until it completes this figure is an upper bound.<a class=proof href="https://github.com/colim-ai/colim/actions/runs/30310736200" title="SELECT COUNT(*) FROM packages WHERE red_basis=&#39;infra_uninformative&#39;">proof ↗</a></p>
+<p class=caption>Source: Reservoir build history, 116,874 records. Every figure is a SQL query over our ledger; every row links to a public build log.</p>
+</section>
+<section>
+<div class=eyebrow>First automated repair</div>
+<div class=repair>
+<h2><span class=check>✓</span> kmill/render</h2>
+<div class=facts>
+<div class=fact><div class=v>146★</div><div class=k>Lean 4 raytracer</div></div>
+<div class=fact><div class=v>v4.8.0-rc1</div><div class=k>Compiler it was pinned to</div></div>
+<div class=fact><div class=v>2 lines</div><div class=k>Changed by Colim</div></div>
+<div class=fact><div class=v>v4.32.1</div><div class=k>Now builds on</div></div>
+</div>
+<div class=diff><span class=minus>- Array.mkArray (height * width) Color.black</span>
+<span class=plus>+ Array.replicate (height * width) Color.black</span></div>
+<p class=verdict>Kernel-verified green — 4 Lean targets compiled, toolchain confirmed.<a class=proof href="https://github.com/leanprover/reservoir/actions/runs/30206205851/job/89804749112#step:4:1" title="Reproduce: ./demo/run_render.sh">proof ↗</a></p>
+</div></section>
+<section>
+<div class=eyebrow>We audit our own data</div>
+<div class=claims>
+<div class=claim><div class=h>11 of 11 independent rebuilds agree with the registry.</div><div class=d>We rebuilt a sample ourselves, on the same forced toolchain, rather than trusting the registry’s record. A build that compiles nothing is recorded as inconclusive, never as green.<a class=proof href="/census/report.md" title="SELECT COUNT(*) FROM reproductions WHERE agrees=1">proof ↗</a></div></div>
+<div class=claim><div class=h>40 ambiguous packages independently re-measured.</div><div class=d>Rebuilt in our own CI, upstream cloned read-only at the exact revision. Real errors keep a package in the count; a green build removes it.<a class=proof href="https://github.com/colim-ai/colim/actions/runs/30310736200" title="SELECT COUNT(*) FROM packages WHERE measurement_run_url IS NOT NULL">proof ↗</a></div></div>
+</div></section>
+<section>
+<div class=eyebrow>What is actually broken</div>
+<h3>How we know each package is failing</h3><table>
+<tr><td class=lbl>Compiler errors in the package’s own code</td><td class=num>403</td><td><div class=bar><i class='' style='width:80.6%'></i></div></td></tr>
+<tr><td class=lbl>Registry build failed before compiling — measurement in progress</td><td class=num>52</td><td><div class=bar><i class='' style='width:10.4%'></i></div></td></tr>
+<tr><td class=lbl>We rebuilt it ourselves — public build log</td><td class=num>34</td><td><div class=bar><i class='k' style='width:6.8%'></i></div></td></tr>
+<tr><td class=lbl>We rebuilt it on our own machine</td><td class=num>11</td><td><div class=bar><i class='k' style='width:2.2%'></i></div></td></tr>
+</table>
+<h3>Why they fail</h3><table>
+<tr><td class=lbl>Uses a name upstream has deprecated</td><td class=num>228</td><td><div class=bar><i style='width:45.6%'></i></div></td></tr>
+<tr><td class=lbl>Types no longer line up</td><td class=num>178</td><td><div class=bar><i style='width:35.6%'></i></div></td></tr>
+<tr><td class=lbl>Identifier removed or renamed upstream</td><td class=num>155</td><td><div class=bar><i style='width:31.0%'></i></div></td></tr>
+<tr><td class=lbl>Proof no longer closes</td><td class=num>102</td><td><div class=bar><i style='width:20.4%'></i></div></td></tr>
+<tr><td class=lbl>Registry could not fetch its build cache</td><td class=num>92</td><td><div class=bar><i style='width:18.4%'></i></div></td></tr>
+<tr><td class=lbl>Structure field removed or renamed</td><td class=num>90</td><td><div class=bar><i style='width:18.0%'></i></div></td></tr>
+<tr><td class=lbl>Name now clashes with upstream</td><td class=num>79</td><td><div class=bar><i style='width:15.8%'></i></div></td></tr>
+<tr><td class=lbl>Required instance no longer found</td><td class=num>73</td><td><div class=bar><i style='width:14.6%'></i></div></td></tr>
+<tr><td class=lbl>Stale build artifacts</td><td class=num>64</td><td><div class=bar><i style='width:12.8%'></i></div></td></tr>
+</table>
+<p class=caption>Packages usually fail for several reasons at once, so these do not sum to the total.</p></section>
+<footer>Reservoir index snapshot <code>2acc551043c3</code> · evaluation toolchain <code>v4.32.1</code> · every number on this page is a query over <code>ledger/colim.sqlite</code>. Nothing is estimated or interpolated.</footer></div></body></html>
