@@ -23,6 +23,9 @@ from ledger.db import connect, get_meta  # noqa: E402
 OUT = HERE / "index.html"
 
 MEASURE_RUN = "https://github.com/colim-ai/colim/actions/runs/30310736200"
+# Public, timestamped proof that the repair builds -- CI on our own fork.
+REPAIR_CI = "https://github.com/colim-ai/lean4-raytracer/actions/runs/30322697478"
+REPAIR_DIFF = "https://github.com/colim-ai/lean4-raytracer/commit/7597a340c83f0a1e08f4e354d0f39ef5f56ca119"
 
 # Internal enum -> what a person would say. The page never shows an enum name.
 BASIS_WORDS = {
@@ -112,6 +115,9 @@ section:last-child{border-bottom:0}
       border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
 .diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
 .verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
+.links{margin-top:.85rem;display:flex;gap:1.6rem;flex-wrap:wrap;font-size:16px}
+.links a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
+.links a:hover{border-color:var(--ink)}
 
 /* 3 — verification */
 .claims{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem}
@@ -226,9 +232,13 @@ def main() -> None:
             "<span class=minus>- Array.mkArray (height * width) Color.black</span>\n"
             "<span class=plus>+ Array.replicate (height * width) Color.black</span>"
             "</div>",
-            "<p class=verdict>Kernel-verified green — 4 Lean targets compiled, "
-            "toolchain confirmed."
-            f"{proof('', r['eval_build_url'] or REPORT, 'Reproduce: ./demo/run_render.sh')}</p>",
+            "<p class=verdict>Kernel-verified green on our fork — public CI, "
+            "timestamped.</p>",
+            "<p class=links>"
+            f"<a href='{r['eval_build_url']}'>Upstream build failing ↗</a>"
+            f"<a href='{REPAIR_DIFF}'>Our 2-line fix ↗</a>"
+            f"<a href='{REPAIR_CI}'>Green CI run ↗</a>"
+            "</p>",
             "</div></section>",
         ]
 

@@ -1,0 +1,89 @@
+# Injected by Colim into a forked package to prove the repair publicly.
+#
+# This runs on OUR fork, never upstream. It exists so that a stranger can see a
+# timestamped green check rather than taking our word for it.
+#
+# It verifies through the SAME code path as everything else in the project --
+# harness/verify_build.py from colim-ai/colim -- so the vacuous-green and
+# toolchain-drift guards apply here identically. A build that compiles nothing,
+# or that runs on a toolchain we did not pin, cannot report success.
+
+name: colim-verify
+
+on:
+  push:
+    branches: ["colim/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Check out the repaired package
+        uses: actions/checkout@v4
+        with:
+          path: pkg
+
+      - name: Check out colim (shared build verifier)
+        uses: actions/checkout@v4
+        with:
+          repository: colim-ai/colim
+          path: colim
+
+      - name: Free disk space
+        run: sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc || true
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+            -o elan-init.sh
+          bash elan-init.sh -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Show what is being verified
+        run: |
+          echo "package  : ${{ github.repository }}"
+          echo "branch   : ${{ github.ref_name }}"
+          echo "revision : ${{ github.sha }}"
+          echo "toolchain: $(cat pkg/lean-toolchain)"
+
+      - name: Verify the repaired build
+        env:
+          # Read from the package's own pin, which Colim set to the campaign
+          # target. verify_build re-checks it afterwards and fails on drift.
+          TOOLCHAIN_FILE: pkg/lean-toolchain
+        run: |
+          TC="$(cat "$TOOLCHAIN_FILE")"
+          elan toolchain install "$TC"
+          MATHLIB_FLAG=""
+          if grep -qi 'mathlib' pkg/lakefile.lean pkg/lakefile.toml 2>/dev/null; then
+            MATHLIB_FLAG="--mathlib"
+          fi
+          python3 colim/harness/verify_build.py pkg \
+            --toolchain "$TC" $MATHLIB_FLAG \
+            --json verdict.json --log build.log
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Colim verification"
+            echo '```json'
+            cat verdict.json 2>/dev/null || echo '{"error":"no verdict emitted"}'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: colim-verify
+          path: |
+            build.log
+            verdict.json
+          if-no-files-found: warn
+          retention-days: 90

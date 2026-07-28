@@ -42,6 +42,9 @@ section:last-child{border-bottom:0}
       border-radius:3px;padding:.9rem 1.1rem;overflow-x:auto;white-space:pre}
 .diff .minus{color:var(--red)} .diff .plus{color:var(--green)}
 .verdict{margin-top:1.2rem;font-size:20px;font-weight:600;color:var(--green)}
+.links{margin-top:.85rem;display:flex;gap:1.6rem;flex-wrap:wrap;font-size:16px}
+.links a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--rule);padding-bottom:2px}
+.links a:hover{border-color:var(--ink)}
 
 /* 3 — verification */
 .claims{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem}
@@ -92,7 +95,8 @@ a{color:inherit}
 </div>
 <div class=diff><span class=minus>- Array.mkArray (height * width) Color.black</span>
 <span class=plus>+ Array.replicate (height * width) Color.black</span></div>
-<p class=verdict>Kernel-verified green — 4 Lean targets compiled, toolchain confirmed.<a class=proof href="https://github.com/leanprover/reservoir/actions/runs/30206205851/job/89804749112#step:4:1" title="Reproduce: ./demo/run_render.sh">proof ↗</a></p>
+<p class=verdict>Kernel-verified green on our fork — public CI, timestamped.</p>
+<p class=links><a href='https://github.com/leanprover/reservoir/actions/runs/30206205851/job/89804749112#step:4:1'>Upstream build failing ↗</a><a href='https://github.com/colim-ai/lean4-raytracer/commit/7597a340c83f0a1e08f4e354d0f39ef5f56ca119'>Our 2-line fix ↗</a><a href='https://github.com/colim-ai/lean4-raytracer/actions/runs/30322697478'>Green CI run ↗</a></p>
 </div></section>
 <section>
 <div class=eyebrow>We audit our own data</div>
